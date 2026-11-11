@@ -1,0 +1,953 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Playbook de Flow</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Concepto: hojas apiladas sobre un escritorio, una por tema. El rojo se reserva solo para lo pendiente. */
+:root {
+  --desk: #E7E9EC;
+  --sheet: #FFFFFF;
+  --sheet-2: #F3F5F7;
+  --ink: #14181D;
+  --muted: #5A6470;
+  --line: #D5DAE0;
+  --accent: #0E6A70;
+  --red: #C4201A;
+  --red-line: #E9A6A2;
+  --shadow: 0 1px 2px rgba(20,24,29,.08), 0 8px 28px rgba(20,24,29,.08);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #0C0E10; --sheet: #16191D; --sheet-2: #1E2227; --ink: #E9ECEF; --muted: #98A2AE;
+    --line: #2B3138; --accent: #4FC3C9; --red: #FF6F64; --red-line: #6B2F2B;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 28px rgba(0,0,0,.4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --desk: #0C0E10; --sheet: #16191D; --sheet-2: #1E2227; --ink: #E9ECEF; --muted: #98A2AE;
+  --line: #2B3138; --accent: #4FC3C9; --red: #FF6F64; --red-line: #6B2F2B;
+  --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 28px rgba(0,0,0,.4);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--desk); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+  counter-reset: cap pag;
+}
+
+.hoja {
+  position: relative;
+  max-width: 820px; margin: 0 auto 32px;
+  background: var(--sheet); box-shadow: var(--shadow); border-radius: 3px;
+  padding: 56px 28px 88px;
+  counter-increment: pag;
+}
+@media (min-width: 860px) {
+  .hoja { padding: 72px 76px 104px; min-height: 1160px; }
+}
+.hoja.cap { counter-increment: pag cap; }
+.hoja::after {
+  content: counter(pag);
+  position: absolute; left: 28px; right: 28px; bottom: 28px;
+  font: 400 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted); text-align: right; white-space: pre;
+}
+@media (min-width: 860px) { .hoja::after { left: 76px; right: 76px; bottom: 36px; } }
+.hoja.portada::after { content: none; }
+
+.eyebrow {
+  font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 14px;
+}
+.cap .eyebrow::before { content: counter(cap, decimal-leading-zero) "  ·  "; }
+
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(44px, 9vw, 84px); line-height: .98; font-weight: 700; letter-spacing: -.02em; }
+h2 { font-size: clamp(28px, 4.4vw, 38px); line-height: 1.1; font-weight: 700; letter-spacing: -.01em; margin-bottom: 26px; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0 0 1em; max-width: 64ch; }
+a { color: var(--accent); }
+code { font-family: var(--f-mono); font-size: .88em; background: var(--sheet-2); padding: 1px 5px; border-radius: 3px; }
+
+/* portada */
+.portada { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+.portada .sub { font-size: clamp(19px, 2.6vw, 24px); line-height: 1.4; color: var(--muted); max-width: 30ch; margin-top: 24px; }
+.portada .meta { font: 400 12px/1.9 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+.portada .meta span { color: var(--ink); }
+
+/* cómo se lee */
+.indice { list-style: none; margin: 28px 0 0; padding: 0; columns: 2 280px; column-gap: 40px; }
+.indice li { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-size: 15px; }
+.indice a { color: var(--ink); text-decoration: none; }
+.indice a:hover { color: var(--accent); }
+.indice .n { font: 400 11px/1.9 var(--f-mono); color: var(--red); white-space: nowrap; }
+.fuente { margin-top: 28px; font-size: 14px; color: var(--muted); }
+
+/* pendientes: título en rojo + de dónde sale */
+.pends { margin-top: 32px; }
+.pends::before {
+  content: "Por escribir"; display: block;
+  font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 4px;
+}
+.pend {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; column-gap: 20px;
+  padding: 12px 0; border-bottom: 1px dashed var(--red-line);
+}
+.pt { font: 600 18px/1.3 var(--f-display); color: var(--red); }
+.po { font: 400 11px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red); opacity: .8; white-space: nowrap; }
+
+/* reglas */
+.reglas { margin: 0; padding: 0; list-style: none; counter-reset: r; }
+.reglas li { counter-increment: r; display: grid; grid-template-columns: 34px 1fr; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.reglas li::before { content: counter(r); font: 500 13px/2 var(--f-mono); color: var(--accent); }
+.reglas b { font-weight: 600; }
+
+/* tablas */
+.tabla { overflow-x: auto; margin: 22px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 460px; }
+th { text-align: left; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 14px 10px 0; border-bottom: 1px solid var(--ink); }
+td { padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { font-family: var(--f-mono); font-size: 13.5px; white-space: nowrap; }
+
+/* figuras */
+.fig { overflow-x: auto; margin: 28px 0 8px; }
+.fig svg { display: block; width: 100%; min-width: 600px; height: auto; }
+.fig figcaption, figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+svg text { font-family: var(--f-body); fill: var(--ink); }
+svg .nodo { fill: var(--sheet-2); stroke: var(--line); stroke-width: 1.2; }
+svg .nodo-eje { fill: var(--sheet-2); stroke: var(--accent); stroke-width: 1.8; }
+svg .arista { stroke: var(--muted); stroke-width: 1.3; fill: none; }
+svg .et { font-size: 11px; fill: var(--muted); }
+svg .nt { font-size: 14px; font-weight: 600; text-anchor: middle; }
+
+.pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 0; margin: 28px 0 14px; border: 1px solid var(--line); }
+.paso { padding: 14px 14px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; }
+.paso b { display: block; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent); margin-bottom: 8px; }
+.paso strong { display: block; font: 600 17px/1.2 var(--f-display); margin-bottom: 6px; }
+.paso span { font-size: 13.5px; line-height: 1.45; color: var(--muted); display: block; }
+.retorno { font-size: 14px; color: var(--muted); }
+
+.leyenda { display: grid; gap: 18px; margin: 26px 0 0; }
+.leyenda p { margin: 0; }
+
+@media print {
+  @page { size: A4; margin: 0; }
+  body { background: #fff; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .hoja { box-shadow: none; margin: 0; max-width: none; width: 210mm; min-height: 290mm; padding: 22mm 20mm 26mm; break-after: page; page-break-after: always; border-radius: 0; }
+  .hoja::after { left: 20mm; right: 20mm; bottom: 12mm; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<style>
+.tabla td:last-child { font-family: var(--f-body); font-size: 15px; white-space: normal; }
+.tabla.wrap td:first-child { white-space: normal; }
+svg .arista-p { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+svg .punta { fill: var(--muted); }
+</style>
+
+<style>
+.indice .t small{display:block;font-size:13px;color:var(--muted);line-height:1.4;margin-top:2px}
+.indice li{align-items:baseline}
+.indice .num{font:500 12px/1.9 var(--f-mono);color:var(--accent);min-width:2.2em}
+.indice .l{display:flex;gap:8px}
+.indice.una{columns:1}
+.glos{margin:24px 0 0}
+.glos dt{font:600 17px/1.3 var(--f-display);margin-top:16px}
+.glos dd{margin:3px 0 0;max-width:64ch;color:var(--ink);font-size:15px;line-height:1.55}
+.glos dd i{color:var(--muted);font-style:normal}
+.glos .pend-t{color:var(--red)}
+.gl{text-decoration:none;font-weight:600;color:var(--accent)}
+sup{line-height:0}
+.gn{font:500 12px/1 var(--f-mono);color:var(--accent);margin-right:8px}
+</style>
+
+<!-- 01 · Portada -->
+<section class="hoja portada" id="portada">
+  <div>
+    <p class="eyebrow">Flow — Software Development Life Network · v0.2.0</p>
+    <h1>Playbook de Flow</h1>
+    <p class="sub">Cómo trabajan una persona o un equipo y una IA cuando el producto cambia todos los días.</p>
+  </div>
+  <div class="meta">
+    Versión <span>0.5</span><br>
+    11 de noviembre de 2026
+  </div>
+</section>
+
+
+<!-- 02b · Índice -->
+<section class="hoja" id="indice-general">
+  <p class="eyebrow">Playbook de Flow</p>
+  <h2>Índice</h2>
+  <ul class="indice una">
+    <li><span><span class="num">01</span> <a href="#por-que">Por qué existe Flow</a></span></li>
+    <li><span><span class="num">02</span> <a href="#red">De ciclo de vida a red de ciclos</a></span></li>
+    <li><span><span class="num">03</span> <a href="#insumos">Insumos y router</a></span></li>
+    <li><span><span class="num">04</span> <a href="#reglas">Reglas y dónde viven</a></span></li>
+    <li><span><span class="num">05</span> <a href="#piezas">Las piezas</a></span></li>
+    <li><span><span class="num">06</span> <a href="#arranque">El arranque</a></span></li>
+    <li><span><span class="num">07</span> <a href="#prd">El PRD vivo</a></span></li>
+    <li><span><span class="num">08</span> <a href="#punto">Bandeja, backlog y punto</a></span></li>
+    <li><span><span class="num">09</span> <a href="#criterios">Criterios de aceptación</a></span></li>
+    <li><span><span class="num">10</span> <a href="#herramientas">Backlog propio o en una herramienta</a></span></li>
+    <li><span><span class="num">11</span> <a href="#ciclo">Entregar un punto</a></span></li>
+    <li><span><span class="num">12</span> <a href="#dimensionar">Dimensionar y caminos cortos</a></span></li>
+    <li><span><span class="num">13</span> <a href="#cierre">Checkpoints y cierre</a></span></li>
+    <li><span><span class="num">14</span> <a href="#decisiones">Decisiones y brechas</a></span></li>
+    <li><span><span class="num">15</span> <a href="#memoria">Memoria y conversaciones cortas</a></span></li>
+    <li><span><span class="num">16</span> <a href="#equipo">Equipo: estado compartido</a></span></li>
+    <li><span><span class="num">17</span> <a href="#auditoria">Auditoría</a></span></li>
+    <li><span><span class="num">18</span> <a href="#revisar">Puntos de revisión</a></span></li>
+    <li><span><span class="num">19</span> <a href="#control">Control y autonomía</a></span></li>
+    <li><span><span class="num">20</span> <a href="#hooks">Hooks y cierre automático</a></span></li>
+    <li><span><span class="num">21</span> <a href="#medir">Medir y mejorar</a></span></li>
+    <li><span><span class="num">22</span> <a href="#glosario">Glosario</a></span></li>
+  </ul>
+  <p class="fuente">Los términos con un número en el texto se explican en el <a href="#glosario">Glosario</a>, con su enlace cuando vienen de afuera.</p>
+</section>
+
+<!-- 03 · Por qué -->
+<section class="hoja cap" id="por-que">
+  <p class="eyebrow">Origen</p>
+  <h2>Por qué existe Flow</h2>
+
+  <h3 style="margin:0 0 8px">Un par de alcances sobre los modelos de trabajo</h3>
+  <ol class="reglas">
+    <li><span>El "Happy path" es, de hecho, un caso de borde. El usuario adapta el producto a su contexto, una mentalidad de producto edge case first es una buena idea.</span></li>
+    <li><span>Todo playbook debiera ser solo un setup inicial, la primera foto, la evolución 0.</span></li>
+    <li><span>La incertidumbre<sup><a class="gl" href="#g-incertidumbre">19</a></sup> es la primera, inevitable e inherente característica sobreviviente desde los primeros procesos analógicos, que siempre prevalecerá.</span></li>
+  </ol>
+
+  <h3 style="margin:30px 0 8px">La paradoja de la hiperconexión y la desconexión de las organizaciones</h3>
+  <p>A medida que una organización escala en tamaño, las conexiones entre los miembros experimentan un crecimiento polinómico, y si a esto sumamos la formación de áreas, equipos, frentes, y/o tribus, squads, chapters y cualquier otra topología, el crecimiento se transforma en exponencial (2ⁿ). Esto implica que un mensaje es cada vez más propenso a llegar tarde y deformado, por lo que se establecen formas, estándares, cadencias, sistemas, etc etc = burocracia.</p>
+  <p>Cuando el costo es el tiempo y la moneda es la burocracia, la red empieza a aislar partes (los equipos se desconectan, las personas se desconectan, los sistemas se llenan de reglas, los procesos se hacen pesados) y comienza el fenómeno del tironeo entre los "expertos" (roles consultivos o de diseño cuya labor es pensar los procesos, ej: Arquitectura de software, área de procesos, área de estrategia) y los "operadores" (roles dedicados a usar esos procesos para realizar su trabajo, ej: desarrolladores, equipos de producto).</p>
+  <p>Parte de los problemas de estas dinámicas es que si los operadores no tienen un mecanismo propio de regulación de los procesos, estos se vuelven ley universal, inalterable, lo que es obsoleto en entornos de alta incertidumbre. Además si los expertos no deben transitar los procesos que ellos mismos crean, caen en un mar de sesgos donde los resultados sin consecuencias para ellos alimentan el modelo.</p>
+  <p>Para graficar con un ejemplo: si las tropas del general San Martín hubieran tenido un equipo de expertos diciéndoles cómo viajar a los operadores, estos bien podrían haber recomendado un cruce en ponis y cabras (consumen menos recursos, son más fáciles de guarecer, causan ternura, y ni hablar del desempeño de las cabras en senderos montañeses, además de dar leche y abrigo), habrían tenido razón pero habiéndoles faltado mucha información.</p>
+
+  <h3 style="margin:30px 0 8px">La llegada de la inteligencia artificial</h3>
+  <p>El santo grial de los procesos siempre ha sido la automatización, ha habido numerosos intentos, y siempre hemos ganado alguna ventaja, pero ahora va en serio, producir código, revisarlo, productivizarlo, nunca había sido tan accesible. Como dice el playbook <a href="https://claude.com/es/resources/articles/the-ai-native-sdlc-playbook">The AI-Native SDLC</a> de Anthropic, "el cuello de botella ya no es el código", pero ojo, lo que no dicen es que esto se cumple siempre y cuando entendamos, mantengamos, mejoremos, y tengamos claro el propósito de ese código, de lo contrario puede volverse una pesadilla, el collar más caro que el perro, otra vez pensadores vs hacedores.</p>
+  <p>Aunque la IA sea una gran herramienta potenciadora, agregar el prefijo "Ai" al inicio de tu SDLC<sup><a class="gl" href="#g-sdlc">38</a></sup>, no te acerca en lo más mínimo a sacar buen software, o buenos productos, sin el cuidado suficiente, puede ser un espejismo que te aleja cada vez más.</p>
+  <p>Volviendo a San Martín, ahora los expertos estarían recomendando ponerle un motor al pony, y montar las cabras en un dron. Estaríamos potenciando algo que es desde las raíces, incorrecto.</p>
+</section>
+
+<section class="hoja" id="por-que-2">
+  <p class="eyebrow">Origen · continuación</p>
+
+  <h3 style="margin:0 0 8px">Volver a las raíces.</h3>
+  <p>Al final siempre se trató de lo más simple, solo que está sumergido en capas y capas de brillo, la mayoría de las veces innecesario.</p>
+  <ol class="reglas">
+    <li><span>El trabajo es tan pesado como lo sean sus procesos.</span></li>
+    <li><span>Siempre necesitaremos buenos insumos<sup><a class="gl" href="#g-insumo">20</a></sup> y materia prima.</span></li>
+    <li><span>Decidir temprano abarata, construir de más encarece.</span></li>
+    <li><span>No decidir es una decisión (y en muy pocos casos es una buena).</span></li>
+    <li><span>Cambiar de rumbo no es un defecto, es una parte sana del proceso.</span></li>
+    <li><span>La claridad y la incertidumbre<sup><a class="gl" href="#g-incertidumbre">19</a></sup> son cualidades que deben ser declaradas.</span></li>
+    <li><span>La exploración y experimentación importan mucho.</span></li>
+    <li><span>Las conversaciones importan mucho.</span></li>
+    <li><span>La trazabilidad importa mucho.</span></li>
+  </ol>
+
+  <h3 style="margin:30px 0 8px">Para desarrollar un producto enterprise no hace falta una gran herramienta</h3>
+  <p>Ya hablamos del gran coste de un gobierno interno pesado, lo corrosivo de la burocracia y el doble filo de la complejidad organizacional.</p>
+  <p>Aquí vive un modelo, que como se dijo antes, debe ser un setup inicial, sujeto de cambios y evoluciones, siempre en pos de bajar la complejidad, mantener la grasa de procesos a raya y entregar calidad (Calidad se lee como lo que el usuario realmente necesita, y va a usar, y no va a renegar), y su nombre es flow.</p>
+  <p>Flow no viene estrictamente de "flujo", como una imposición, sino de "fluir", el comportamiento de un líquido avanzando por los caminos óptimos, sin prisa y sin pausa, de manera orgánica e inherentemente "correcta".</p>
+
+  <h3 style="margin:30px 0 8px">Flow</h3>
+  <p>A continuación vienen varias hojas con propuestas de uso, bloques organizados que pueden ser reemplazados por conveniencia, por gusto, por relevancia, por políticas, por gestión del cambio o porque se te canten las ganas, la idea es buscar que las cosas fluyan, que lleguen a puerto y que el resultado sea útil.</p>
+  <p>Si bien flow está diseñado para que pueda ser usado por una persona sola, por una persona con su IA favorita, por una persona con varias IAs, por equipos de personas con equipos de IAs, es, desde sus cimientos, agnóstico de cualquier LLM, de cualquier proyecto, o de cualquier tipo de producto digital, aunque está probado en diversos proyectos de desarrollo de software.</p>
+  <p>La experimentación/exploración tiene protagonismo aquí, explorar es uno de los ciclos<sup><a class="gl" href="#g-ciclo">10</a></sup> de primera clase de esta denominada red de ciclos<sup><a class="gl" href="#g-red-de-ciclos">33</a></sup>, no es costo hundido. Esto nos ayuda a saber qué se decide, qué se asume, qué falta (claridad + incertidumbre medidas), nos ayuda a aprender de los errores y transformarlos sistémicamente en nuevos buenos acuerdos, nos ayuda a tener un baúl de cosas con sentido por hacer.</p>
+  <p>Las intenciones son una chispa que debe atenderse, también son parte del combustible de nuestra red de ciclos.</p>
+  <p>Tener conversaciones cortas y frecuentes dentro de cualquier parte de la red, ahorra tokens y nos hace ganar en precisión.</p>
+</section>
+
+<section class="hoja" id="por-que-3">
+  <p class="eyebrow">Origen · continuación</p>
+  <p>Tenemos una nueva ventaja, la memoria compartida de los proyectos, podemos tener trazabilidad, auditoría<sup><a class="gl" href="#g-auditoria">3</a></sup>, timonazos seguros, y esto es una ventaja de borde para el escalamiento organizacional, es la manera en que esto le puede servir a una sola persona, o a un entorno colaborativo completo metiendo las manos, y "entorno" no significa solamente devs mergeando sin cesar, significa también que herramientas de desarrollo, de calidad, de gestión, de comunicación, de versionamiento, o de apoyo en cualquier parte del flujo, expertos y consultores, pueden ser incluidos y combinados de forma sana. La visión organizacional de ecosistema que siempre se ha buscado, está más a mano que nunca.</p>
+  <p>Siéntase libre de encontrar referencias de otros modelos, comparar, sacar conclusiones y proponer mejoras, flow es un descendiente de modelos tradicionales de desarrollo, de shop floor management, de modelos de agilidad, de agilidad escalada, de heridas de guerra corporativa, de energía de las startups y de muchos años de hacer producto, condensados y ordenados con intención, con propósito, y con mucho cariño.</p>
+  <p class="fuente">✍︎ Escrito letra a letra por un humano · <a href="https://app.gutmbrg.com/p/djruNccm">verificar en gutmbrg</a></p>
+</section>
+
+<!-- 04 · Red -->
+<section class="hoja cap" id="red">
+  <p class="eyebrow">Idea central</p>
+  <h2>De ciclo de vida a red de ciclos</h2>
+  <p>El ciclo de vida clásico es una línea con principio y fin. Flow es una red de seis ciclos<sup><a class="gl" href="#g-ciclo">10</a></sup> que se alimentan entre sí, y en la que se puede entrar por cualquiera. Cada ciclo corre cuando tiene sus <b>insumos<sup><a class="gl" href="#g-insumo">20</a></sup></b>: los documentos y el estado que necesita, como un PRD<sup><a class="gl" href="#g-prd">28</a></sup> claro, un punto<sup><a class="gl" href="#g-punto">31</a></sup> con criterio, una decisión tomada o un backlog<sup><a class="gl" href="#g-backlog">4</a></sup> listo. Sin ellos no corre. En su lugar corre el ciclo que los produce.</p>
+
+  <figure class="fig" style="margin-inline:0">
+    <svg viewBox="0 0 740 290" role="img" aria-label="Seis ciclos: Captar alimenta a Definir y Explorar; Explorar lleva a Decidir; Definir y Decidir alimentan a Entregar; Entregar lleva a Aprender; Aprender devuelve reglas al contrato, que alimenta a todos los ciclos">
+      <defs><marker id="p" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="punta" d="M0 0 L8 4 L0 8 z"/></marker></defs>
+      <path class="arista" marker-end="url(#p)" d="M122 92 L160 52"/>
+      <path class="arista" marker-end="url(#p)" d="M122 108 L160 148"/>
+      <path class="arista" marker-end="url(#p)" d="M218 64 L218 134"/>
+      <text class="et" x="228" y="104">intención madura</text>
+      <path class="arista" marker-end="url(#p)" d="M274 158 L312 158"/>
+      <text class="et" x="293" y="150" text-anchor="middle">ADR</text>
+      <path class="arista" marker-end="url(#p)" d="M274 42 L410 42 L470 82"/>
+      <text class="et" x="340" y="34" text-anchor="middle">puntos</text>
+      <path class="arista" marker-end="url(#p)" d="M426 150 L486 124"/>
+      <path class="arista" marker-end="url(#p)" d="M578 100 L616 100"/>
+      <text class="et" x="597" y="92" text-anchor="middle">errores</text>
+      <path class="arista-p" marker-end="url(#p)" d="M674 122 L674 250 L66 250 L66 124"/>
+      <text class="et" x="370" y="242" text-anchor="middle">reglas del contrato: vuelven a todos los ciclos</text>
+
+      <rect class="nodo" x="10" y="78" width="112" height="44" rx="8"/><text class="nt" x="66" y="105">Captar</text>
+      <rect class="nodo" x="162" y="20" width="112" height="44" rx="8"/><text class="nt" x="218" y="47">Definir</text>
+      <rect class="nodo" x="162" y="136" width="112" height="44" rx="8"/><text class="nt" x="218" y="163">Explorar</text>
+      <rect class="nodo" x="314" y="136" width="112" height="44" rx="8"/><text class="nt" x="370" y="163">Decidir</text>
+      <rect class="nodo-eje" x="466" y="78" width="112" height="44" rx="8"/><text class="nt" x="522" y="105">Entregar</text>
+      <rect class="nodo" x="618" y="78" width="112" height="44" rx="8"/><text class="nt" x="674" y="105">Aprender</text>
+    </svg>
+    <figcaption>Los seis ciclos. La línea punteada es el contrato<sup><a class="gl" href="#g-contrato">11</a></sup>: lo aprendido vuelve a todos.</figcaption>
+  </figure>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Ciclo</th><th>Se activa con</th><th>Produce</th></tr></thead>
+      <tbody>
+        <tr><td>Captar</td><td>Cualquier cosa que aparezca: idea, intención, incidente, algo a revisar.</td><td>Una fila en la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup>.</td></tr>
+        <tr><td>Definir</td><td>El relato inicial, una intención madura, un cierre que cambió la madurez.</td><td>PRD al día y puntos nuevos.</td></tr>
+        <tr><td>Explorar</td><td>Una pregunta abierta<sup><a class="gl" href="#g-pregunta-abierta">29</a></sup> o una idea de la bandeja.</td><td>Un informe que termina en ADR<sup><a class="gl" href="#g-adr">2</a></sup>, puntos o descarte.</td></tr>
+        <tr><td>Decidir</td><td>Un punto que toca un área en brecha<sup><a class="gl" href="#g-brecha">7</a></sup>.</td><td>Un ADR con fuente y fecha.</td></tr>
+        <tr><td>Entregar</td><td>Un punto listo.</td><td>Código, bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup>, PRD y versión.</td></tr>
+        <tr><td>Aprender</td><td>Una corrección o un incidente.</td><td>Una regla en el contrato.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Detrás de la red hay una idea simple: moverse rápido y gastar pocos tokens son la misma cosa. Cada ciclo corre solo con lo que necesita, así que la IA no arrastra un proceso entero para cada cambio. Los índices hacen que lea una línea y no un archivo (ver <a href="#memoria">Memoria y conversaciones cortas</a>). Los acuerdos de trazabilidad dejan el estado escrito afuera de la conversación, de modo que se puede cortar y abrir otra sin perder nada (ver <a href="#auditoria">Auditoría</a>). Y el autoaprendizaje sube cada error repetido a una regla de una línea, para no pagarlo dos veces. Hay menos que leer, menos que explicar de nuevo y menos que corregir.</p>
+</section>
+
+<!-- 05 · Insumos y router -->
+<section class="hoja cap" id="insumos">
+  <p class="eyebrow">Cómo se mueve la red</p>
+  <h2>Insumos y router</h2>
+  <p>Un insumo<sup><a class="gl" href="#g-insumo">20</a></sup> es siempre un documento o un estado que ya existe en <code>.flow/</code>. Cada fila de esta tabla es algo que un ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> necesita para arrancar.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Insumo</th><th>Está listo cuando</th></tr></thead>
+      <tbody>
+        <tr><td>PRD<sup><a class="gl" href="#g-prd">28</a></sup> claro</td><td>la sección que importa no dice «sin confirmar».</td></tr>
+        <tr><td>Bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup></td><td>hay material crudo para triar.</td></tr>
+        <tr><td>Punto<sup><a class="gl" href="#g-punto">31</a></sup> listo</td><td>tiene criterios, tipo y áreas; sin bloqueo ni dependencia abierta.</td></tr>
+        <tr><td>Decisión</td><td>el área tocada tiene ADR<sup><a class="gl" href="#g-adr">2</a></sup>, no está en brecha<sup><a class="gl" href="#g-brecha">7</a></sup>.</td></tr>
+        <tr><td>Conocimiento</td><td>el tema de <code>dominio/</code> está al día.</td></tr>
+        <tr><td>Errores vistos</td><td>están en <code>errores.md</code>, con su regla.</td></tr>
+        <tr><td>Rastro</td><td>lo ocurrido está escrito, no solo hecho.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Cuando la IA no sabe qué hacer, mira el estado y toma el primer caso que aplique:</p>
+  <ol class="reglas">
+    <li><span>No existe el backlog<sup><a class="gl" href="#g-backlog">4</a></sup>: <b>bootstrap</b>.</span></li>
+    <li><span>Hay un incidente sin triar en la bandeja: <b>urgencia</b>.</span></li>
+    <li><span>Pediste algo concreto: <b>Entregar</b> sobre ese punto. Si no está listo, corre el ciclo del insumo que falta. Sin criterio, Definir. En brecha, Decidir. Con una pregunta abierta<sup><a class="gl" href="#g-pregunta-abierta">29</a></sup>, Explorar.</span></li>
+    <li><span>No pediste nada: <b>estado</b>. Muestra backlog abierto, quién tomó qué, bandeja sin triar y pins<sup><a class="gl" href="#g-pin">24</a></sup> vencidos, y propone uno sin ejecutar.</span></li>
+  </ol>
+
+  <p style="margin-top:22px">Ejemplo: pides «login con Google». El punto está listo en criterios, pero toca identidad, que está en brecha. Falta un insumo, así que corre Decidir: se investiga, eliges y queda un ADR. Recién ahí corre Entregar. Al cerrar, el error que tuviste se anota. Era la segunda vez, así que Aprender lo sube al contrato<sup><a class="gl" href="#g-contrato">11</a></sup>. Una idea que surgió a mitad de camino entró a la bandeja sin interrumpir nada.</p>
+</section>
+
+<!-- 06 · Reglas -->
+<section class="hoja cap" id="reglas">
+  <p class="eyebrow">Reglas</p>
+  <h2>Reglas y dónde viven</h2>
+  <p>La IA lee el contrato<sup><a class="gl" href="#g-contrato">11</a></sup> (<code>CONTEXT.md</code>) al empezar cualquier tarea, así que las reglas viven ahí y no solo en el skill. El skill se queda con el mecanismo. Hay cinco capas, y cada una tiene un dueño.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Capa</th><th>Qué contiene</th><th>Quién la cambia</th></tr></thead>
+      <tbody>
+        <tr><td>Reglas de Flow</td><td>Proceso, rastro, colaboración, código y sesiones. Sección del contrato que viene del kit.</td><td>El kit.</td></tr>
+        <tr><td>Invariantes<sup><a class="gl" href="#g-invariante">21</a></sup></td><td>Lo que nunca se rompe en este proyecto.</td><td>Tú.</td></tr>
+        <tr><td>Reglas aprendidas<sup><a class="gl" href="#g-regla-aprendida">34</a></sup></td><td>Una línea por error repetido, con el ID de su fila en <code>errores.md</code>.</td><td>El ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> Aprender.</td></tr>
+        <tr><td>Criterios globales</td><td>Lo que todo punto<sup><a class="gl" href="#g-punto">31</a></sup> cumple para cerrar.</td><td>Tú.</td></tr>
+        <tr><td>Reglas de autonomía<sup><a class="gl" href="#g-regla-de-autonomia">35</a></sup></td><td>Quién puede aprobar sin una persona detrás, por puerta de revisión<sup><a class="gl" href="#g-puerta-de-revision">30</a></sup> o por entorno. Aprueba quien la regla diga, incluso un agente externo.</td><td>Tú.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Las reglas de Flow, agrupadas:</p>
+  <ol class="reglas">
+    <li><span><b>Proceso.</b> Plan<sup><a class="gl" href="#g-plan">25</a></sup> antes de código. Un chequeo roto detiene todo. Un punto grande se parte con tu OK, y uno que cruza dos repos se parte en dos. Una brecha<sup><a class="gl" href="#g-brecha">7</a></sup> imprevista se nombra y se cierra con un ADR<sup><a class="gl" href="#g-adr">2</a></sup>. Lo irreversible se pregunta siempre. No se cierra sin bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup>, evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup> y PRD<sup><a class="gl" href="#g-prd">28</a></sup> al día.</span></li>
+    <li><span><b>Rastro.</b> La traza<sup><a class="gl" href="#g-traza">42</a></sup> se escribe mientras se trabaja, con fecha y autor, y se sube al compartido. Todo commit lleva el ID del punto.</span></li>
+    <li><span><b>Colaboración.</b> Un punto se toma y se sube antes de planificar. Nadie toma lo tomado, lo bloqueado ni lo que depende de algo abierto. Un entorno exclusivo<sup><a class="gl" href="#g-entorno-exclusivo">13</a></sup> lo usa un solo punto a la vez.</span></li>
+    <li><span><b>Código.</b> Quirúrgico, sistémico, una cosa a la vez. Se corrige el código, no el test que lo delata. Proponemos usar Ponytail<sup><a class="gl" href="#g-ponytail">26</a></sup>, y esto vale también para el proceso.</span></li>
+    <li><span><b>Sesiones.</b> Conversaciones cortas. Con el punto cerrado y todo al día, se abre una nueva.</span></li>
+  </ol>
+  <p style="margin-top:18px">La lista autoritativa es la del contrato. Esta hoja la explica y no la reemplaza.</p>
+</section>
+
+<!-- 07 · Piezas -->
+<section class="hoja cap" id="piezas">
+  <p class="eyebrow">Estructura</p>
+  <h2>Las piezas</h2>
+  <p>El kit se escribe una sola vez. En cada proyecto, el setup genera el archivo guía de tu IA (<code>CLAUDE.md</code>, <code>AGENTS.md</code>), el skill del motor y la carpeta <code>.flow/</code>. La memoria de la IA y tus skills personales viven afuera del repo y son tuyos.</p>
+  <p>El estado vive en un solo lugar, <code>.flow/</code>, y va <b>versionado en git junto al código</b>. De eso dependen los bloqueos, el rastro y que otra máquina o persona vea el mismo estado. Si cambias de IA, se vuelve a correr el setup.</p>
+
+  <div class="tabla">
+    <table>
+      <thead><tr><th>Pieza</th><th>Para qué sirve</th></tr></thead>
+      <tbody>
+        <tr><td>config.md</td><td>Tus respuestas, las perillas del ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup>, los entornos y los tipos de punto<sup><a class="gl" href="#g-punto">31</a></sup> con sus criterios base. Cada campo dice si fue dicho, inferido, asumido o pendiente.</td></tr>
+        <tr><td>INDEX.md</td><td>El router<sup><a class="gl" href="#g-router">37</a></sup>: carpeta o archivo, qué hay y cuándo leerlo.</td></tr>
+        <tr><td>CONTEXT.md</td><td>El contrato<sup><a class="gl" href="#g-contrato">11</a></sup>: reglas, reglas aprendidas<sup><a class="gl" href="#g-regla-aprendida">34</a></sup> y criterios globales de cierre.</td></tr>
+        <tr><td>PRD<sup><a class="gl" href="#g-prd">28</a></sup>.md</td><td>Qué es el producto. Se arma al inicio y se actualiza en cada cierre.</td></tr>
+        <tr><td>bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup>.md</td><td>Lo que aún no es trabajo: ideas, intenciones, incidentes y pins<sup><a class="gl" href="#g-pin">24</a></sup>.</td></tr>
+        <tr><td>errores.md</td><td>Errores recurrentes y la regla que los evita.</td></tr>
+        <tr><td>capacidades.md</td><td>Índice de herramientas y skills disponibles.</td></tr>
+        <tr><td>dominio/</td><td>Conocimiento del sistema, referencias externas y decisiones (ADR<sup><a class="gl" href="#g-adr">2</a></sup>).</td></tr>
+        <tr><td>bitacora/</td><td>Qué cambió y por qué, ligado al punto de origen.</td></tr>
+        <tr><td>motor/</td><td>El backlog<sup><a class="gl" href="#g-backlog">4</a></sup>, un archivo por punto, y los planes<sup><a class="gl" href="#g-plan">25</a></sup>. Si el backlog vive en una herramienta externa, aquí queda el enlace a cada ítem.</td></tr>
+        <tr><td>modulos/</td><td>Estado de los módulos<sup><a class="gl" href="#g-modulo">23</a></sup> opcionales que estén activos. Todo software o repo de terceros entra como módulo: es opcional, se declara de forma explícita y se anota su origen y licencia.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 08 · Arranque -->
+<section class="hoja cap" id="arranque">
+  <p class="eyebrow">Setup y bootstrap</p>
+  <h2>El arranque</h2>
+  <p>El setup no tiene cuestionario. Hace una pregunta abierta<sup><a class="gl" href="#g-pregunta-abierta">29</a></sup>, infiere el resto del relato y del código, y se permite como máximo dos rondas cortas. Lo demás se asume y se anota. Solo se pregunta lo que bloquea seguir, y con interfaz bloquea también el estilo: si nadie lo insinuó, se pregunta una vez, porque si no el resultado cae en el diseño genérico.</p>
+  <p>Cada campo de <code>config.md</code> declara su estado. Lo que falta no se esconde, se marca.</p>
+
+  <div class="tabla">
+    <table>
+      <thead><tr><th>Estado</th><th>Qué significa</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>dicho</td><td>Lo contaste tú.</td><td>«Es para clínicas chicas»</td></tr>
+        <tr><td>inferido</td><td>Salió del código o del relato.</td><td>Usa Postgres, está en el esquema</td></tr>
+        <tr><td>asumido</td><td>Se siguió con un supuesto y se anotó.</td><td>Los tests corren con npm test</td></tr>
+        <tr><td>pendiente</td><td>Falta, y no bloquea.</td><td>Dominio propio sin definir</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Después viene el bootstrap, que se hace una sola vez y se detiene antes de ejecutar nada. Arma el PRD<sup><a class="gl" href="#g-prd">28</a></sup> (lo que no se sabe queda «sin confirmar», no inventado), crea un tema de dominio por cada área del sistema que ya exista, genera la matriz de decisiones con todo en brecha<sup><a class="gl" href="#g-brecha">7</a></sup>, deja lista la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> con lo que contaste y aún no es trabajo, y siembra el backlog<sup><a class="gl" href="#g-backlog">4</a></sup> con puntos<sup><a class="gl" href="#g-punto">31</a></sup> reales. Termina avisando qué encontró, qué asumió y cuál sería el primer punto.</p>
+  <p>Al actualizar el kit, se regeneran el archivo guía y el skill. Los archivos de <code>.flow/</code> son del proyecto y nunca se sobrescriben.</p>
+</section>
+
+<!-- 09 · PRD -->
+<section class="hoja cap" id="prd">
+  <p class="eyebrow">Memoria del producto</p>
+  <h2>El PRD vivo</h2>
+  <p>Se arma al inicio y se actualiza en cada cierre. Sus secciones tienen un ID estable porque los puntos<sup><a class="gl" href="#g-punto">31</a></sup> del backlog<sup><a class="gl" href="#g-backlog">4</a></sup> las citan como origen, y el módulo<sup><a class="gl" href="#g-modulo">23</a></sup> de diseño lee las secciones de Usuarios y roles a Contexto operativo.</p>
+  <p>El intent.md<sup><a class="gl" href="#g-the-ai-native-sdlc-playbook">48</a></sup> de Anthropic cuenta un cambio. El PRD<sup><a class="gl" href="#g-prd">28</a></sup> cuenta el producto como está hoy, y por eso lo mantenemos: a las tres semanas, cuando alguien propone algo que ya se descartó, la respuesta está en Fuera de alcance, con su motivo. Una intención de la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> que madura y pasa a ser parte del producto termina aquí.</p>
+
+  <div class="tabla">
+    <table>
+      <thead><tr><th>N°</th><th>Qué guarda</th></tr></thead>
+      <tbody>
+        <tr><td>1 Propósito</td><td>Qué problema resuelve y para quién.</td></tr>
+        <tr><td>2 Usuarios y roles</td><td>Quién lo usa, con qué permisos y qué quiere lograr.</td></tr>
+        <tr><td>3 Plataforma</td><td>Web, iOS, Android, API, escritorio.</td></tr>
+        <tr><td>4 Posicionamiento</td><td>Qué lo distingue y qué no pretende ser. Con interfaz, la dirección estética.</td></tr>
+        <tr><td>5 Contexto operativo</td><td>Mercado, idioma, canales, restricciones técnicas y normativa.</td></tr>
+        <tr><td>6 Flujos clave</td><td>Los recorridos que definen el producto, de punta a punta.</td></tr>
+        <tr><td>7 Madurez actual</td><td>Una foto honesta, cada afirmación con su fuente. Incluye los criterios de release, que son los más altos de todos.</td></tr>
+        <tr><td>8 Fuera de alcance</td><td>Lo que se decidió no hacer, y por qué.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 10 · Bandeja, backlog, punto -->
+<section class="hoja cap" id="punto">
+  <p class="eyebrow">Unidad de trabajo</p>
+  <h2>Bandeja, backlog y punto</h2>
+  <p>La bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> guarda lo que todavía no es trabajo. El backlog<sup><a class="gl" href="#g-backlog">4</a></sup> guarda lo que alguien decidió hacer. Captar algo es instantáneo: una fila, sin criterio ni plan<sup><a class="gl" href="#g-plan">25</a></sup>.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Pieza</th><th>Qué es</th><th>Sale cuando</th></tr></thead>
+      <tbody>
+        <tr><td>Bandeja</td><td>Ideas, intenciones, incidentes y pins<sup><a class="gl" href="#g-pin">24</a></sup>.</td><td>Se tría: punto<sup><a class="gl" href="#g-punto">31</a></sup>, explorar, PRD<sup><a class="gl" href="#g-prd">28</a></sup>, descarte con motivo o pin.</td></tr>
+        <tr><td>Backlog</td><td>Trabajo comprometido, con criterios y tipo.</td><td>Se cierra o se descarta con motivo.</td></tr>
+        <tr><td>PRD</td><td>Qué es el producto hoy y por qué.</td><td>Nunca; se actualiza.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Un pin tiene fecha o disparador de revisión, y el estado avisa cuando vence. Un incidente lleva evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup> literal y entra como urgencia.</p>
+
+  <p>Cada punto es su propio archivo (<code>motor/backlog/puntos/P012.md</code>) y una fila de una línea en el índice, que además muestra quién lo tomó y qué lo frena. Lleva título, tipo, tamaño y estado (<code>todo</code>, <code>doing</code>, <code>done</code> o <code>descartado</code> con motivo). En el cuerpo van el origen (sección del PRD, fila de la bandeja o incidente), los criterios de aceptación<sup><a class="gl" href="#g-criterios-de-aceptacion">12</a></sup>, las áreas del catálogo que toca, el detalle, las preguntas abiertas<sup><a class="gl" href="#g-pregunta-abierta">29</a></sup> y los enlaces. Para coordinar lleva además lo que depende de otros, lo que afecta y los entornos que usa.</p>
+
+  <p>Los criterios de aceptación tienen su propia hoja. Un punto está listo para planificar cuando tiene criterios, tipo y áreas. Si falta algo, la IA pregunta solo eso, en ese momento y corto. Un texto libre tipo «arregla X» se convierte en punto antes de tocar nada.</p>
+</section>
+
+<section class="hoja cap" id="criterios">
+  <p class="eyebrow">Qué es «hecho»</p>
+  <h2>Criterios de aceptación</h2>
+  <p>Son lo que tiene que ser verdad para dar un punto<sup><a class="gl" href="#g-punto">31</a></sup> por hecho. Para la IA son la señal de cuándo parar, y para ti, lo que le pides y lo que revisas. Sin criterios el punto no está listo para planificar: el ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> Definir los produce.</p>
+
+  <h3 style="margin:26px 0 8px">Cómo se escribe uno bueno</h3>
+  <p>Cada criterio es medible, se cumple o no se cumple, y lo puede verificar alguien que no escribió el cambio. Habla del comportamiento y no del esfuerzo.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Flojo</th><th>Aceptable</th></tr></thead>
+      <tbody>
+        <tr><td>Que el login funcione bien</td><td>Con credenciales válidas el usuario llega a su panel en menos de 2 segundos. Con credenciales inválidas ve el mensaje de error y no se crea sesión.</td></tr>
+        <tr><td>Mejorar el rendimiento de la lista</td><td>Una lista de 1.000 filas carga en menos de 1 segundo en el entorno de verificación.</td></tr>
+        <tr><td>Que quede prolijo</td><td>No hay código muerto nuevo y el lint pasa sin advertencias nuevas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:26px 0 8px">Evidencia</h3>
+  <p>Cada criterio tiene su casilla. Al cerrar se marca con evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup> literal: la salida del comando, la captura, la URL o el hash del commit. Sin evidencia la casilla no se marca, y sin casillas marcadas el punto no cierra.</p>
+
+  <h3 style="margin:26px 0 8px">Tres niveles</h3>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Nivel</th><th>Vive en</th><th>Aplica a</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>Release</td><td>PRD<sup><a class="gl" href="#g-prd">28</a></sup>, sección Madurez actual</td><td>Promover a producción</td><td>El pago con tarjeta se probó de punta a punta en sandbox.</td></tr>
+        <tr><td>Globales</td><td>El contrato<sup><a class="gl" href="#g-contrato">11</a></sup></td><td>Todo punto</td><td>Los tests pasan, no hay secretos en el diff y la bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup> está escrita.</td></tr>
+        <tr><td>Del punto</td><td>Su archivo</td><td>Ese punto</td><td>La base de su tipo, más los propios.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:26px 0 8px">Base por tipo</h3>
+  <p>Cada tipo de punto trae criterios base que se copian al crearlo. Los propios se suman. Un tipo nuevo se agrega en <code>config.md</code> con su criterio base, su checkpoint<sup><a class="gl" href="#g-checkpoint">9</a></sup> y su nivel de versión.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Tipo</th><th>Criterios base</th></tr></thead>
+      <tbody>
+        <tr><td>feature</td><td>El flujo funciona de punta a punta en el entorno de verificación. Los casos límite del punto están cubiertos.</td></tr>
+        <tr><td>bug</td><td>Una reproducción que fallaba ahora pasa. No se tocó el test para lograrlo.</td></tr>
+        <tr><td>deuda técnica</td><td>El comportamiento observable no cambió. Los tests existentes pasan.</td></tr>
+        <tr><td>seguridad</td><td>El vector está cerrado y verificado. No se amplió la superficie.</td></tr>
+        <tr><td>validación</td><td>Hay informe con conclusión y fuentes. Salen puntos, ADR<sup><a class="gl" href="#g-adr">2</a></sup> o descarte.</td></tr>
+        <tr><td>decisión</td><td>Hay un ADR aceptado con fuentes y fecha. La matriz de decisiones está al día.</td></tr>
+        <tr><td>docs, proceso</td><td>Lo escrito coincide con el estado real. Los enlaces funcionan.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:26px 0 8px">Quién los escribe y cuándo cambian</h3>
+  <p>La IA los propone al crear el punto y tú los apruebas. Si durante el trabajo un criterio resulta imposible o equivocado, la IA se detiene y lo dice. Cambiarlo requiere tu OK y deja en la traza<sup><a class="gl" href="#g-traza">42</a></sup> qué cambió, cuándo y por qué. Con puertas de revisión<sup><a class="gl" href="#g-puerta-de-revision">30</a></sup>, quien revisa evalúa contra estos mismos criterios.</p>
+  <p>Se verifican en el checkpoint de cierre, donde además se compara el diff con el plan<sup><a class="gl" href="#g-plan">25</a></sup>.</p>
+</section>
+
+<section class="hoja cap" id="herramientas">
+  <p class="eyebrow">Fuente del backlog</p>
+  <h2>Backlog propio o en una herramienta</h2>
+  <p>El motor, el backlog<sup><a class="gl" href="#g-backlog">4</a></sup>, los puntos<sup><a class="gl" href="#g-punto">31</a></sup> y la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> pueden vivir de dos maneras. Se declara en <code>config.md</code>, con el campo <code>fuente</code>.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Fuente</th><th>Dónde vive el ítem</th><th>Qué guarda Flow</th></tr></thead>
+      <tbody>
+        <tr><td>local</td><td>En <code>.flow/motor/</code>, un archivo por punto y un índice. Es lo que usamos hoy.</td><td>Todo.</td></tr>
+        <tr><td>externa</td><td>En la herramienta de la organización: Jira<sup><a class="gl" href="#g-jira">46</a></sup>, Trello<sup><a class="gl" href="#g-trello">49</a></sup>, SwiftKanban u otra.</td><td>El enlace al ítem, y el plan<sup><a class="gl" href="#g-plan">25</a></sup>, la traza<sup><a class="gl" href="#g-traza">42</a></sup> y la bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup> ligados a su clave. El estado, la prioridad y la asignación los manda la herramienta.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Cada dato tiene una sola fuente. Si los criterios de aceptación<sup><a class="gl" href="#g-criterios-de-aceptacion">12</a></sup> viven en el ítem externo, Flow los lee de ahí y no mantiene una copia. La IA solo puede trabajar con lo que alcanza a leer y escribir, por conector o línea de comandos. Lo que quede fuera de su alcance se sincroniza a mano y agrega trabajo.</p>
+
+  <h3 style="margin:26px 0 8px">Equivalencias</h3>
+  <p>Flow simplifica a propósito: un solo tipo de ítem, el punto, con un tipo y un tamaño. Estas son las equivalencias aproximadas con los esquemas más comunes; dependen de cómo cada organización configure su herramienta.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Flow</th><th>Scrum</th><th>Kanban</th><th>Jira</th></tr></thead>
+      <tbody>
+        <tr><td>Punto grande con slices<sup><a class="gl" href="#g-slice">40</a></sup></td><td>Épica o historia grande</td><td>Tarjeta padre</td><td>Epic</td></tr>
+        <tr><td>Slice</td><td>Historia</td><td>Tarjeta</td><td>Story o Sub-task</td></tr>
+        <tr><td>Punto chico</td><td>Tarea</td><td>Tarjeta</td><td>Task</td></tr>
+        <tr><td>Lote<sup><a class="gl" href="#g-lote">22</a></sup></td><td>Tarea con subtareas</td><td>Tarjetas agrupadas</td><td>Task con Sub-tasks</td></tr>
+        <tr><td>feature</td><td>Historia de usuario</td><td>Clase estándar</td><td>Story</td></tr>
+        <tr><td>bug</td><td>Defecto</td><td>Clase estándar, o expedite si es urgente</td><td>Bug</td></tr>
+        <tr><td>deuda técnica</td><td>Historia técnica</td><td>Clase estándar</td><td>Task con etiqueta</td></tr>
+        <tr><td>seguridad</td><td>Defecto o historia de seguridad</td><td>Expedite si es una vulnerabilidad</td><td>Bug o Story con etiqueta</td></tr>
+        <tr><td>validación</td><td>Spike</td><td>Tarjeta de investigación</td><td>Task tipo spike</td></tr>
+        <tr><td>decisión</td><td>Spike con ADR<sup><a class="gl" href="#g-adr">2</a></sup></td><td>Tarjeta de decisión</td><td>Task con ADR enlazado</td></tr>
+        <tr><td>docs, proceso</td><td>Tarea</td><td>Clase estándar</td><td>Task</td></tr>
+        <tr><td>Incidente de la bandeja</td><td>Defecto de prioridad máxima</td><td>Expedite</td><td>Incident o Bug con prioridad Highest</td></tr>
+        <tr><td>Idea de la bandeja</td><td>Ítem sin refinar</td><td>Tarjeta en la columna de ideas</td><td>Idea o Backlog</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Los estados <code>todo</code>, <code>doing</code>, <code>revision</code> y <code>done</code> corresponden a las columnas por hacer, en curso, en revisión y hecho.</p>
+
+  <h3 style="margin:26px 0 8px">Capa de clasificación</h3>
+  <p>Si una organización necesita distinguir más (componente, equipo, prioridad, clase de servicio), se agrega un campo de clasificación al punto que se mapea a lo que ya usan, sin cambiar el modelo. No se agrega hasta que alguien lo pida.</p>
+</section>
+
+<!-- 11 · Entregar -->
+<section class="hoja cap" id="ciclo">
+  <p class="eyebrow">Mecanismo</p>
+  <h2>Entregar un punto</h2>
+  <p>Es el ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> central de la red. Antes de empezar, la IA mira <code>capacidades.md</code> para anotar en el plan<sup><a class="gl" href="#g-plan">25</a></sup> qué herramientas aplican, y <code>errores.md</code> por si algún error conocido corresponde.</p>
+
+  <div class="pasos">
+    <div class="paso"><b>01</b><strong>Elegir</strong><span>El punto<sup><a class="gl" href="#g-punto">31</a></sup> pedido o el abierto de mayor prioridad que esté libre.</span></div>
+    <div class="paso"><b>02</b><strong>Tomar</strong><span>Se marca y se sube antes de planificar.</span></div>
+    <div class="paso"><b>03</b><strong>Dimensionar</strong><span>Grande se parte en slices<sup><a class="gl" href="#g-slice">40</a></sup>, chico se agrupa en lote<sup><a class="gl" href="#g-lote">22</a></sup>.</span></div>
+    <div class="paso"><b>04</b><strong>Plan</strong><span>Un archivo antes de tocar código.</span></div>
+    <div class="paso"><b>05</b><strong>Ejecutar</strong><span>Con checkpoints<sup><a class="gl" href="#g-checkpoint">9</a></sup> y traza<sup><a class="gl" href="#g-traza">42</a></sup>.</span></div>
+    <div class="paso"><b>06</b><strong>Cerrar</strong><span>Criterios, bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup>, PRD<sup><a class="gl" href="#g-prd">28</a></sup>, errores, liberar y commit.</span></div>
+  </div>
+  <p class="retorno">Si un checkpoint falla en el paso 5, el trabajo se detiene y se reporta.</p>
+
+  <p style="margin-top:22px">El plan vive en <code>motor/planes/activos/</code> mientras se trabaja y pasa a <code>hechos/</code> al cerrar. Si el punto es grande o ambiguo, se muestra antes de ejecutar. Si el trabajo se aparta del plan, el plan se corrige en la traza y la desviación se anota.</p>
+</section>
+
+<!-- 12 · Dimensionar -->
+<section class="hoja cap" id="dimensionar">
+  <p class="eyebrow">Tamaño y excepciones</p>
+  <h2>Dimensionar y caminos cortos</h2>
+  <p>Un punto<sup><a class="gl" href="#g-punto">31</a></sup> es grande si toca más áreas que el umbral de <code>config.md</code> o si cruza más de una capa: interfaz, API, datos, integración externa. Se propone cómo partirlo en slices<sup><a class="gl" href="#g-slice">40</a></sup>, cada uno con su propio criterio, y se espera tu OK antes de planificar el primero. Cada slice se marca <b>paralelo</b> (puede tomarse a la vez que otros) o <b>serial</b> (espera a otro slice).</p>
+  <p>Ejemplo: «roles de equipo» toca interfaz, API y datos, y sale como P012-A, P012-B y P012-C. Cerrar el último slice no cierra P012. El padre tiene su propio criterio, y así se ve el caso en que cada pieza pasa sus tests y el conjunto igual no funciona.</p>
+  <p>Para lo chico se hace al revés: varios puntos angostos del mismo tipo se agrupan en un lote<sup><a class="gl" href="#g-lote">22</a></sup> con un solo plan<sup><a class="gl" href="#g-plan">25</a></sup>. Un punto que toca dos repos se parte en dos.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Camino</th><th>Cómo es</th></tr></thead>
+      <tbody>
+        <tr><td>Vía rápida<sup><a class="gl" href="#g-via-rapida">44</a></sup></td><td>Typo, copy, una constante: un archivo, sin riesgo. Sin plan aparte; el punto nace <code>done</code> con su commit. Si resulta no ser trivial, se sale y se planifica.</td></tr>
+        <tr><td>Urgencia</td><td>Un incidente de la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> se vuelve un bug de prioridad máxima, con plan de dos líneas y la corrección más chica que contenga el daño. La causa de fondo queda como punto aparte.</td></tr>
+        <tr><td>Bug</td><td>El primer paso es una reproducción que falla. Se corrige el código, no el test.</td></tr>
+        <tr><td>Abandonar un plan</td><td>Se para, se anota la razón y se decide contigo: pivotar o descartar. Nada se borra en silencio y el punto se libera.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 13 · Cierre -->
+<section class="hoja cap" id="cierre">
+  <p class="eyebrow">Ejecutar y cerrar</p>
+  <h2>Checkpoints y cierre</h2>
+  <p>Cada checkpoint<sup><a class="gl" href="#g-checkpoint">9</a></sup> del plan<sup><a class="gl" href="#g-plan">25</a></sup> se resuelve según <code>config.md</code>. En manual la IA para, dice exactamente qué verificar y cómo, y espera tu confirmación. En automático corre el comando que corresponda y sigue si pasa. Con cualquiera de los dos modos, si algo falla, para y reporta.</p>
+  <p>Después de cada paso y cada checkpoint, pase o no, queda una línea en la traza<sup><a class="gl" href="#g-traza">42</a></sup> del plan con fecha y autor: qué se hizo, qué comando corrió, qué resultado dio. Los errores propios también. En cada checkpoint el estado se sube al compartido. Si el cambio es observable, se verifica contra el entorno que indica <code>config.md</code>, y la traza dice cuál y con qué versión.</p>
+
+  <p>Un punto<sup><a class="gl" href="#g-punto">31</a></sup> se cierra cuando se cumplen sus criterios y los globales del contrato<sup><a class="gl" href="#g-contrato">11</a></sup>, en este orden:</p>
+  <ol class="reglas">
+    <li><span><b>Checkpoint de cierre.</b> Los criterios del punto, los globales y, si se promueve a producción, los de release del PRD<sup><a class="gl" href="#g-prd">28</a></sup> (sección Madurez actual), cada uno con evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup> literal. Se compara el diff con el plan.</span></li>
+    <li><span>El plan pasa de <code>activos</code> a <code>hechos</code>.</span></li>
+    <li><span>El punto queda en <code>done</code>, con enlace al plan y fila actualizada.</span></li>
+    <li><span>Entrada de bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup> con autor, evidencia y desviaciones, enlazada al punto.</span></li>
+    <li><span>Se actualiza el PRD, como mínimo la sección Madurez actual.</span></li>
+    <li><span>Los errores de la traza pasan a <code>errores.md</code>. Si uno llega a dos veces, sube al contrato como regla. Lo pendiente que merece trabajo va a la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup>.</span></li>
+    <li><span>Si se instaló o quitó una herramienta, se actualiza <code>capacidades.md</code>.</span></li>
+    <li><span>Si el versionado está activo, sube la versión según el tipo del punto, en el mismo commit.</span></li>
+    <li><span>Se libera el punto y lo que bloqueaba.</span></li>
+    <li><span>Commit y push, con el ID del punto en el mensaje.</span></li>
+    <li><span>Se recomienda abrir una conversación nueva.</span></li>
+  </ol>
+  <p style="margin-top:18px">El cierre es mecánica: si los checkpoints ya pasaron, no se re-corren tests ni se re-revisa el diff. Promover a producción es una decisión aparte.</p>
+</section>
+
+<!-- 14 · Decisiones -->
+<section class="hoja cap" id="decisiones">
+  <p class="eyebrow">Incertidumbre</p>
+  <h2>Decisiones y brechas</h2>
+  <p>El kit trae un catálogo<sup><a class="gl" href="#g-catalogo-de-decisiones">8</a></sup> de las áreas que todo producto serio termina resolviendo: stack, datos, identidad, seguridad, accesibilidad, privacidad y varias más, agrupadas por tipo de proyecto. Cada área puede estar decidida o en brecha<sup><a class="gl" href="#g-brecha">7</a></sup>. Nadie te interroga con el catálogo, responder es opcional y nada se restringe por dejar un área abierta.</p>
+  <p>Toda área sin decidir queda declarada como brecha en <code>dominio/decisiones/INDICE.md</code>, con su costo de decidir tarde, alto o bajo. Una brecha no frena a nadie hasta que un punto<sup><a class="gl" href="#g-punto">31</a></sup> la toca. Ahí corre el ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> Decidir: se investiga con fuente y fecha, se te presentan opciones, eliges, y queda un ADR<sup><a class="gl" href="#g-adr">2</a></sup> con el contexto, las opciones, la decisión, sus consecuencias, las fuentes y una fecha o disparador para revisarla.</p>
+  <p>La investigación es larga y desordenada. Si la herramienta permite subagentes, se delega y vuelve solo la tabla de opciones con fuentes. Si no, se hace en una conversación aparte y se trae el ADR.</p>
+  <p>Si la brecha aparece recién al ejecutar, la IA se detiene, la nombra y propone cerrarla, sin resolverla en silencio. Decidir temprano es barato y construir temprano es caro. Aparte hay un registro de vigencia: cuándo se leyó por última vez la documentación actual de cada herramienta que cambia rápido.</p>
+</section>
+
+<!-- 15 · Memoria -->
+<section class="hoja cap" id="memoria">
+  <p class="eyebrow">Contexto</p>
+  <h2>Memoria y conversaciones cortas</h2>
+  <p>La IA entra por <code>.flow/INDEX.md</code>, que dice qué hay en cada carpeta y cuándo leerlo. De ahí va al <code>INDICE.md</code> de la carpeta, y recién ahí abre el archivo que hace falta. El backlog<sup><a class="gl" href="#g-backlog">4</a></sup> y la bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup> nunca se leen enteros: con 200 puntos<sup><a class="gl" href="#g-punto">31</a></sup>, la IA lee 200 líneas y no 200 archivos.</p>
+  <p>Lo único que se lee siempre es el contrato<sup><a class="gl" href="#g-contrato">11</a></sup>. Es corto a propósito. Tiene qué es el proyecto, los invariantes<sup><a class="gl" href="#g-invariante">21</a></sup>, las reglas, las reglas aprendidas<sup><a class="gl" href="#g-regla-aprendida">34</a></sup>, los criterios globales de cierre y el léxico propio.</p>
+
+  <h3 style="margin:26px 0 8px">Conversaciones cortas</h3>
+  <p>Una conversación larga arrastra todo lo anterior en cada mensaje: cuesta más y se vuelve menos precisa. Como el estado se escribe mientras se trabaja, no hace falta arrastrarla. Mantén las iteraciones de una misma conversación lo más bajas posible. Al cerrar un punto, la IA te recomienda con firmeza abrir una nueva, que retoma con <code>/flow estado</code> sin perder nada. A mitad de camino, si la conversación ya es larga, deja en la traza<sup><a class="gl" href="#g-traza">42</a></sup> dónde quedó y qué sigue, y sugiere el corte.</p>
+
+  <h3 style="margin:26px 0 8px">Errores que no se repiten</h3>
+  <p>Al cerrar, los errores y correcciones de la traza pasan a <code>errores.md</code>: un error por fila, con la regla que lo evita y cuántas veces ocurrió. A la segunda vez, el error sube al contrato como una regla de una línea que cita su fila. El contrato queda corto y el detalle vive aparte. Cuando el archivo pasa de unas quince filas, se vuelve carpeta con índice. Cada cierto tiempo se poda lo que ya no evita nada.</p>
+
+  <h3 style="margin:26px 0 8px">Tamaño del contrato</h3>
+  <p>El contrato se lee siempre, así que no puede crecer sin control. Tiene un tope predefinido, de unas 120 líneas o 25 reglas aprendidas. Cuando se supera, se genera un punto en el backlog y un índice: lo detallado pasa a archivos por área y en el contrato queda la regla de una línea con su referencia. El chequeo lo hace <code>verificar.md</code>, y más adelante un hook<sup><a class="gl" href="#g-hook">18</a></sup>.</p>
+</section>
+
+<!-- 16 · Equipo -->
+<section class="hoja cap" id="equipo">
+  <p class="eyebrow">Colaboración</p>
+  <h2>Equipo: estado compartido</h2>
+  <p>Todo lo vivo (backlog<sup><a class="gl" href="#g-backlog">4</a></sup>, bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup>, bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup>, errores, planes<sup><a class="gl" href="#g-plan">25</a></sup>) está versionado. Eso permite que varias sesiones, varias IAs y varias personas trabajen a la vez sin pisarse, y lo mismo sirve para dos sesiones tuyas.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Situación</th><th>Qué pasa</th></tr></thead>
+      <tbody>
+        <tr><td>Tomar un punto<sup><a class="gl" href="#g-punto">31</a></sup></td><td>La sesión trae lo último, comprueba que esté libre, lo marca con su autor y sesión, y lo sube antes de planificar. Si el push se rechaza, alguien llegó antes: se re-evalúa, no se fuerza.</td></tr>
+        <tr><td>Punto que afecta a otros</td><td>Los otros se bloquean mientras dure. Al cerrar o pausar se liberan.</td></tr>
+        <tr><td>Dependencias</td><td>Hacia atrás: no se empieza antes de que lo anterior esté hecho. Hacia adelante: lo que depende queda esperando y el índice lo muestra. Cada bloqueo dice su causa y su salida.</td></tr>
+        <tr><td>IDs repetidos</td><td>Dos sesiones crean el mismo ID: se renumera el que llegó después.</td></tr>
+        <tr><td>Entornos compartidos</td><td>Desarrollo desplegado, base de datos o un puerto fijo se declaran exclusivos en <code>config.md</code>. Solo un punto a la vez los usa, y las verificaciones se hacen sobre un entorno que nadie está cambiando. Si está ocupado, se espera, se pide al dueño o se verifica en local.</td></tr>
+        <tr><td>Mismo directorio</td><td>Dos sesiones en la misma carpeta pisan ediciones. Cada una trabaja en su propio worktree, con su rama, sus dependencias y su puerto.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Sobre las IAs, el contenido vive una sola vez en <code>nucleo/</code> y cada adaptador solo dice dónde se coloca. El modelo es agnóstico de IA. El adaptador de Claude Code está verificado contra la documentación oficial (1 de noviembre de 2026); el de otra herramienta lo resuelve quien la use.</p>
+</section>
+
+<!-- 17 · Auditoría -->
+<section class="hoja cap" id="auditoria">
+  <p class="eyebrow">Rastro</p>
+  <h2>Auditoría</h2>
+  <p>Cualquier tramo de cualquier ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> se puede reconstruir, mientras ocurre y después. Toda línea de traza<sup><a class="gl" href="#g-traza">42</a></sup>, entrada, ADR<sup><a class="gl" href="#g-adr">2</a></sup> y fila lleva fecha y autor (persona o IA, y sesión), y el ID del punto<sup><a class="gl" href="#g-punto">31</a></sup> va en cada commit.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Ciclo</th><th>En vivo</th><th>Histórico</th></tr></thead>
+      <tbody>
+        <tr><td>Captar</td><td>Fila con fecha y autor.</td><td>git</td></tr>
+        <tr><td>Definir</td><td>PRD<sup><a class="gl" href="#g-prd">28</a></sup> y puntos nuevos, en el commit de su origen.</td><td>Bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup>, git</td></tr>
+        <tr><td>Explorar</td><td>Traza del plan<sup><a class="gl" href="#g-plan">25</a></sup>.</td><td>Informe, bitácora</td></tr>
+        <tr><td>Decidir</td><td>ADR en propuesto.</td><td>ADR aceptado o reemplazado, con fuentes</td></tr>
+        <tr><td>Entregar</td><td>Quién tomó el punto y traza del plan.</td><td>Bitácora, plan hecho, git</td></tr>
+        <tr><td>Aprender</td><td>Fila en <code>errores.md</code>.</td><td>git, bitácora</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>El estado se escribe cuando cambia y no al cerrar, y se sube al compartido. Los chequeos de coherencia revisan que todo punto en curso tenga quien lo tomó y un plan con traza, que todo punto hecho tenga bitácora con evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup>, y que no haya bloqueos cruzados.</p>
+</section>
+
+<!-- 18 · Revisar -->
+<section class="hoja cap" id="revisar">
+  <p class="eyebrow">Calidad</p>
+  <h2>Puntos de revisión</h2>
+  <p>Hoy quien escribe el cambio es quien lo verifica y lo cierra, con los mismos supuestos. Cualquier transición de la red puede tener una <b>puerta de revisión<sup><a class="gl" href="#g-puerta-de-revision">30</a></sup></b>: al pasar un punto<sup><a class="gl" href="#g-punto">31</a></sup> a hecho, al aceptar un ADR<sup><a class="gl" href="#g-adr">2</a></sup>, al cambiar el PRD<sup><a class="gl" href="#g-prd">28</a></sup>, al triar la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup>.</p>
+
+  <h3 style="margin:26px 0 8px">Transiciones explícitas</h3>
+  <p>Para que una puerta funcione, cada cambio de estado tiene que estar definido: desde dónde, hacia dónde, quién lo dispara y qué evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup> exige. Así se ve el punto con una puerta puesta antes de <code>done</code>:</p>
+  <div class="pasos">
+    <div class="paso"><b>todo</b><strong>Listo</strong><span>Criterios, tipo y áreas. Sin bloqueo.</span></div>
+    <div class="paso"><b>doing</b><strong>Tomado</strong><span>Alguien lo tomó y lo subió.</span></div>
+    <div class="paso"><b>revision</b><strong>En revisión</strong><span>Entrega con plan<sup><a class="gl" href="#g-plan">25</a></sup>, traza<sup><a class="gl" href="#g-traza">42</a></sup> y evidencia.</span></div>
+    <div class="paso"><b>done</b><strong>Hecho</strong><span>Veredicto<sup><a class="gl" href="#g-veredicto">43</a></sup> aprobado.</span></div>
+  </div>
+  <p class="retorno">Con veredicto observado o rechazado, el punto vuelve a <code>doing</code> con el motivo escrito.</p>
+
+  <h3 style="margin:26px 0 8px">Qué define una puerta</h3>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Campo</th><th>Qué dice</th></tr></thead>
+      <tbody>
+        <tr><td>Dónde</td><td>La transición, y a qué tipos de punto o nodo se aplica.</td></tr>
+        <tr><td>Qué revisa</td><td>Diff contra plan, criterios con evidencia, un ADR, un cambio al PRD, un diseño.</td></tr>
+        <tr><td>Quién revisa</td><td>Tú, un agente en contexto fresco, una persona, un equipo o un área de la organización. La puerta es la misma; cambia quien está sentado ahí.</td></tr>
+        <tr><td>Veredicto</td><td>Aprobado, observado (se corrige y vuelve) o rechazado, siempre con motivo, autor y fecha.</td></tr>
+        <tr><td>Obligatoria</td><td>Si bloquea la transición o solo avisa.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Las puertas se declaran en <code>config.md</code>; quién puede aprobarlas sin una persona detrás es una regla del contrato<sup><a class="gl" href="#g-contrato">11</a></sup> (ver más abajo). Lo que espera veredicto aparece en una sola <b>bandeja de revisión</b>: ahí te sientas tú a ver todo el tráfico, o el agente la recorre en loop.</p>
+
+  <h3 style="margin:26px 0 8px">Qué habilita</h3>
+  <p>Un agente en loop puede controlar todo lo que pase por una puerta. Una organización con áreas de control mapea su norma a puertas, sin cambiar el modelo: QA<sup><a class="gl" href="#g-qa">32</a></sup> en la salida de entregar, arquitectura en el ADR de un área crítica, transición TI antes de promover a producción.</p>
+  <p>Los nodos que no son desarrollo, como QA, diseño de datos o arquitectura, son ciclos<sup><a class="gl" href="#g-ciclo">10</a></sup> con sus propios insumos<sup><a class="gl" href="#g-insumo">20</a></sup> y un responsable intercambiable: una persona, un equipo o un agente. Lo único que Flow le exige a cualquiera es respetar la transición y dejar el veredicto escrito.</p>
+
+  <h3 style="margin:26px 0 8px">Lo que cuesta</h3>
+  <p>Cada capa que la IA no procesa directamente, como Jira<sup><a class="gl" href="#g-jira">46</a></sup> para el desarrollo, un área de QA o un comité de arquitectura para los ADR, agrega complejidad. Se traduce en esperas, traspasos de contexto, sincronización manual y cuellos de botella, y alguien tiene que gobernarla. Flow permite conectarlas porque hay organizaciones que las necesitan, y las trata como una excepción que se justifica.</p>
+  <p>La tesis de fondo es que un producto enterprise se puede desarrollar sin montar una herramienta compleja ni un gobierno pesado: las puertas, los criterios, el rastro y la auditoría<sup><a class="gl" href="#g-auditoria">3</a></sup> ya están en el modelo, y los lee la IA.</p>
+
+  <h3 style="margin:26px 0 8px">Autonomía: quién aprueba sin una persona detrás</h3>
+  <p>Que un agente pueda aprobar solo, o que siempre necesite a una persona detrás, no se decide una vez para todo Flow. Es una <b>regla de autonomía<sup><a class="gl" href="#g-regla-de-autonomia">35</a></sup></b>, y vive donde viven las demás reglas: en el contrato (ver <a href="#reglas">Reglas y dónde viven</a>), que la IA lee antes de cualquier tarea. La escribes tú, por puerta, por tipo de punto o por entorno, con el detalle que necesites. Aprueba quien la regla diga, incluso un agente externo.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Regla de ejemplo</th><th>Efecto</th></tr></thead>
+      <tbody>
+        <tr><td>Deuda técnica y docs</td><td>Un agente en contexto fresco aprueba solo.</td></tr>
+        <tr><td>Features chicas</td><td>El agente de QA, aunque sea de otra herramienta, aprueba la puerta.</td></tr>
+        <tr><td>ADR de un área crítica</td><td>Siempre una persona detrás.</td></tr>
+        <tr><td>Producción</td><td>Se prepara y se espera tu autorización cada vez (ver <a href="#control">Control y autonomía</a>).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:26px 0 8px">Lo que falta se declara</h3>
+  <p>Las puertas no abren casos nuevos de incertidumbre<sup><a class="gl" href="#g-incertidumbre">19</a></sup>: se tratan como el resto de lo que Flow ya sabe tratar.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Situación</th><th>Qué pasa</th></tr></thead>
+      <tbody>
+        <tr><td>Veredicto de un área externa</td><td>Se trata como cualquier otra información: tiene un estado (dicho, inferido, asumido o pendiente, como en <a href="#arranque">El arranque</a>), con su fuente, autor y fecha. Da igual si alguien lo registra a mano o entra desde la herramienta del área; lo que importa es que se sepa cuál de los dos es. Sin veredicto queda pendiente, y nunca se lee como aprobado.</td></tr>
+        <tr><td>Puerta obligatoria sin atender</td><td>Igual que cualquier decisión que falta: se declara la brecha<sup><a class="gl" href="#g-brecha">7</a></sup>. La transición queda detenida, y la puerta aparece en la bandeja de revisión y en <code>/flow estado</code> con su edad. No se aprueba sola ni vence en silencio. Lo que se hace mientras tanto (esperar, avisar al responsable, pedir a otro que revise) lo dice la regla de autonomía de esa puerta.</td></tr>
+        <tr><td>Puerta que solo avisa</td><td>El aviso queda en la traza y el trabajo sigue.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 19 · Control -->
+<section class="hoja cap" id="control">
+  <p class="eyebrow">Gobierno</p>
+  <h2>Control y autonomía</h2>
+  <p>La IA para y pregunta, en cualquier modo, cuando algo es irreversible, cuando aparece una brecha<sup><a class="gl" href="#g-brecha">7</a></sup> imprevista, cuando el trabajo se aparta del plan<sup><a class="gl" href="#g-plan">25</a></sup> o del criterio, cuando un requisito contradice el PRD<sup><a class="gl" href="#g-prd">28</a></sup> o un invariante<sup><a class="gl" href="#g-invariante">21</a></sup>, y después de dos intentos fallidos sobre el mismo chequeo.</p>
+  <p>La autonomía se gradúa por el riesgo del entorno. Un entorno puede restringir más que el modo de checkpoints<sup><a class="gl" href="#g-checkpoint">9</a></sup>, nunca menos.</p>
+
+  <div class="tabla">
+    <table>
+      <thead><tr><th>Entorno</th><th>La IA puede</th></tr></thead>
+      <tbody>
+        <tr><td>Desarrollo</td><td>Actuar libre dentro del plan.</td></tr>
+        <tr><td>Validación</td><td>Ejecutar y reportar.</td></tr>
+        <tr><td>Producción</td><td>Preparar y esperar tu autorización cada vez.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>La misma mecánica gobierna a las puertas de revisión<sup><a class="gl" href="#g-puerta-de-revision">30</a></sup>: quién puede aprobar sin una persona detrás es una regla de autonomía<sup><a class="gl" href="#g-regla-de-autonomia">35</a></sup>, escrita en el contrato<sup><a class="gl" href="#g-contrato">11</a></sup> junto con el resto (ver <a href="#revisar">Puntos de revisión</a>).</p>
+  <h3 style="margin:26px 0 8px">Cuando Flow no alcanza</h3>
+  <p>Si en cualquier escenario aparece un gap de Flow<sup><a class="gl" href="#g-gap-de-flow">17</a></sup> que ninguno de los criterios definidos permite abordar, la IA no improvisa en silencio. Hay un mecanismo para crear el criterio nuevo:</p>
+  <ol class="reglas">
+    <li><span>Se detiene, nombra el gap y lo registra en la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> como <b>gap de Flow</b>, con el escenario que lo mostró.</span></li>
+    <li><span>Propone el criterio nuevo o el ajuste, y tú lo apruebas.</span></li>
+    <li><span>Mientras tanto se aplica en tu proyecto, como criterio global o regla aprendida<sup><a class="gl" href="#g-regla-aprendida">34</a></sup>.</span></li>
+    <li><span>Lo que haya que adaptar en Flow se levanta como un PR<sup><a class="gl" href="#g-pr">27</a></sup> al repositorio original, con el escenario, el criterio y el cambio.</span></li>
+  </ol>
+  <p style="margin-top:18px">Hoy todo lo anterior lo cumple la IA porque está escrito. La hoja siguiente lo hace cumplir desde afuera.</p>
+</section>
+
+<!-- 20 · Hooks -->
+<section class="hoja cap" id="hooks">
+  <p class="eyebrow">Garantías</p>
+  <h2>Hooks y cierre automático</h2>
+  <p>Un hook<sup><a class="gl" href="#g-hook">18</a></sup> es un comando que se dispara en un evento concreto, sin depender de que la IA se acuerde. Convierte una regla escrita en una garantía. Flow no se los pide prestados a una herramienta: los define él, en un lugar propio del kit, y cada adaptador los conecta con lo que su IA ofrezca.</p>
+
+  <h3 style="margin:26px 0 8px">Un catálogo propio</h3>
+  <p>Los hooks de Flow viven en una carpeta del kit, declarados uno por uno: qué evento los dispara, qué garantizan, qué comando corren, de dónde vienen y si están activos. Los eventos se nombran en abstracto (inicio de sesión, antes de editar, antes de un commit, al terminar la respuesta), y cada adaptador dice a qué evento real de su herramienta corresponde. Lo que una herramienta no puede disparar se cubre con hooks de git o con el CI del repositorio, que no dependen de ninguna IA.</p>
+
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Hook</th><th>Cuándo corre</th><th>Garantiza</th></tr></thead>
+      <tbody>
+        <tr><td>Inicio de sesión</td><td>Al abrir o reanudar</td><td>Carga el estado, la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> de revisión y los pins<sup><a class="gl" href="#g-pin">24</a></sup> vencidos.</td></tr>
+        <tr><td>Toma antes de planificar</td><td>Antes de editar código</td><td>El punto<sup><a class="gl" href="#g-punto">31</a></sup> está tomado por esta sesión y sin bloqueos.</td></tr>
+        <tr><td>Protección de lo generado</td><td>Antes de editar</td><td>No se tocan archivos derivados, ni el test de un bug que se está corrigiendo.</td></tr>
+        <tr><td>ID en commit</td><td>Antes de un commit</td><td>El mensaje lleva el ID del punto.</td></tr>
+        <tr><td>Bloqueo de cierre</td><td>Antes del commit de cierre y al terminar la respuesta</td><td>Hay evidencia<sup><a class="gl" href="#g-evidencia">14</a></sup>, bitácora<sup><a class="gl" href="#g-bitacora">6</a></sup> y veredicto<sup><a class="gl" href="#g-veredicto">43</a></sup> de las puertas que le tocan al punto.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:26px 0 8px">Mantenibles y ampliables</h3>
+  <p>Un hook se agrega, se ajusta o se apaga editando su declaración. Agregar uno se explica en una guía del kit, igual que agregar un módulo<sup><a class="gl" href="#g-modulo">23</a></sup>. Los hooks de Flow y los propios de tu proyecto conviven en el mismo catálogo, y cada uno dice quién lo mantiene.</p>
+
+  <h3 style="margin:26px 0 8px">De la mano de las herramientas externas</h3>
+  <p>Un skill externo, como Ponytail<sup><a class="gl" href="#g-ponytail">26</a></sup> o un sistema de diseño, entra como módulo y puede traer sus propios hooks. Se declaran en el mismo catálogo, con su origen y su licencia, y se activan o se apagan junto con el módulo. Lo propio y lo de terceros se gobiernan igual.</p>
+
+  <h3 style="margin:26px 0 8px">Cierre automático</h3>
+  <p>Tú ves una sola vista del cierre, con el resumen, la evidencia y lo que falta. Al aprobarla, una herramienta del kit escribe de forma determinista el plan<sup><a class="gl" href="#g-plan">25</a></sup> en <code>hechos/</code>, el punto, el índice, la bitácora, el PRD<sup><a class="gl" href="#g-prd">28</a></sup>, <code>errores.md</code>, la versión y la liberación. Lo mismo vale para tomar un punto y para pasarlo por una puerta.</p>
+
+  <h3 style="margin:26px 0 8px">Instalación</h3>
+  <p>El setup instala el catálogo y le pide al adaptador que lo conecte, así que no queda nada que configurar a mano. El adaptador de Claude Code es el primero: su formato de hooks se verificó en la documentación oficial el 9 de noviembre de 2026, y el detalle va en su sección Verificación. Los demás adaptadores<sup><a class="gl" href="#g-adaptador">1</a></sup> declaran qué eventos pueden conectar y qué cae a git o al CI.</p>
+</section>
+
+<!-- 21 · Medir -->
+<section class="hoja cap" id="medir">
+  <p class="eyebrow">Evidencia</p>
+  <h2>Medir y mejorar</h2>
+  <p>Las métricas se piden con <code>/flow metricas</code> y salen de lo que ya existe, sin guardar nada nuevo. Se mira la tendencia y no el valor suelto: un backlog<sup><a class="gl" href="#g-backlog">4</a></sup> que crece al descubrir es sano.</p>
+
+  <h3 style="margin:26px 0 8px">Por ciclo</h3>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Ciclo</th><th>Qué se mide</th></tr></thead>
+      <tbody>
+        <tr><td>Captar</td><td>Ítems de la bandeja<sup><a class="gl" href="#g-bandeja">5</a></sup> sin triar y su edad. Tiempo de triaje.</td></tr>
+        <tr><td>Definir</td><td>Puntos<sup><a class="gl" href="#g-punto">31</a></sup> listos sobre el total. Campos «sin confirmar» del PRD<sup><a class="gl" href="#g-prd">28</a></sup>.</td></tr>
+        <tr><td>Explorar</td><td>Tiempo hasta el informe. Cómo terminan: ADR<sup><a class="gl" href="#g-adr">2</a></sup>, puntos nuevos o descarte.</td></tr>
+        <tr><td>Decidir</td><td>Brechas<sup><a class="gl" href="#g-brecha">7</a></sup> abiertas ponderadas. Edad de las de costo alto. ADR reemplazados o con la revisión vencida.</td></tr>
+        <tr><td>Entregar</td><td>Rendimiento (throughput)<sup><a class="gl" href="#g-rendimiento">36</a></sup>: puntos cerrados por período. Tiempo de ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup>, de <code>todo</code> a <code>done</code>. Trabajo en curso. Reaperturas. Veredictos<sup><a class="gl" href="#g-veredicto">43</a></sup> de las puertas de revisión<sup><a class="gl" href="#g-puerta-de-revision">30</a></sup>.</td></tr>
+        <tr><td>Aprender</td><td>Errores repetidos. Reglas aprendidas<sup><a class="gl" href="#g-regla-aprendida">34</a></sup>. Tiempo entre el primer error y su regla.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:26px 0 8px">Del producto completo</h3>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Métrica</th><th>De dónde sale</th></tr></thead>
+      <tbody>
+        <tr><td>Costo</td><td>Tokens, tiempo y dinero, si la herramienta los informa. Se corta por punto, por dominio, por período y para el producto entero, para que escale con él.</td></tr>
+        <tr><td>Incertidumbre<sup><a class="gl" href="#g-incertidumbre">19</a></sup> decisional</td><td>Brechas abiertas ponderadas por costo de decidir tarde (alto 3, bajo 1), sobre las áreas del catálogo.</td></tr>
+        <tr><td>Incertidumbre de conocimiento</td><td>Campos asumidos o pendientes de <code>config.md</code> y «sin confirmar» del PRD, sobre el total.</td></tr>
+        <tr><td>Incertidumbre emergente</td><td>Brechas imprevistas aparecidas al ejecutar, por punto cerrado. Si sube, el proceso falla antes que el producto y toca una retrospectiva.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>La incertidumbre nunca llega a cero, porque en cero sería falsa confianza. Cerrar brechas rápido con ADR mediocres baja el número y empeora el producto, así que se contrapesa con los ADR reemplazados y las fechas de revisión vencidas.</p>
+</section>
+
+<!-- 22 · Glosario -->
+<section class="hoja cap" id="glosario">
+  <p class="eyebrow">Referencia</p>
+  <h2>Glosario</h2>
+  <p class="fuente" style="margin-top:0">El número de cada término es el que lleva en el texto.</p>
+  <dl class="glos">
+    <dt id="g-adaptador"><span class="gn">1</span> Adaptador</dt><dd>Lo que dice dónde se coloca cada pieza del kit según la IA que uses. El contenido no se copia.</dd>
+    <dt id="g-adr"><span class="gn">2</span> ADR (Architecture Decision Record)</dt><dd>Registro de decisión de arquitectura: contexto, opciones, decisión, consecuencias, fuentes y una fecha o disparador para revisarla.</dd>
+    <dt id="g-auditoria"><span class="gn">3</span> Auditoría</dt><dd>Poder reconstruir cualquier tramo de cualquier ciclo, en vivo y después. Todo rastro lleva fecha, autor y el ID del punto.</dd>
+    <dt id="g-backlog"><span class="gn">4</span> Backlog</dt><dd>El trabajo comprometido. Puede vivir en <code>.flow/</code>, con un archivo por punto, o en una herramienta externa.</dd>
+    <dt id="g-bandeja"><span class="gn">5</span> Bandeja</dt><dd>Lo que todavía no es trabajo: ideas, intenciones, incidentes y pins. Se tría y sale hacia un punto, el PRD, una exploración, un descarte o un pin.</dd>
+    <dt id="g-bitacora"><span class="gn">6</span> Bitácora</dt><dd>Qué cambió y por qué, una entrada por punto cerrado, enlazada a él.</dd>
+    <dt id="g-brecha"><span class="gn">7</span> Brecha</dt><dd>Un área del catálogo que nadie decidió. Se declara con su costo de decidir tarde y se cierra con un ADR cuando un punto la toca.</dd>
+    <dt id="g-catalogo-de-decisiones"><span class="gn">8</span> Catálogo de decisiones</dt><dd>Las áreas que todo producto serio termina resolviendo. Cada una puede estar decidida o en brecha; responder es opcional.</dd>
+    <dt id="g-checkpoint"><span class="gn">9</span> Checkpoint</dt><dd>Verificación dentro del plan. En manual la IA para y espera tu confirmación; en automático corre el comando y sigue si pasa. Si falla, para.</dd>
+    <dt id="g-ciclo"><span class="gn">10</span> Ciclo</dt><dd>Cada una de las seis actividades de la red: captar, definir, explorar, decidir, entregar y aprender.</dd>
+    <dt id="g-contrato"><span class="gn">11</span> Contrato</dt><dd><code>CONTEXT.md</code>. Lo único que la IA lee siempre: reglas, invariantes, reglas aprendidas y criterios globales de cierre.</dd>
+    <dt id="g-criterios-de-aceptacion"><span class="gn">12</span> Criterios de aceptación</dt><dd>Lo que debe ser verdad para dar un punto por hecho, medible y con evidencia. Tres niveles: release, globales y del punto.</dd>
+    <dt id="g-entorno-exclusivo"><span class="gn">13</span> Entorno exclusivo</dt><dd>Un entorno compartido que solo un punto a la vez puede usar, declarado en <code>config.md</code>.</dd>
+    <dt id="g-evidencia"><span class="gn">14</span> Evidencia</dt><dd>Prueba literal de que un criterio se cumple: salida de un comando, captura, URL o hash de commit.</dd>
+    <dt id="g-flow"><span class="gn">15</span> Flow</dt><dd>El kit completo: archivo guía de la IA, <code>.flow/</code> y el motor. Agnóstico de proyecto y de IA.</dd>
+    <dt id="g-fuente-del-backlog"><span class="gn">16</span> Fuente del backlog</dt><dd>Campo de <code>config.md</code> que dice si los ítems viven en <code>.flow/</code> (local) o en una herramienta externa.</dd>
+    <dt id="g-gap-de-flow"><span class="gn">17</span> Gap de Flow</dt><dd>Situación que ningún criterio vigente permite abordar. Se registra, se resuelve en el proyecto y se propone al repositorio original como PR.</dd>
+    <dt id="g-hook"><span class="gn">18</span> Hook</dt><dd>Comando que el programa dispara en un evento concreto, sin depender de que la IA se acuerde. Convierte una regla escrita en una garantía. Flow los declara en su propio catálogo y cada adaptador los conecta.</dd>
+    <dt id="g-incertidumbre"><span class="gn">19</span> Incertidumbre</dt><dd>Cuánto falta por saber o decidir. Se mide en tres formas (decisional, de conocimiento y emergente) y nunca llega a cero.</dd>
+    <dt id="g-insumo"><span class="gn">20</span> Insumo</dt><dd>Documento o estado que un ciclo necesita para arrancar. Sin él, corre el ciclo que lo produce.</dd>
+    <dt id="g-invariante"><span class="gn">21</span> Invariante</dt><dd>Algo que nunca se rompe en este proyecto. Vive en el contrato y lo escribes tú.</dd>
+    <dt id="g-lote"><span class="gn">22</span> Lote</dt><dd>Varios puntos angostos del mismo tipo agrupados bajo un solo plan.</dd>
+    <dt id="g-modulo"><span class="gn">23</span> Módulo</dt><dd>Capacidad opcional, a menudo de terceros. Se declara de forma explícita y se anota su origen y licencia.</dd>
+    <dt id="g-pin"><span class="gn">24</span> Pin</dt><dd>Fila de la bandeja que se queda con fecha o disparador de revisión. El estado avisa cuando vence.</dd>
+    <dt id="g-plan"><span class="gn">25</span> Plan</dt><dd>Archivo que se escribe antes de tocar código. Vive en <code>activos/</code> mientras se trabaja y pasa a <code>hechos/</code> al cerrar.</dd>
+    <dt id="g-ponytail"><span class="gn">26</span> Ponytail</dt><dd>Regla de minimalismo: antes de escribir código o sumar un paso, se sube una escalera de preguntas y se para en la primera que aplique. ¿Necesita existir? ¿Ya existe en el proyecto? ¿Lo cubre la biblioteca estándar o la plataforma? ¿Cabe en una línea? Solo entonces, lo mínimo que funcione. Está escrita en las reglas de Flow, así que no depende de ningún desarrollo externo. El proyecto original de Dietrich Gebert (licencia MIT) existe aparte: <a href="https://github.com/DietrichGebert/ponytail">github.com/DietrichGebert/ponytail</a>.</dd>
+    <dt id="g-pr"><span class="gn">27</span> PR (Pull Request)</dt><dd>Solicitud de integración de cambios en un repositorio.</dd>
+    <dt id="g-prd"><span class="gn">28</span> PRD (Product Requirements Document)</dt><dd>Documento de requisitos de producto. En Flow dice qué es el producto hoy y por qué; se arma al inicio y se actualiza en cada cierre.</dd>
+    <dt id="g-pregunta-abierta"><span class="gn">29</span> Pregunta abierta</dt><dd>Duda anotada en el punto que hay que cerrar antes o durante el trabajo.</dd>
+    <dt id="g-puerta-de-revision"><span class="gn">30</span> Puerta de revisión</dt><dd>Control en una transición de la red: quién revisa, qué revisa y qué veredictos puede dar.</dd>
+    <dt id="g-punto"><span class="gn">31</span> Punto</dt><dd>La unidad de trabajo del backlog, con tipo, tamaño, criterios y áreas que toca.</dd>
+    <dt id="g-qa"><span class="gn">32</span> QA (Quality Assurance)</dt><dd>Aseguramiento de calidad. En Flow puede ser una puerta de revisión.</dd>
+    <dt id="g-red-de-ciclos"><span class="gn">33</span> Red de ciclos</dt><dd>El modelo de Flow en lugar del ciclo de vida lineal. Se puede entrar por cualquier ciclo.</dd>
+    <dt id="g-regla-aprendida"><span class="gn">34</span> Regla aprendida</dt><dd>Una línea en el contrato que nace de un error repetido y cita su fila en <code>errores.md</code>.</dd>
+    <dt id="g-regla-de-autonomia"><span class="gn">35</span> Regla de autonomía</dt><dd>Regla del contrato que dice quién puede aprobar sin una persona detrás, por puerta de revisión o por entorno. Puede aprobar un agente, incluso uno externo.</dd>
+    <dt id="g-rendimiento"><span class="gn">36</span> Rendimiento (throughput)</dt><dd>Puntos cerrados por período.</dd>
+    <dt id="g-router"><span class="gn">37</span> Router</dt><dd>Las preguntas que le dicen a la IA qué ciclo toca según el estado.</dd>
+    <dt id="g-sdlc"><span class="gn">38</span> SDLC (Software Development Life Cycle)</dt><dd>Ciclo de vida del desarrollo de software: el modelo lineal que Flow reemplaza por una red.</dd>
+    <dt id="g-sdln"><span class="gn">39</span> SDLN (Software Development Life Network)</dt><dd>Red de desarrollo de software. Nombre informal de esta forma de pensar el desarrollo.</dd>
+    <dt id="g-slice"><span class="gn">40</span> Slice</dt><dd>Parte de un punto grande, con su propio criterio. Puede ser paralelo o serial.</dd>
+    <dt id="g-toma"><span class="gn">41</span> Toma</dt><dd>Marca que dice quién tiene un punto. Se sube al compartido antes de planificar.</dd>
+    <dt id="g-traza"><span class="gn">42</span> Traza</dt><dd>Registro que se escribe mientras se trabaja en el plan: qué se hizo, qué comando corrió y qué resultado dio, incluyendo los errores.</dd>
+    <dt id="g-veredicto"><span class="gn">43</span> Veredicto</dt><dd>Resultado de una puerta: aprobado, observado o rechazado, siempre con motivo, autor y fecha.</dd>
+    <dt id="g-via-rapida"><span class="gn">44</span> Vía rápida</dt><dd>Camino corto para lo trivial: sin plan aparte, el punto nace <code>done</code> con su commit.</dd>
+  </dl>
+
+  <h3 style="margin:40px 0 0">Referencias externas</h3>
+  <dl class="glos">
+    <dt id="g-claude-code-hooks"><span class="gn">45</span> Claude Code, hooks</dt><dd>Documentación oficial de los hooks de Claude Code, contra la que se verificó el primer adaptador: <a href="https://code.claude.com/docs/en/hooks">code.claude.com/docs/en/hooks</a>.</dd>
+    <dt id="g-jira"><span class="gn">46</span> Jira</dt><dd>Herramienta de gestión de trabajo de Atlassian. <a href="https://www.atlassian.com/software/jira">atlassian.com/software/jira</a>.</dd>
+    <dt id="g-scrum"><span class="gn">47</span> Scrum</dt><dd>Marco de trabajo ágil por iteraciones. Guía oficial: <a href="https://scrumguides.org/">scrumguides.org</a>. Su cuerpo de conocimiento (SBOK) está en <a href="https://scrumstudy.com/sbokguide/overview-of-sbok">scrumstudy.com/sbokguide</a>.</dd>
+    <dt id="g-the-ai-native-sdlc-playbook"><span class="gn">48</span> The AI-Native SDLC Playbook</dt><dd>Playbook de Anthropic (Louis Claxton, agosto de 2026) sobre cómo ordenar el desarrollo cuando la IA escribe el código; es el origen del <code>intent.md</code>. Lo usamos como fuente de patrones. <a href="https://claude.com/es/resources/articles/the-ai-native-sdlc-playbook">claude.com/es/resources/articles/the-ai-native-sdlc-playbook</a>.</dd>
+    <dt id="g-trello"><span class="gn">49</span> Trello</dt><dd>Tableros kanban de Atlassian. <a href="https://trello.com/">trello.com</a>.</dd>
+  </dl>
+</section>
+
+
+</body></html>
