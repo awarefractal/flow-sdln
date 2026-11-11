@@ -1,0 +1,26 @@
+# ADAPTAR: carpeta(s) con datos personales o locales del proyecto (BD local, datos de usuario, exports...).
+# Ejemplo: data/
+
+# Dependencies
+node_modules/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.claude/settings.local.json
+.claude/*.local.*
+
+# Logs and temp files
+*.log
+*.tmp
+npm-debug.log*
+
+# OS and editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
