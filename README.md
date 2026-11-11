@@ -2,7 +2,7 @@
 
 # Flow — Software Development Life Network
 
-[![CI](https://github.com/awarefractal/flow/actions/workflows/ci.yml/badge.svg)](https://github.com/awarefractal/flow/actions/workflows/ci.yml)
+[![CI](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.2.0-informational)](CHANGELOG.md)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen)](scripts/check.mjs)
@@ -11,9 +11,9 @@
 
 Flow (SDLN, Software Development Life Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
 
-[![Playbook cover: a pony on an adventure motorbike and a goat hanging from a drone, on a mountain trail](docs/cover.jpg)](https://awarefractal.github.io/flow/)
+[![Playbook cover: a pony on an adventure motorbike and a goat hanging from a drone, on a mountain trail](docs/cover.jpg)](https://awarefractal.github.io/flow-sdln/)
 
-**Read the playbook online:** [awarefractal.github.io/flow](https://awarefractal.github.io/flow/) (formatted, in Spanish) · or as Markdown: [PLAYBOOK.md](PLAYBOOK.md)
+**Read the playbook online:** [awarefractal.github.io/flow-sdln](https://awarefractal.github.io/flow-sdln/) (formatted, in Spanish) · or as Markdown: [PLAYBOOK.md](PLAYBOOK.md)
 
 [![Replay of the author typing section 0 of the playbook, verified by gutmbrg](docs/why-flow.gif)](https://app.gutmbrg.com/p/djruNccm)
 
@@ -46,9 +46,9 @@ Flow works with Claude Code, Codex and OpenCode through adapters. It is an indep
 
 Flow (SDLN, Software Development Life Network) es un framework de trabajo humano + IA. Convierte una idea en un producto con trazabilidad: una red de ciclos (captar, definir, explorar, decidir, entregar, aprender) que se activan según su combustible, un PRD vivo, un backlog que se lee por índices, estado versionado que varias sesiones y personas pueden compartir sin pisarse, y un cierre que deja todo al día. No depende del proyecto ni de la IA que se use.
 
-[![Carátula del playbook: un poni en moto de aventura y una cabra colgada de un dron, en un sendero de montaña](docs/cover.jpg)](https://awarefractal.github.io/flow/)
+[![Carátula del playbook: un poni en moto de aventura y una cabra colgada de un dron, en un sendero de montaña](docs/cover.jpg)](https://awarefractal.github.io/flow-sdln/)
 
-**Lee el playbook en línea:** [awarefractal.github.io/flow](https://awarefractal.github.io/flow/) (con formato) · o en Markdown: [PLAYBOOK.md](PLAYBOOK.md)
+**Lee el playbook en línea:** [awarefractal.github.io/flow-sdln](https://awarefractal.github.io/flow-sdln/) (con formato) · o en Markdown: [PLAYBOOK.md](PLAYBOOK.md)
 
 [![Repetición del autor escribiendo la sección 0 del playbook, verificada por gutmbrg](docs/why-flow.gif)](https://app.gutmbrg.com/p/djruNccm)
 
