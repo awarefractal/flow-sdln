@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.2.0-informational)](CHANGELOG.md)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen)](scripts/check.mjs)
-[![Written by a human](https://img.shields.io/badge/why%20it%20exists-written%20by%20a%20human-c4201a)](https://app.gutmbrg.com/p/djruNccm)
+[![Written by a human](https://img.shields.io/badge/why%20it%20exists-written%20by%20a%20human-0e6a70)](https://app.gutmbrg.com/p/djruNccm)
 
 
 Flow (SDLN, Software Development Life Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
