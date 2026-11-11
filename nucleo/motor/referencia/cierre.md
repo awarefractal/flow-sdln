@@ -1,19 +1,28 @@
 # Cerrar un punto
 
-Se cierra cuando el criterio de aceptación del punto se cumple. En este orden:
+Se cierra cuando se cumplen los criterios de aceptación del punto y los globales del contrato. En este orden:
 
-1. **Plan.** Mueve `planes/activos/<ID>-<slug>.md` a `planes/hechos/`.
-2. **Punto.** `estado: done` en su archivo, con enlace al plan, y actualiza su fila en `backlog/INDICE.md`.
-3. **Bitácora.** Crea `bitacora/entradas/AAAA-MM-DD-<ID>.md` (plantilla `entrada-bitacora`), añade su fila en `bitacora/INDICE.md` y enlázala desde el punto. Si el cambio fue estructural, actualiza también el tema de `dominio/` que corresponda.
-4. **PRD.** Actualiza las secciones afectadas, siempre; como mínimo §7 (madurez actual).
-5. **Capacidades.** Si el punto instaló o quitó una herramienta, actualiza `capacidades.md`.
-6. **Versión.** Si `config.md` tiene el versionado activo, sube la versión según el tipo del punto (tabla de `config.md`; no se vuelve a evaluar):
+1. **Checkpoint de cierre.** Tres niveles, todos con evidencia literal (salida, respuesta, captura), no «funciona»:
+   - los criterios de aceptación del punto: marca cada casilla y anota su evidencia;
+   - los criterios globales de cierre de `CONTEXT.md`;
+   - si el cambio promueve a producción, además los criterios de release del PRD §7.
+
+   Compara el diff con el plan. Si se apartó, el plan se corrige y la desviación se anota. Si algo no se cumple, no se cierra: se reporta qué falta.
+2. **Plan.** Mueve `planes/activos/<ID>-<slug>.md` a `planes/hechos/`.
+3. **Punto.** `estado: done` en su archivo, con enlace al plan, y actualiza su fila en `backlog/INDICE.md`.
+4. **Bitácora.** Crea `bitacora/entradas/AAAA-MM-DD-<ID>.md` (plantilla `entrada-bitacora`), añade su fila en `bitacora/INDICE.md` y enlázala desde el punto. Si el cambio fue estructural, actualiza también el tema de `dominio/` que corresponda.
+5. **PRD.** Actualiza las secciones afectadas, siempre; como mínimo §7 (madurez actual).
+6. **Errores y bandeja.** Pasa a `errores.md` los errores y correcciones de la traza (fila nueva, o `veces` + 1). Si una fila llega a 2, escribe su regla de una línea en «Reglas aprendidas» de `CONTEXT.md` y márcala en la columna «En contrato». Lo que quedó pendiente y merece trabajo va a `bandeja.md`.
+7. **Capacidades.** Si el punto instaló o quitó una herramienta, actualiza `capacidades.md`.
+8. **Versión.** Si `config.md` tiene el versionado activo, sube la versión según el tipo del punto (tabla de `config.md`; no se vuelve a evaluar):
    - Lote: el bump más alto de sus puntos.
    - Slice: siempre `patch`; el cierre del padre aplica el suyo.
    - `major`: solo en la promoción a producción.
 
    El bump va en el mismo commit de cierre, no en uno aparte.
-7. **Commit y push** a la rama de trabajo de `config.md`.
+9. **Liberar** (`coordinacion.md`): limpia `toma` y los `bloqueado_por` que puso este punto.
+10. **Commit y push** a la rama de trabajo de `config.md`, con el ID del punto en el mensaje.
+11. **Recomendar conversación nueva.** Dilo en una línea: todo quedó escrito en `.flow/`, así que la siguiente conversación retoma con `/flow estado` sin arrastrar esta. Recomiéndalo con firmeza.
 
 ## El cierre es mecánica
 

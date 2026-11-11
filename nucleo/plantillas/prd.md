@@ -29,7 +29,7 @@ Web, iOS, Android, API, escritorio… (puede ser más de una).
 
 ## §4 Posicionamiento
 
-Qué lo distingue y qué no pretende ser.
+Qué lo distingue y qué no pretende ser. Si hay interfaz, la dirección estética: referencias, tono y lo que se quiere evitar (o «sin confirmar»).
 
 ## §5 Contexto operativo
 

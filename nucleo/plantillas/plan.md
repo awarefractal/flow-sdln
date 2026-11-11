@@ -1,7 +1,8 @@
 # P000 — Título
 
-**Punto:** `motor/backlog/puntos/P000.md` (el criterio de aceptación vive ahí; aquí no se repite)
+**Punto:** `motor/backlog/puntos/P000.md` (los criterios de aceptación viven ahí; aquí no se repiten)
 **Capacidades aplicables:** filas de `capacidades.md` que se usan y en qué paso. Si hay un hueco que ninguna cubre, aplica la regla última de ese archivo.
+**Entorno de verificación:** cuál, y si es exclusivo (ver `coordinacion.md`).
 
 ## Plan
 
@@ -18,4 +19,4 @@
 
 ## Traza
 
-Se llena durante la ejecución, nunca antes. Una línea fechada por paso y por checkpoint, pase o no: qué se hizo, qué comando corrió, qué resultado dio.
+Se llena durante la ejecución, nunca antes. Una línea por paso y por checkpoint, pase o no: `AAAA-MM-DD · autor · qué se hizo · comando · resultado`. Si el trabajo se aparta del plan, se corrige el plan aquí y se anota la desviación.

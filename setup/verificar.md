@@ -13,6 +13,12 @@ Chequeos que se corren al final del setup y cada vez que el usuario pida «verif
 | Config | `config.md` | ningún campo sin valor ni origen |
 | Copias generadas | Cabecera «Generado por Flow vX» del archivo guía y del skill | coincide con `VERSION` del kit |
 | Variables | Archivos generados | ningún `{{variable}}` sin resolver |
+| Rastro en vivo | Cada punto `doing` | tiene `toma`, un plan activo con traza, y su `toma` está subida al remoto |
+| Bloqueos | `toma`, `bloqueado_por`, `entornos` | ningún punto `doing` tomado por dos; ningún entorno exclusivo declarado por dos; ningún `bloqueado_por` hacia un punto que ya no está `doing` |
+| Dependencias | `depende_de` | los IDs existen y no hay ciclos |
+| Auditoría | Cada punto `done` | tiene entrada de bitácora con autor, criterios marcados con evidencia, y commits con su ID |
+| Bandeja | `bandeja.md` | cada fila triada tiene destino; los pins vencidos se reportan |
+| Errores | `errores.md` y «Reglas aprendidas» | toda fila con veces ≥ 2 está en el contrato, y cada regla aprendida cita su fila |
 | Lectura por índices | `CONTEXT.md` y el archivo guía | contienen la regla de navegación |
 
 Reporte corto: lo que falla, dónde y qué hacer. Si todo pasa, una línea.

@@ -1,6 +1,7 @@
 ---
 fecha: AAAA-MM-DD
 punto: P000
+autor: persona o IA · sesión
 titulo: Una línea; es lo que aparece en el índice de la bitácora
 estructural: no
 ---
@@ -19,8 +20,16 @@ La razón, no la descripción.
 
 ## Dónde mirar
 
-Archivos o áreas tocadas y enlace al plan: `motor/planes/hechos/P000-slug.md`.
+Archivos o áreas tocadas, enlace al plan (`motor/planes/hechos/P000-slug.md`) y commit.
+
+## Evidencia
+
+Lo literal que prueba el criterio: salida del test, respuesta, captura. No «funciona».
+
+## Desviaciones y errores
+
+Dónde lo entregado se apartó del plan, y qué errores o correcciones hubo (alimentan `errores.md`).
 
 ## Pendiente
 
-Lo que quedó sin resolver en este cambio.
+Lo que quedó sin resolver en este cambio. Lo que merece trabajo va a la bandeja.

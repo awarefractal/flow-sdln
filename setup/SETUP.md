@@ -33,11 +33,18 @@ Del relato y de lo detectado, llena esta tabla marcando cada campo como `dicho`,
 | repos hermanos | relato | ninguno | no |
 | invariantes («esto nunca debe…») | relato | `pendiente`, queda como brecha | no |
 | normativa (país y tema) | relato: datos personales, sector regulado | «no»; preguntar solo si el relato lo insinúa | no |
+| estética | relato (referencias, adjetivos, marca) y estilos o tokens del código | preguntar una vez, solo si hay interfaz | sí, si hay interfaz |
 | módulos | hay interfaz → `diseno`; hay URL desplegada → `qa-navegador` | se proponen en el resumen, no se preguntan | no |
 
 ## 3. Rondas cortas
 
 Máximo 2 rondas, de 3 preguntas como máximo. Cada pregunta cabe en una línea y se responde en pocas palabras. Solo sobre campos **bloqueantes**, o sobre una señal fuerte que no se pueda resolver sola (por ejemplo, varias IAs detectadas). Ofrece siempre una opción por defecto («¿Asumo X?»). Todo lo demás se asume y se anota; lo pendiente se preguntará más adelante, cuando un punto lo necesite.
+
+**Estética.** Si hay interfaz y ni el relato ni el código dan pista del estilo, pregúntalo aquí, antes de generar nada y en la primera ronda, en una línea:
+
+> ¿Alguna idea del estilo? Una referencia (un sitio, una marca), un par de adjetivos, o algo que no quieras que parezca. Si no tienes, propongo yo una dirección concreta y me la apruebas.
+
+Sin respuesta, no se asume un estilo por defecto: queda `pendiente` y el módulo `diseno` propone una dirección antes de diseñar. Lo que se responda va al PRD, en §4.
 
 ## 4. Generar
 
@@ -46,8 +53,8 @@ Máximo 2 rondas, de 3 preguntas como máximo. Cada pregunta cabe en una línea 
 3. Genera el adaptador de la IA detectada, según `adaptadores/<ia>/ADAPTADOR.md`:
    - el archivo guía, desde `nucleo/contexto/guia.base.md`;
    - el skill `flow`: `nucleo/motor/SKILL.base.md` como `SKILL.md`, más `nucleo/motor/referencia/`, `nucleo/plantillas/` y `nucleo/catalogo/` junto a él, en la ruta de skills de esa IA.
-4. Añade `.flow/` al `.gitignore`, salvo que el usuario haya dicho lo contrario.
-5. Todo lo generado lleva la cabecera «Generado por Flow vX. No editar».
+4. `.flow/` se versiona: no va al `.gitignore`, salvo que el usuario lo pida (y entonces se le advierte que pierde estado compartido, bloqueos y rastro entre sesiones y personas).
+5. Todo lo generado (archivo guía y skill) lleva la cabecera «Generado por Flow vX. No editar».
 
 ### Variables
 
@@ -81,3 +88,7 @@ Corto: qué se asumió (en lista), qué brechas hay, qué módulos propones y c�
 ## Cambiar de IA después
 
 Vuelve a correr el setup: solo se regeneran el archivo guía y el skill. `.flow/` no se toca.
+
+## Actualizar a una versión nueva del kit
+
+Se regeneran el archivo guía y el skill. Los archivos de `.flow/` son del proyecto (`CONTEXT.md` incluye sus reglas aprendidas): nunca se sobrescriben. Si una plantilla del kit cambió, compara y propón el cambio como punto de tipo `proceso`.

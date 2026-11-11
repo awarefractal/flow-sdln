@@ -5,19 +5,31 @@ tipo: feature
 tamano: chico
 estado: todo
 padre:
+paralelo:
+depende_de:
+afecta:
+entornos:
+toma:
+bloqueado_por:
 ---
 
 # P000 — Título
 
-Tipos válidos y su bump de versión: ver `config.md`. Estados: `todo`, `doing`, `done`, `descartado`. `padre` solo se llena en slices (ID del punto del que salen).
+Tipos y su bump: ver `config.md`. Estados: `todo`, `doing`, `done`, `descartado` (con motivo). `padre` y `paralelo` (`si` o `no`) solo en slices. `depende_de`, `afecta`, `entornos`, `toma` y `bloqueado_por`: ver `referencia/coordinacion.md`.
 
 ## Origen
 
-Sección del PRD o intención de la que nace (ej.: PRD §4), o «hallazgo» / «reporte» con fecha.
+Sección del PRD, fila de la bandeja (B000) o «hallazgo» / «incidente» con fecha.
 
-## Criterio de aceptación
+## Criterios de aceptación
 
-Qué tiene que ser verdad para darlo por hecho. Concreto y verificable.
+Qué tiene que ser verdad para darlo por hecho. Cada uno medible y con casilla; al cerrar se marcan con su evidencia.
+
+**Base del tipo** (copiados de `config.md`):
+- [ ] …
+
+**Propios de este punto:**
+- [ ] …
 
 ## Áreas del catálogo que toca
 
@@ -26,6 +38,10 @@ Qué tiene que ser verdad para darlo por hecho. Concreto y verificable.
 ## Detalle
 
 Contexto completo: qué, por qué, restricciones y decisiones tomadas.
+
+## Preguntas abiertas
+
+Lo que aún no se sabe y puede cambiar el plan. Vacío si no hay.
 
 ## Enlaces
 
