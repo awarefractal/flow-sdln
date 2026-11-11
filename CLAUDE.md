@@ -4,7 +4,7 @@ Este repo es el kit de Flow: un framework de trabajo humano + IA, agnóstico de 
 
 ## Estado
 
-v0.1.0 escrita, sin publicar, repo local sin remoto. El setup solo se probó en seco, nunca con una IA en un proyecto real.
+v0.2.0 escrita, preparada para publicar (licencia MIT, docs, CI), sin remoto todavía y sin hacerse pública. El setup solo se probó en seco, nunca con una IA en un proyecto real.
 
 ## Reglas de este repo
 
@@ -17,7 +17,10 @@ v0.1.0 escrita, sin publicar, repo local sin remoto. El setup solo se probó en 
 
 ## Decisiones de diseño (detalle en `PLAYBOOK.md`)
 
-- Flow es todo: archivo guía de la IA + `.flow/` + motor. La raíz del proyecto es `.flow/`, local (fuera de git) por ahora.
+- Flow es todo: archivo guía de la IA + `.flow/` + motor. La raíz del proyecto es `.flow/`, versionada en git junto al código (estado compartido, bloqueos, auditoría).
+- La red de ciclos (captar, definir, explorar, decidir, entregar, aprender) reemplaza al ciclo lineal; cada ciclo corre con su combustible (`referencia/red.md`).
+- Las reglas viven en el contrato del proyecto (`CONTEXT.plantilla.md`), no en el skill. Errores repetidos suben a regla; el detalle en `errores.md`.
+- Un punto se toma y se sube antes de planificar; entornos exclusivos; conversaciones cortas recomendadas al cerrar.
 - El PRD se arma al inicio y se actualiza en cada cierre; de él nacen los puntos del backlog.
 - Navegación por índices. Backlog y bitácora separados; cada punto y cada entrada en su archivo, enlazados entre sí.
 - Setup sin cuestionario: una pregunta abierta, inferir, máximo 2 rondas cortas; lo demás se asume y se anota.
@@ -28,4 +31,6 @@ v0.1.0 escrita, sin publicar, repo local sin remoto. El setup solo se probó en 
 
 1. Probar el setup con una IA real en un proyecto vacío.
 2. Módulo de diseño: confirmar que la skill de diseño acepte leer el contexto desde el PRD.
-3. Licencia y remoto, cuando se decida publicar.
+3. Remoto en GitHub: crear privado, configurar y publicar solo con orden explícita (checklist de la skill `publicar-repo`).
+4. Llevar al kit lo ya decidido en el playbook: reglas de autonomía en el contrato, puertas de revisión, `fuente` del backlog, catálogo propio de hooks (`_agregar-un-hook.md`).
+5. Escenarios de regresión del kit; hooks en el adaptador (verificar formato en documentación oficial); revisión independiente en contexto fresco.
