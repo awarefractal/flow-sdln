@@ -1,4 +1,4 @@
-# Flow — guía de trabajo del kit
+# Flow — Software Development Life Network (SDLN): guía de trabajo del kit
 
 Este repo es el kit de Flow: un framework de trabajo humano + IA, agnóstico de proyecto y de IA. Empieza por `README.md` (mapa) y `PLAYBOOK.md` (cómo funciona).
 
@@ -32,5 +32,5 @@ v0.2.0 escrita, preparada para publicar (licencia MIT, docs, CI), sin remoto tod
 1. Probar el setup con una IA real en un proyecto vacío.
 2. Módulo de diseño: confirmar que la skill de diseño acepte leer el contexto desde el PRD.
 3. Remoto en GitHub: crear privado, configurar y publicar solo con orden explícita (checklist de la skill `publicar-repo`).
-4. Llevar al kit lo ya decidido en el playbook: reglas de autonomía en el contrato, puertas de revisión, `fuente` del backlog, catálogo propio de hooks (`_agregar-un-hook.md`).
+4. Comandos de los hooks (`nucleo/hooks/INDICE.md`, hoy `por implementar`) y cierre automático.
 5. Escenarios de regresión del kit; hooks en el adaptador (verificar formato en documentación oficial); revisión independiente en contexto fresco.

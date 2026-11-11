@@ -1,11 +1,11 @@
 **[English]** · [(En español más abajo)](#español)
 
-# Flow
+# Flow — Software Development Life Network
 
 [![CI](https://github.com/awarefractal/flow/actions/workflows/ci.yml/badge.svg)](https://github.com/awarefractal/flow/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-A human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
+Flow (SDLN, Software Development Life Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
 
 > Status: v0.2.0, pre-release. The setup has only been dry-run, never with an AI on a real project (see [CHANGELOG.md](CHANGELOG.md)). The kit is written in Spanish.
 
@@ -29,9 +29,9 @@ Flow works with Claude Code, Codex and OpenCode through adapters. It is an indep
 
 # Español
 
-# Flow
+# Flow — Software Development Life Network
 
-Framework de trabajo humano + IA. Convierte una idea en un producto con trazabilidad: una red de ciclos (captar, definir, explorar, decidir, entregar, aprender) que se activan según su combustible, un PRD vivo, un backlog que se lee por índices, estado versionado que varias sesiones y personas pueden compartir sin pisarse, y un cierre que deja todo al día. No depende del proyecto ni de la IA que se use.
+Flow (SDLN, Software Development Life Network) es un framework de trabajo humano + IA. Convierte una idea en un producto con trazabilidad: una red de ciclos (captar, definir, explorar, decidir, entregar, aprender) que se activan según su combustible, un PRD vivo, un backlog que se lee por índices, estado versionado que varias sesiones y personas pueden compartir sin pisarse, y un cierre que deja todo al día. No depende del proyecto ni de la IA que se use.
 
 > Estado: v0.2.0, pre-lanzamiento. El setup solo se probó en seco, nunca con una IA en un proyecto real (ver `CHANGELOG.md`). Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
 
@@ -60,7 +60,8 @@ flow/
 │  │  └─ ponytail.md               la escalera de mínimo esfuerzo
 │  ├─ motor/
 │  │  ├─ SKILL.base.md             el ciclo; es el índice del mecanismo
-│  │  └─ referencia/               red · bootstrap · coordinacion · dimensionado · checkpoints · cierre · excepciones · metricas
+│  │  └─ referencia/               red · bootstrap · coordinacion · revision · backlog-externo · dimensionado · checkpoints · cierre · excepciones · metricas
+│  ├─ hooks/                       catálogo de hooks propio · _agregar-un-hook.md
 │  ├─ plantillas/                  formato de lo que la IA crea al trabajar
 │  ├─ esqueleto/                   lo que el setup copia a .flow/
 │  └─ catalogo/                    áreas de decisión por tipo de proyecto
