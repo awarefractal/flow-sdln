@@ -11,11 +11,12 @@ afecta:
 entornos:
 toma:
 bloqueado_por:
+externo:
 ---
 
 # P000 — Título
 
-Tipos y su bump: ver `config.md`. Estados: `todo`, `doing`, `done`, `descartado` (con motivo). `padre` y `paralelo` (`si` o `no`) solo en slices. `depende_de`, `afecta`, `entornos`, `toma` y `bloqueado_por`: ver `referencia/coordinacion.md`.
+Tipos y su bump: ver `config.md`. Estados: `todo`, `doing`, `revision` (solo si hay una puerta, ver `referencia/revision.md`), `done`, `descartado` (con motivo). `externo`: enlace o clave del ítem si el backlog vive en una herramienta (`referencia/backlog-externo.md`); vacío si es local. `padre` y `paralelo` (`si` o `no`) solo en slices. `depende_de`, `afecta`, `entornos`, `toma` y `bloqueado_por`: ver `referencia/coordinacion.md`.
 
 ## Origen
 
@@ -42,6 +43,10 @@ Contexto completo: qué, por qué, restricciones y decisiones tomadas.
 ## Preguntas abiertas
 
 Lo que aún no se sabe y puede cambiar el plan. Vacío si no hay.
+
+## Revisión
+
+Solo si el punto pasó por una puerta. Una fila por veredicto: fecha · puerta · quién · veredicto (`aprobado`, `observado`, `rechazado`) · motivo · origen del dato.
 
 ## Enlaces
 

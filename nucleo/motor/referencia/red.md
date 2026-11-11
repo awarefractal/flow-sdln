@@ -34,7 +34,7 @@ Mira el estado y toma el primer caso que aplique:
 1. No existe el backlog → bootstrap.
 2. Hay incidente en la bandeja sin triar → es urgencia: ver `excepciones.md`.
 3. El usuario pidió algo concreto → Entregar sobre ese punto. Si no está listo, corre el ciclo de su combustible faltante: sin criterio, Definir; en brecha, Decidir; con pregunta abierta, Explorar.
-4. Sin pedido → `estado`: backlog abierto, pins vencidos, bandeja sin triar. Propón uno; no ejecutes.
+4. Sin pedido → `estado`: backlog abierto, lo que espera veredicto, pins vencidos, bandeja sin triar. Propón uno; no ejecutes.
 
 Un ciclo nunca se salta su combustible: no se planifica un punto sin criterio ni se construye sobre una brecha abierta.
 

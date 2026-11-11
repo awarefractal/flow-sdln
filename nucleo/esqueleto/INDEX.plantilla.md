@@ -14,4 +14,5 @@
 | Qué cambió y por qué | `bitacora/INDICE.md` | Para entender el estado o buscar un cambio |
 | Backlog | `motor/backlog/INDICE.md` | Para elegir o crear un punto |
 | Planes | `motor/planes/` | Se llega desde el punto; no se explora |
+| Hooks (garantías automáticas) | `hooks/INDICE.md` | Al agregar, ajustar o apagar un hook |
 | Módulos activos | `modulos/` | Solo si `capacidades.md` lo indica |

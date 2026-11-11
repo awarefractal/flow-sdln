@@ -54,6 +54,20 @@ Se edita a mano y se lee antes de cada ciclo. Columna **origen**: `dicho` (lo di
 | activo | {{versionado_activo}} | |
 | archivo de versión | | |
 
+## Backlog
+
+| Campo | Valor | Origen |
+|---|---|---|
+| fuente | `local` (`externa` si vive en una herramienta; ver `referencia/backlog-externo.md`) | asumido |
+| herramienta | | |
+
+## Puertas de revisión
+
+| Puerta | Dónde | Qué revisa | Quién revisa | Obligatoria |
+|---|---|---|---|---|
+
+Sin filas, no hay puertas. Mecanismo: `referencia/revision.md`. Quién puede aprobar sin una persona detrás: «Reglas de autonomía» de `CONTEXT.md`.
+
 ## Tipos de punto
 
 | Tipo | Bump | Checkpoint | Criterios de aceptación base |

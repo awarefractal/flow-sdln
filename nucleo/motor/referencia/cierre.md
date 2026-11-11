@@ -7,6 +7,8 @@ Se cierra cuando se cumplen los criterios de aceptación del punto y los globale
    - los criterios globales de cierre de `CONTEXT.md`;
    - si el cambio promueve a producción, además los criterios de release del PRD §7.
 
+   Si `config.md` declara una puerta de revisión que aplica, el punto pasa a `revision` y no a `done` hasta el veredicto (`revision.md`).
+
    Compara el diff con el plan. Si se apartó, el plan se corrige y la desviación se anota. Si algo no se cumple, no se cierra: se reporta qué falta.
 2. **Plan.** Mueve `planes/activos/<ID>-<slug>.md` a `planes/hechos/`.
 3. **Punto.** `estado: done` en su archivo, con enlace al plan, y actualiza su fila en `backlog/INDICE.md`.

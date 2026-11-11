@@ -18,7 +18,7 @@ Navega siempre por índices: `.flow/INDEX.md` → `INDICE.md` de la carpeta → 
 1. ¿Existe `.flow/motor/backlog/INDICE.md`?
    - **No** → bootstrap: `referencia/bootstrap.md`. Es de una sola vez; después solo corre si el usuario lo pide.
    - **Sí** → la red de ciclos: `referencia/red.md`. Ahí está el router que decide qué ciclo corre según su combustible.
-2. `/flow estado` (o «cómo viene el backlog»): reporta el índice del backlog, los puntos tomados y por quién, los planes activos, la bandeja sin triar y los pins vencidos. No ejecutes nada.
+2. `/flow estado` (o «cómo viene el backlog»): reporta el índice del backlog, los puntos tomados y por quién, los planes activos, lo que espera veredicto de una puerta (con su edad), la bandeja sin triar y los pins vencidos. No ejecutes nada.
 3. `/flow metricas`: `referencia/metricas.md`.
 4. Algo que surge sin ser trabajo todavía («se me ocurrió», «pasó esto»): captar, una fila en `bandeja.md`.
 5. Texto libre que pide trabajo («arregla X»): créalo como punto y sigue el ciclo Entregar sobre él. Si es trivial, vía rápida; si es urgente, urgencia: `referencia/excepciones.md`.
@@ -49,4 +49,6 @@ Un punto es un archivo en `motor/backlog/puntos/<ID>.md` (plantilla `punto`) y u
 | `referencia/checkpoints.md` | Ejecutar |
 | `referencia/cierre.md` | Cerrar |
 | `referencia/excepciones.md` | Cambio trivial, urgencia, bug, abandonar un plan, cuándo frenar, autonomía |
-| `referencia/metricas.md` | `/flow metricas`, poda del contrato |
+| `referencia/revision.md` | Un punto o documento pasa por una puerta de revisión; quién puede aprobar |
+| `referencia/backlog-externo.md` | `config.md` declara `fuente: externa` |
+| `referencia/metricas.md` | `/flow metricas`, poda y tope del contrato |

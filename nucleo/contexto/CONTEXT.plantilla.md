@@ -1,6 +1,6 @@
 # Contrato — {{nombre}}
 
-> Reglas y criterios que valen en TODA tarea. Es corto a propósito: solo entra lo que debe cumplirse siempre. Lo que se consulta según el tema va en `dominio/`; el detalle de los errores, en `errores.md`. Las secciones «Reglas de Flow» y «Criterios globales de cierre» vienen del kit; «Invariantes», «Reglas aprendidas» y los criterios extra son del proyecto y crecen con el uso.
+> Reglas y criterios que valen en TODA tarea. Es corto a propósito: solo entra lo que debe cumplirse siempre. Lo que se consulta según el tema va en `dominio/`; el detalle de los errores, en `errores.md`. Las secciones «Reglas de Flow» y «Criterios globales de cierre» vienen del kit; «Invariantes», «Reglas de autonomía», «Reglas aprendidas» y los criterios extra son del proyecto y crecen con el uso.
 
 ## Qué es
 
@@ -49,6 +49,12 @@ Toda carpeta con 6 archivos o más, o que crece con el uso, lleva `INDICE.md`. T
 
 {{ponytail_resumen}}
 
+## Reglas de autonomía
+
+Quién puede aprobar sin una persona detrás: por puerta de revisión (`config.md`), por tipo de punto o por entorno. Puede aprobar un agente, incluso uno externo; lo que la regla no diga lo aprueba una persona. La autonomía por entorno de `config.md` nunca es mayor que la de aquí.
+
+Ninguna todavía: toda puerta de revisión la aprueba una persona.
+
 ## Reglas aprendidas
 
 Una línea por regla, en imperativo, con el error que la originó. Nace de una repetición en `errores.md`; si deja de evitar algo, se poda.
@@ -72,6 +78,8 @@ Valen para todo punto, además de sus criterios de aceptación propios. Todos de
 {{checklist_extra}}
 
 Los criterios de release del producto (promover a producción) viven en el PRD §7.
+
+El contrato tiene un tope de unas 120 líneas o 25 reglas aprendidas. Al superarlo se crea un punto `proceso`: lo detallado pasa a archivos por área en `dominio/` y en el contrato queda la regla de una línea con su referencia.
 
 ## Léxico
 

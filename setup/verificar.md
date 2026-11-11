@@ -19,6 +19,11 @@ Chequeos que se corren al final del setup y cada vez que el usuario pida «verif
 | Auditoría | Cada punto `done` | tiene entrada de bitácora con autor, criterios marcados con evidencia, y commits con su ID |
 | Bandeja | `bandeja.md` | cada fila triada tiene destino; los pins vencidos se reportan |
 | Errores | `errores.md` y «Reglas aprendidas» | toda fila con veces ≥ 2 está en el contrato, y cada regla aprendida cita su fila |
+| Puertas | puntos `revision` y `done` | todo `done` pasó por sus puertas obligatorias con veredicto `aprobado`; lo que espera veredicto se reporta con su edad |
+| Autonomía | `CONTEXT.md` | tiene «Reglas de autonomía» |
+| Tope del contrato | `CONTEXT.md` | no pasa de unas 120 líneas ni de 25 reglas aprendidas; si pasa, se propone un punto `proceso` |
+| Backlog externo | `config.md` con `fuente: externa` | todo punto tiene `externo` |
+| Hooks | `.flow/hooks/INDICE.md` | todo hook `activo` tiene comando que existe y está conectado en el adaptador |
 | Lectura por índices | `CONTEXT.md` y el archivo guía | contienen la regla de navegación |
 
 Reporte corto: lo que falla, dónde y qué hacer. Si todo pasa, una línea.

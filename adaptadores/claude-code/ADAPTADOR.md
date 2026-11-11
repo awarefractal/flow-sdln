@@ -26,3 +26,22 @@
 |---|---|---|---|
 | Skill en `.claude/skills/<nombre>/SKILL.md` con `name` y `description` | confirmado | code.claude.com/docs/en/skills | 2026-11-01 |
 | Importar archivos desde `CLAUDE.md` con `@ruta` | no verificado; no se usa, el archivo guía apunta por texto | — | — |
+
+## Hooks
+
+Se conectan solo los hooks `activo` de `.flow/hooks/INDICE.md`, en `.claude/settings.json` (o en el `hooks/hooks.json` de un plugin).
+
+| Evento abstracto | Evento de Claude Code |
+|---|---|
+| inicio de sesión | `SessionStart` |
+| antes de editar | `PreToolUse`, matcher `Edit\|Write` |
+| antes de un commit | `PreToolUse`, matcher `Bash`; el comando está en `tool_input.command` |
+| al terminar la respuesta | `Stop` |
+
+Forma de una entrada: `{"hooks": {"PreToolUse": [{"matcher": "Bash", "hooks": [{"type": "command", "command": "<comando>"}]}]}}`. Un `PreToolUse` que sale con código 2 bloquea la acción y su stderr le llega a Claude.
+
+| Dato | Estado | Fuente | Fecha |
+|---|---|---|---|
+| Eventos, ubicación de la configuración, forma de la entrada, bloqueo con código 2 en `PreToolUse`, nombres de herramienta `Edit`, `Write`, `Bash` y campo `tool_input.command` | confirmado | code.claude.com/docs/en/hooks | 2026-11-11 |
+| Cómo `Stop` impide terminar (JSON con `decision: block`) | no verificado; solo se leyó que el código de salida 2 lo devuelve a trabajar | code.claude.com/docs/en/hooks | 2026-11-11 |
+| Herramienta `PowerShell` como matcher de comandos en Windows | no verificado | code.claude.com/docs/en/hooks | 2026-11-11 |

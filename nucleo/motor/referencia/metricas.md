@@ -9,6 +9,7 @@ Se calculan de lo que ya existe; no se guarda nada nuevo. Se piden con `/flow me
 | Tiempo de ciclo | `todo` → `done`, por las fechas de `toma` y de la bitácora |
 | Trabajo en curso | puntos en `doing` |
 | Reaperturas | puntos que volvieron de `done` |
+| Veredictos | `aprobado`, `observado` y `rechazado` por puerta, y cuánto esperó cada una |
 | Costo por punto | tokens o tiempo, si la herramienta los informa; si no, no se estima |
 
 ## Incertidumbre (nunca llega a cero; en cero sería falsa confianza)
@@ -28,4 +29,4 @@ Cerrar brechas rápido con ADR mediocres baja el número y empeora el producto: 
 
 ## Poda del contrato
 
-Con las métricas, o cada cierto tiempo, se revisa `CONTEXT.md`: una regla que nunca evitó nada se elimina; una sección que crece sin freno se parte hacia `errores.md` o `dominio/`. El contrato corto es el que se lee.
+Con las métricas, o cada cierto tiempo, se revisa `CONTEXT.md`: una regla que nunca evitó nada se elimina; una sección que crece sin freno se parte hacia `errores.md` o `dominio/`. El contrato corto es el que se lee. Tope: unas 120 líneas o 25 reglas aprendidas; al superarlo se crea un punto `proceso` que mueve lo detallado a `dominio/` y deja la regla de una línea con su referencia.

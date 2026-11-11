@@ -34,6 +34,7 @@ Del relato y de lo detectado, llena esta tabla marcando cada campo como `dicho`,
 | invariantes («esto nunca debe…») | relato | `pendiente`, queda como brecha | no |
 | normativa (país y tema) | relato: datos personales, sector regulado | «no»; preguntar solo si el relato lo insinúa | no |
 | estética | relato (referencias, adjetivos, marca) y estilos o tokens del código | preguntar una vez, solo si hay interfaz | sí, si hay interfaz |
+| fuente del backlog | relato: nombra Jira, Trello u otra herramienta de backlog | `local` | no |
 | módulos | hay interfaz → `diseno`; hay URL desplegada → `qa-navegador` | se proponen en el resumen, no se preguntan | no |
 
 ## 3. Rondas cortas
@@ -49,9 +50,10 @@ Sin respuesta, no se asume un estilo por defecto: queda `pendiente` y el módulo
 ## 4. Generar
 
 1. Crea `.flow/` copiando `nucleo/esqueleto/*.plantilla.md` con las variables resueltas y sin el sufijo, y `nucleo/contexto/CONTEXT.plantilla.md` como `.flow/CONTEXT.md`.
-2. Crea las carpetas `dominio/`, `bitacora/entradas/`, `motor/backlog/puntos/`, `motor/planes/{activos,hechos}/` y `modulos/<m>/` de los módulos activos. Para cada módulo activo, sigue su `modulos/<m>/MODULO.md`.
+2. Crea las carpetas `dominio/`, `bitacora/entradas/`, `motor/backlog/puntos/`, `motor/planes/{activos,hechos}/` y `modulos/<m>/` de los módulos activos, y `hooks/` con `nucleo/hooks/INDICE.md` y `_agregar-un-hook.md` copiados dentro. Para cada módulo activo, sigue su `modulos/<m>/MODULO.md`.
 3. Genera el adaptador de la IA detectada, según `adaptadores/<ia>/ADAPTADOR.md`:
    - el archivo guía, desde `nucleo/contexto/guia.base.md`;
+   - la conexión de los hooks de `.flow/hooks/INDICE.md` en estado `activo`;
    - el skill `flow`: `nucleo/motor/SKILL.base.md` como `SKILL.md`, más `nucleo/motor/referencia/`, `nucleo/plantillas/` y `nucleo/catalogo/` junto a él, en la ruta de skills de esa IA.
 4. `.flow/` se versiona: no va al `.gitignore`, salvo que el usuario lo pida (y entonces se le advierte que pierde estado compartido, bloqueos y rastro entre sesiones y personas).
 5. Todo lo generado (archivo guía y skill) lleva la cabecera «Generado por Flow vX. No editar».

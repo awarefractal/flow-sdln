@@ -23,3 +23,7 @@
 | Plugin Ponytail (`@dietrichgebert/ponytail`) | nombre visto en la configuración de un proyecto real; paquete no verificado | — | 2026-11-01 |
 
 Confirmar las rutas y el paquete en la documentación oficial antes de generar.
+
+## Hooks
+
+Sin verificar: no se confirmó en su documentación oficial qué eventos ofrece. Mientras tanto, los hooks de `.flow/hooks/INDICE.md` se cubren con hooks de git (`pre-commit`, `commit-msg`) o con el CI del repositorio, y se anota en la fila de cada hook. Al verificar la herramienta, se agrega aquí la tabla de eventos y la fuente con su fecha.

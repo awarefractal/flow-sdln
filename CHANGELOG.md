@@ -12,9 +12,10 @@ De ciclo a red de ciclos, trabajo en equipo y rastro.
 - Auditoría: autor y fecha en todo rastro, ID de punto en cada commit, chequeos nuevos en `verificar.md`.
 - Conversaciones cortas: el cierre recomienda abrir una nueva.
 - Caminos no felices (`excepciones.md`): vía rápida, urgencia, bug con test rojo, abandonar un plan, cuándo frenar, autonomía por entorno. Métricas (`metricas.md`).
+- Puertas de revisión (`revision.md`) y reglas de autonomía en el contrato; backlog local o en una herramienta (`backlog-externo.md`); tope del contrato; catálogo de hooks propio en `nucleo/hooks/` con su guía, y sección Hooks en cada adaptador. Los hooks quedan declarados `por implementar`, sin comando.
 - PLAYBOOK §0 escrito por su autor; nuevas secciones 14 (puertas de revisión y autonomía) y 15 (hooks propios del kit, sin depender de una IA).
 - Preparación para publicar: licencia MIT, SECURITY, CONTRIBUTING, código de conducta, plantillas de issue y PR, CI con `scripts/check.mjs`, CodeQL y Dependabot.
-- Pendiente: escenarios de regresión, catálogo de hooks, revisión independiente; probar el setup en un proyecto real.
+- Pendiente: comandos de los hooks y cierre automático, escenarios de regresión, revisión independiente; probar el setup en un proyecto real.
 
 ## 0.1.0 — sin publicar
 

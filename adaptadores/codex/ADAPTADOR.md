@@ -22,3 +22,7 @@
 | Ruta de proyecto `.agents/skills/` | **sin confirmar en la documentación oficial**: una lista comunitaria la indica y un proyecto real con Codex la usa | — | 2026-11-01 |
 
 Antes de depender de la ruta, confirmarla en la documentación oficial vigente.
+
+## Hooks
+
+Sin verificar: no se confirmó en su documentación oficial qué eventos ofrece. Mientras tanto, los hooks de `.flow/hooks/INDICE.md` se cubren con hooks de git (`pre-commit`, `commit-msg`) o con el CI del repositorio, y se anota en la fila de cada hook. Al verificar la herramienta, se agrega aquí la tabla de eventos y la fuente con su fecha.
