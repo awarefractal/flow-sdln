@@ -11,7 +11,7 @@ Este documento explica el método. Las reglas que la IA sigue viven en el contra
 ### Un par de alcances sobre los modelos de trabajo
 
 1. El "Happy path" es, de hecho, un caso de borde. El usuario adapta el producto a su contexto, una mentalidad de producto edge case first es una buena idea.
-2. Todo playbook debiera ser sólo un setup inicial, la primera foto, la evolución 0.
+2. Todo playbook debiera ser solo un setup inicial, la primera foto, la evolución 0.
 3. La incertidumbre es la primera, inevitable e inherente característica sobreviviente desde los primeros procesos analógicos, que siempre prevalecerá.
 
 ### La paradoja de la hiperconexión y la desconexión de las organizaciones
@@ -20,17 +20,17 @@ A medida que una organización escala en tamaño, las conexiones entre los miemb
 
 Cuando el costo es el tiempo y la moneda es la burocracia, la red empieza a aislar partes (los equipos se desconectan, las personas se desconectan, los sistemas se llenan de reglas, los procesos se hacen pesados) y comienza el fenómeno del tironeo entre los "expertos" (roles consultivos o de diseño cuya labor es pensar los procesos, ej: Arquitectura de software, área de procesos, área de estrategia) y los "operadores" (roles dedicados a usar esos procesos para realizar su trabajo, ej: desarrolladores, equipos de producto).
 
-Parte de los problemas de estas dinámicas es que si los operadores no tienen un mecanismo propio de regulación de los procesos, éstos se vuelven ley universal, inalterable, lo que es obsoleto en entornos de alta incertidumbre. Además si los expertos no deben transitar los procesos que ellos mismos crean, caen en un mar de sesgos donde los resultados sin consecuencias para ellos alimentan el modelo.
+Parte de los problemas de estas dinámicas es que si los operadores no tienen un mecanismo propio de regulación de los procesos, estos se vuelven ley universal, inalterable, lo que es obsoleto en entornos de alta incertidumbre. Además si los expertos no deben transitar los procesos que ellos mismos crean, caen en un mar de sesgos donde los resultados sin consecuencias para ellos alimentan el modelo.
 
-Para graficar con un ejemplo: Si las tropas del general San Martin hubieran tenido un equipo de expertos diciéndoles cómo viajar a los operadores, éstos bien podrían haber recomendado un cruce en ponys y cabras (consumen menos recursos, son más fáciles de guarecer, causan ternura, y ni hablar del desempeño de las cabras en senderos montañeses, además de dar leche y abrigo), habrían tenido razón pero habiéndoles faltado mucha información.
+Para graficar con un ejemplo: si las tropas del general San Martín hubieran tenido un equipo de expertos diciéndoles cómo viajar a los operadores, estos bien podrían haber recomendado un cruce en ponis y cabras (consumen menos recursos, son más fáciles de guarecer, causan ternura, y ni hablar del desempeño de las cabras en senderos montañeses, además de dar leche y abrigo), habrían tenido razón pero habiéndoles faltado mucha información.
 
 ### La llegada de la inteligencia artificial
 
-El santo grial de los procesos siempre ha sido la automatización, han habido numerosos intentos, y siempre hemos ganado alguna ventaja, pero ahora va en serio, producir código, revisarlo, productivizarlo, nunca había sido tan accesible. Como dice el playbook [The AI-Native SDLC](https://claude.com/es/resources/articles/the-ai-native-sdlc-playbook) de Anthropic, "el cuello de botella ya no es el código), pero ojo, lo que no dicen es que esto se cumple siempre y cuando entendamos, mantengamos, mejoremos, y tengamos claro el propósito de ese código, de lo contrario puede volverse una pesadilla, el collar más caro que el perro, otra vez pensadores vs hacedores.
+El santo grial de los procesos siempre ha sido la automatización, ha habido numerosos intentos, y siempre hemos ganado alguna ventaja, pero ahora va en serio, producir código, revisarlo, productivizarlo, nunca había sido tan accesible. Como dice el playbook [The AI-Native SDLC](https://claude.com/es/resources/articles/the-ai-native-sdlc-playbook) de Anthropic, "el cuello de botella ya no es el código", pero ojo, lo que no dicen es que esto se cumple siempre y cuando entendamos, mantengamos, mejoremos, y tengamos claro el propósito de ese código, de lo contrario puede volverse una pesadilla, el collar más caro que el perro, otra vez pensadores vs hacedores.
 
-Aunque la ia sea una gran herramienta potenciadora, agregar el prefijo "Ai" al inicio de tu SDLC, no te acerca en lo más mínimo a sacar buen software, o buenos productos, sin el cuidado suficiente, puede ser un espejismo que te aleja cada vez mas.
+Aunque la IA sea una gran herramienta potenciadora, agregar el prefijo "Ai" al inicio de tu SDLC, no te acerca en lo más mínimo a sacar buen software, o buenos productos, sin el cuidado suficiente, puede ser un espejismo que te aleja cada vez más.
 
-Volviendo a San Martín, ahora los expertos estarían recomendando ponerle un motor al pony, y montar las cabras en un drone. Estaríamos potenciando algo que es desde las raíces, incorrecto.
+Volviendo a San Martín, ahora los expertos estarían recomendando ponerle un motor al pony, y montar las cabras en un dron. Estaríamos potenciando algo que es desde las raíces, incorrecto.
 
 ### Volver a las raíces.
 
@@ -39,9 +39,9 @@ Al final siempre se trató de lo más simple, solo que está sumergido en capas 
 - El trabajo es tan pesado como lo sean sus procesos.
 - Siempre necesitaremos buenos insumos y materia prima.
 - Decidir temprano abarata, construir de más encarece.
-- No decidir, es una decisión (y en muy pocos casos es una buena).
+- No decidir es una decisión (y en muy pocos casos es una buena).
 - Cambiar de rumbo no es un defecto, es una parte sana del proceso.
-- La claridad y la incertidumbre son una cualidad, que deben ser declaradas y compartidas.
+- La claridad y la incertidumbre son cualidades que deben ser declaradas.
 - La exploración y experimentación importan mucho.
 - Las conversaciones importan mucho.
 - La trazabilidad importa mucho.
@@ -58,17 +58,17 @@ Flow no viene estrictamente de "flujo", como una imposición, sino de "fluir", e
 
 A continuación vienen varias hojas con propuestas de uso, bloques organizados que pueden ser reemplazados por conveniencia, por gusto, por relevancia, por políticas, por gestión del cambio o porque se te canten las ganas, la idea es buscar que las cosas fluyan, que lleguen a puerto y que el resultado sea útil.
 
-Si bien flow está diseñado para que pueda ser usado por una persona sola, por una persona con su IA favorita, por una persona con varias IAs, por equipos de personas con equipos de IAs, es desde sus cimientos, agnóstico de cualquier LLM, de cualquier proyecto, o de cualquier tipo de producto digital, aunque está probado en diversos proyectos de desarrollo de software.
+Si bien flow está diseñado para que pueda ser usado por una persona sola, por una persona con su IA favorita, por una persona con varias IAs, por equipos de personas con equipos de IAs, es, desde sus cimientos, agnóstico de cualquier LLM, de cualquier proyecto, o de cualquier tipo de producto digital, aunque está probado en diversos proyectos de desarrollo de software.
 
-La experimentación/ exploración tiene protagonismo aquí, explorar es uno de los ciclos de primera clase de esta denominada red de ciclos, no es costo hundido. Esto nos ayuda a saber qué se decide, qué se asume, qué falta (claridad + incertidumbre medidas), nos ayuda a aprender de los errores y transformarlos sistémicamente en nuevos buenos acuerdos, nos ayuda a tener un baúl de cosas con sentido por hacer.
+La experimentación/exploración tiene protagonismo aquí, explorar es uno de los ciclos de primera clase de esta denominada red de ciclos, no es costo hundido. Esto nos ayuda a saber qué se decide, qué se asume, qué falta (claridad + incertidumbre medidas), nos ayuda a aprender de los errores y transformarlos sistémicamente en nuevos buenos acuerdos, nos ayuda a tener un baúl de cosas con sentido por hacer.
 
 Las intenciones son una chispa que debe atenderse, también son parte del combustible de nuestra red de ciclos.
 
 Tener conversaciones cortas y frecuentes dentro de cualquier parte de la red, ahorra tokens y nos hace ganar en precisión.
 
-Tenemos una nueva ventaja, la memoria compartida de los proyectos, podemos tener trazabilidad, auditoría, timonazos seguros, y esto es una ventaja de borde para el escalamiento organizacional, es la manera en que esto le puede servir a una sola persona, o a un entorno colaborativo completo metiendo las manos, y "entorno" no significa solamente devs mergeando sin cesar, significa también que herramientas de desarrollo, de calidad, de gestión, de comunicación, de versionamiento, o de apoyo en cualquier parte del flujo, expertos y consultores, pueden ser incluidos y combinados de forma sana. La visión de organizacional de ecosistema que siempre se ha buscado, está más a mano que nunca.
+Tenemos una nueva ventaja, la memoria compartida de los proyectos, podemos tener trazabilidad, auditoría, timonazos seguros, y esto es una ventaja de borde para el escalamiento organizacional, es la manera en que esto le puede servir a una sola persona, o a un entorno colaborativo completo metiendo las manos, y "entorno" no significa solamente devs mergeando sin cesar, significa también que herramientas de desarrollo, de calidad, de gestión, de comunicación, de versionamiento, o de apoyo en cualquier parte del flujo, expertos y consultores, pueden ser incluidos y combinados de forma sana. La visión organizacional de ecosistema que siempre se ha buscado, está más a mano que nunca.
 
-Siéntase libre de encontrar referencias de otros modelos, comparar, sacar conclusiones y proponer mejoras, flow es un descendiente de modelos tradicionales de desarrollo, de shop floor management, de modelos de agilidad, de agilidad escalada, de heridas de guerra corporativa, de energía de las startups y de muchos años de hacer producto, condensados y ordenados con intención, con proósito, y con mucho cariño.
+Siéntase libre de encontrar referencias de otros modelos, comparar, sacar conclusiones y proponer mejoras, flow es un descendiente de modelos tradicionales de desarrollo, de shop floor management, de modelos de agilidad, de agilidad escalada, de heridas de guerra corporativa, de energía de las startups y de muchos años de hacer producto, condensados y ordenados con intención, con propósito, y con mucho cariño.
 
 ✍︎ Escrito letra a letra por un humano · [verificar en gutmbrg](https://app.gutmbrg.com/p/djruNccm)
 
