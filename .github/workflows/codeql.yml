@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
   schedule:
     - cron: '27 5 * * 1' # lunes, por si aparece una regla nueva
 
@@ -13,6 +14,8 @@ permissions:
 jobs:
   analyze:
     name: Analyze (actions)
+    # En repos privados sin Advanced Security no se pueden subir los resultados: corre solo en repos públicos.
+    if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
