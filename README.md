@@ -3,6 +3,7 @@
 # Flow — Software Development Life Network
 
 [![CI](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/awarefractal/flow-sdln/actions/workflows/codeql.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.2.0-informational)](CHANGELOG.md)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen)](scripts/check.mjs)
