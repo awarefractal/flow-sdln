@@ -25,4 +25,4 @@ Antes de depender de la ruta, confirmarla en la documentación oficial vigente.
 
 ## Hooks
 
-Sin verificar: no se confirmó en su documentación oficial qué eventos ofrece. Mientras tanto, los hooks de `.flow/hooks/INDICE.md` se cubren con hooks de git (`pre-commit`, `commit-msg`) o con el CI del repositorio, y se anota en la fila de cada hook. Al verificar la herramienta, se agrega aquí la tabla de eventos y la fuente con su fecha.
+Sin verificar: no se confirmó en su documentación oficial qué eventos ofrece. Mientras tanto, los hooks de `.flow/hooks/INDICE.md` se cubren con hooks de git (`pre-commit`, `commit-msg`) o con el CI del repositorio, y se anota en la fila de cada hook. `flow-hooks.mjs commit` puede llamarse desde `commit-msg`; el resto de los hooks no tiene respaldo todavía. Al verificar la herramienta, se agrega aquí la tabla de eventos y la fuente con su fecha.

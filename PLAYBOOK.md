@@ -248,4 +248,4 @@ Un hook es un comando que se dispara en un evento concreto, sin depender de que 
 
 Se agregan, se ajustan o se apagan editando su declaración. Un módulo de terceros (Ponytail, un sistema de diseño) puede traer los suyos al mismo catálogo, con su origen y licencia, y se gobiernan igual que los propios.
 
-Estado: el catálogo y su guía para agregar un hook están en el kit (`nucleo/hooks/`); los comandos de cada hook están por implementar.
+Estado: el catálogo y su guía para agregar un hook están en el kit (`nucleo/hooks/`); los comandos de los cinco hooks de Flow están escritos (`flow-hooks.mjs`).

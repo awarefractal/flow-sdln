@@ -61,7 +61,7 @@ flow/
 │  ├─ motor/
 │  │  ├─ SKILL.base.md             el ciclo; es el índice del mecanismo
 │  │  └─ referencia/               red · bootstrap · coordinacion · revision · backlog-externo · dimensionado · checkpoints · cierre · excepciones · metricas
-│  ├─ hooks/                       catálogo de hooks propio · _agregar-un-hook.md
+│  ├─ hooks/                       catálogo de hooks · flow-hooks.mjs · _agregar-un-hook.md
 │  ├─ plantillas/                  formato de lo que la IA crea al trabajar
 │  ├─ esqueleto/                   lo que el setup copia a .flow/
 │  └─ catalogo/                    áreas de decisión por tipo de proyecto

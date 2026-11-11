@@ -50,7 +50,7 @@ Sin respuesta, no se asume un estilo por defecto: queda `pendiente` y el módulo
 ## 4. Generar
 
 1. Crea `.flow/` copiando `nucleo/esqueleto/*.plantilla.md` con las variables resueltas y sin el sufijo, y `nucleo/contexto/CONTEXT.plantilla.md` como `.flow/CONTEXT.md`.
-2. Crea las carpetas `dominio/`, `bitacora/entradas/`, `motor/backlog/puntos/`, `motor/planes/{activos,hechos}/` y `modulos/<m>/` de los módulos activos, y `hooks/` con `nucleo/hooks/INDICE.md` y `_agregar-un-hook.md` copiados dentro. Para cada módulo activo, sigue su `modulos/<m>/MODULO.md`.
+2. Crea las carpetas `dominio/`, `bitacora/entradas/`, `motor/backlog/puntos/`, `motor/planes/{activos,hechos}/` y `modulos/<m>/` de los módulos activos, y `hooks/` con `nucleo/hooks/INDICE.md`, `_agregar-un-hook.md` y `flow-hooks.mjs` copiados dentro. Para cada módulo activo, sigue su `modulos/<m>/MODULO.md`.
 3. Genera el adaptador de la IA detectada, según `adaptadores/<ia>/ADAPTADOR.md`:
    - el archivo guía, desde `nucleo/contexto/guia.base.md`;
    - la conexión de los hooks de `.flow/hooks/INDICE.md` en estado `activo`;

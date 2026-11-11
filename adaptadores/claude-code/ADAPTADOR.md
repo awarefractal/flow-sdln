@@ -38,10 +38,12 @@ Se conectan solo los hooks `activo` de `.flow/hooks/INDICE.md`, en `.claude/sett
 | antes de un commit | `PreToolUse`, matcher `Bash`; el comando está en `tool_input.command` |
 | al terminar la respuesta | `Stop` |
 
-Forma de una entrada: `{"hooks": {"PreToolUse": [{"matcher": "Bash", "hooks": [{"type": "command", "command": "<comando>"}]}]}}`. Un `PreToolUse` que sale con código 2 bloquea la acción y su stderr le llega a Claude.
+Los comandos de Flow se llaman con `node "${CLAUDE_PROJECT_DIR}/.flow/hooks/flow-hooks.mjs" <sesion|toma|generado|commit|cierre>`. Forma de una entrada: `{"hooks": {"PreToolUse": [{"matcher": "Bash", "hooks": [{"type": "command", "command": "<comando>"}]}]}}`. Un `PreToolUse` que sale con código 2 bloquea la acción y su stderr le llega a Claude.
 
 | Dato | Estado | Fuente | Fecha |
 |---|---|---|---|
 | Eventos, ubicación de la configuración, forma de la entrada, bloqueo con código 2 en `PreToolUse`, nombres de herramienta `Edit`, `Write`, `Bash` y campo `tool_input.command` | confirmado | code.claude.com/docs/en/hooks | 2026-11-11 |
 | Cómo `Stop` impide terminar (JSON con `decision: block`) | no verificado; solo se leyó que el código de salida 2 lo devuelve a trabajar | code.claude.com/docs/en/hooks | 2026-11-11 |
+| `SessionStart` agrega lo que el comando imprime por stdout al contexto de la sesión | no verificado | code.claude.com/docs/en/hooks | 2026-11-11 |
+| Campos del stdin que usa `flow-hooks.mjs`: `cwd`, `tool_input.file_path` y `stop_hook_active` | no verificado (`tool_input.command` sí) | code.claude.com/docs/en/hooks | 2026-11-11 |
 | Herramienta `PowerShell` como matcher de comandos en Windows | no verificado | code.claude.com/docs/en/hooks | 2026-11-11 |

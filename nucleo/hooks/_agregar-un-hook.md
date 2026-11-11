@@ -14,5 +14,6 @@ Un hook se declara como una fila de `INDICE.md` de esta carpeta:
 - **Ajustar:** se edita la fila y se vuelve a conectar con el adaptador.
 - **Apagar:** estado `apagado`. No se borra la fila: queda dicho que existió.
 - **De un módulo:** el módulo lo declara en su `MODULO.md` y se agrega aquí al activarlo; se apaga con el módulo.
+- **Comando de Flow:** los de `flow-hooks.mjs` se agregan como subcomando; uno propio del proyecto puede ser cualquier script.
 - **Conectar:** el adaptador solo conecta los `activo`. Si su herramienta no tiene el evento, el hook cae a git o al CI y se anota en la fila.
 - Un hook que ejecuta código de terceros se declara y pide el OK del usuario antes de activarse.
