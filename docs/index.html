@@ -1,35 +1,36 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Playbook de Flow</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 <style>
 /* Concepto: hojas apiladas sobre un escritorio, una por tema. El rojo se reserva solo para lo pendiente. */
+/* Paleta clara tipo Claude (blancos y beiges, el beige un poco más oscuro) con verde orgánico profundo; todo en Ubuntu Mono. */
 :root {
-  --desk: #E7E9EC;
-  --sheet: #FFFFFF;
-  --sheet-2: #F3F5F7;
-  --ink: #14181D;
-  --muted: #5A6470;
-  --line: #D5DAE0;
-  --accent: #0E6A70;
-  --red: #C4201A;
-  --red-line: #E9A6A2;
-  --shadow: 0 1px 2px rgba(20,24,29,.08), 0 8px 28px rgba(20,24,29,.08);
-  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --desk: #E3DDCC;
+  --sheet: #FBFAF6;
+  --sheet-2: #F1EEE3;
+  --ink: #23211C;
+  --muted: #6A6556;
+  --line: #D9D2BF;
+  --accent: #2E5E3E;
+  --red: #8A3B2C;
+  --red-line: #D9B5AB;
+  --shadow: 0 1px 2px rgba(45,40,25,.10), 0 8px 28px rgba(45,40,25,.10);
+  --f-display: "Ubuntu Mono", ui-monospace, Consolas, monospace;
+  --f-body: "Ubuntu Mono", ui-monospace, Consolas, monospace;
+  --f-mono: "Ubuntu Mono", ui-monospace, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --desk: #0C0E10; --sheet: #16191D; --sheet-2: #1E2227; --ink: #E9ECEF; --muted: #98A2AE;
-    --line: #2B3138; --accent: #4FC3C9; --red: #FF6F64; --red-line: #6B2F2B;
+    --desk: #15170F; --sheet: #1E201A; --sheet-2: #272A22; --ink: #ECEAE0; --muted: #A5A28F;
+    --line: #34382D; --accent: #8FC49A; --red: #E08A78; --red-line: #6B3A2F;
     --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 28px rgba(0,0,0,.4);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --desk: #0C0E10; --sheet: #16191D; --sheet-2: #1E2227; --ink: #E9ECEF; --muted: #98A2AE;
-  --line: #2B3138; --accent: #4FC3C9; --red: #FF6F64; --red-line: #6B2F2B;
+  --desk: #15170F; --sheet: #1E201A; --sheet-2: #272A22; --ink: #ECEAE0; --muted: #A5A28F;
+  --line: #34382D; --accent: #8FC49A; --red: #E08A78; --red-line: #6B3A2F;
   --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 28px rgba(0,0,0,.4);
   color-scheme: dark;
 }
@@ -37,7 +38,7 @@
 * { box-sizing: border-box; }
 body {
   background: var(--desk); color: var(--ink);
-  font-family: var(--f-body); font-size: 16px; line-height: 1.65;
+  font-family: var(--f-body); font-size: 18px; line-height: 1.6;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 32px 48px;
@@ -73,7 +74,7 @@ body {
 h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
 h1 { font-size: clamp(44px, 9vw, 84px); line-height: .98; font-weight: 700; letter-spacing: -.02em; }
 h2 { font-size: clamp(28px, 4.4vw, 38px); line-height: 1.1; font-weight: 700; letter-spacing: -.01em; margin-bottom: 26px; }
-h3 { font-size: 18px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 700; }
 p { margin: 0 0 1em; max-width: 64ch; }
 a { color: var(--accent); }
 code { font-family: var(--f-mono); font-size: .88em; background: var(--sheet-2); padding: 1px 5px; border-radius: 3px; }
@@ -86,7 +87,7 @@ code { font-family: var(--f-mono); font-size: .88em; background: var(--sheet-2);
 
 /* cómo se lee */
 .indice { list-style: none; margin: 28px 0 0; padding: 0; columns: 2 280px; column-gap: 40px; }
-.indice li { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-size: 15px; }
+.indice li { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-size: 16px; }
 .indice a { color: var(--ink); text-decoration: none; }
 .indice a:hover { color: var(--accent); }
 .indice .n { font: 400 11px/1.9 var(--f-mono); color: var(--red); white-space: nowrap; }
@@ -103,19 +104,19 @@ code { font-family: var(--f-mono); font-size: .88em; background: var(--sheet-2);
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; column-gap: 20px;
   padding: 12px 0; border-bottom: 1px dashed var(--red-line);
 }
-.pt { font: 600 18px/1.3 var(--f-display); color: var(--red); }
+.pt { font: 700 18px/1.3 var(--f-display); color: var(--red); }
 .po { font: 400 11px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red); opacity: .8; white-space: nowrap; }
 
 /* reglas */
 .reglas { margin: 0; padding: 0; list-style: none; counter-reset: r; }
 .reglas li { counter-increment: r; display: grid; grid-template-columns: 34px 1fr; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .reglas li::before { content: counter(r); font: 500 13px/2 var(--f-mono); color: var(--accent); }
-.reglas b { font-weight: 600; }
+.reglas b { font-weight: 700; }
 
 /* tablas */
 .tabla { overflow-x: auto; margin: 22px 0; }
-table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 460px; }
-th { text-align: left; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 14px 10px 0; border-bottom: 1px solid var(--ink); }
+table { border-collapse: collapse; width: 100%; font-size: 16px; min-width: 460px; }
+th { text-align: left; font: 700 13px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 14px 10px 0; border-bottom: 1px solid var(--ink); }
 td { padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
 td:first-child { font-family: var(--f-mono); font-size: 13.5px; white-space: nowrap; }
 
@@ -128,12 +129,12 @@ svg .nodo { fill: var(--sheet-2); stroke: var(--line); stroke-width: 1.2; }
 svg .nodo-eje { fill: var(--sheet-2); stroke: var(--accent); stroke-width: 1.8; }
 svg .arista { stroke: var(--muted); stroke-width: 1.3; fill: none; }
 svg .et { font-size: 11px; fill: var(--muted); }
-svg .nt { font-size: 14px; font-weight: 600; text-anchor: middle; }
+svg .nt { font-size: 14px; font-weight: 700; text-anchor: middle; }
 
 .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 0; margin: 28px 0 14px; border: 1px solid var(--line); }
 .paso { padding: 14px 14px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; }
 .paso b { display: block; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent); margin-bottom: 8px; }
-.paso strong { display: block; font: 600 17px/1.2 var(--f-display); margin-bottom: 6px; }
+.paso strong { display: block; font: 700 17px/1.2 var(--f-display); margin-bottom: 6px; }
 .paso span { font-size: 13.5px; line-height: 1.45; color: var(--muted); display: block; }
 .retorno { font-size: 14px; color: var(--muted); }
 
@@ -150,7 +151,7 @@ svg .nt { font-size: 14px; font-weight: 600; text-anchor: middle; }
 </style>
 
 <style>
-.tabla td:last-child { font-family: var(--f-body); font-size: 15px; white-space: normal; }
+.tabla td:last-child { font-family: var(--f-body); font-size: 16px; white-space: normal; }
 .tabla.wrap td:first-child { white-space: normal; }
 svg .arista-p { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
 svg .punta { fill: var(--muted); }
