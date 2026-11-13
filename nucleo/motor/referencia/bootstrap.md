@@ -11,4 +11,4 @@ Entradas: `config.md` (ya generado por el setup), el repo y lo que el usuario co
 4b. **Bandeja y errores.** Deja `bandeja.md` y `errores.md` (ya copiados por el setup). Lo que el usuario contó y aún no es trabajo (ideas, intenciones) entra a la bandeja, con fecha y autor.
 5. **Backlog inicial.** Siembra puntos reales encontrados en los pasos anteriores: huecos del PRD, riesgos, deuda visible, brechas de costo alto. Nada genérico. Un archivo por punto (plantilla `punto`) y una fila en el índice. Marca candidatos a slicing o lote; no los ejecutes.
 6. **Normativa** (solo si `config.md` la declara). Investiga en la web las normas del país y tema indicados, con fuentes oficiales. Una ficha por norma (plantilla `referencia`) con fuente, versión y fecha de consulta, más `dominio/referencias/INDICE.md`. Son resúmenes con fuente, no asesoría legal.
-7. **Avisar** al usuario qué se encontró, qué se asumió, qué brechas hay y cuál es el primer punto sugerido. **Parar.**
+7. **Avisar** al usuario qué se encontró, qué se asumió, qué brechas hay y cuál es el primer punto sugerido. Pregunta una vez si confirma el PRD como primera versión: es el hito 1 (`hitos.md`). **Parar.**

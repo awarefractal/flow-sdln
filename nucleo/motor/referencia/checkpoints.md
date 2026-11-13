@@ -19,4 +19,4 @@ Si al ejecutar aparece un área sin decidir que el plan no previó, no la resuel
 
 ## Verificar de verdad
 
-Si el cambio es observable (interfaz, API, comportamiento), el checkpoint verifica contra el entorno que indica `config.md`, no solo con tests. Si el módulo `qa-navegador` está activo, se usa para eso. Un entorno exclusivo ocupado por otro punto no se usa (`coordinacion.md`). La traza dice contra qué entorno y versión corrió.
+Si el cambio es observable (interfaz, API, comportamiento), el checkpoint verifica contra el entorno que indica `config.md`, no solo con tests. Si el módulo `qa-navegador` está activo, se usa para eso. Si existe el tema `regresion` en `dominio/`, se corren también los escenarios que el punto toca. Un entorno exclusivo ocupado por otro punto no se usa (`coordinacion.md`). La traza dice contra qué entorno y versión corrió.

@@ -1,5 +1,7 @@
 # Cerrar un punto
 
+Estos pasos los ejecuta la IA sola. La persona ve un resumen mínimo (qué se cierra, evidencia, lo que falta) y lo aprueba; con eso corre todo lo demás, sin que nadie recorra el checklist a mano.
+
 Se cierra cuando se cumplen los criterios de aceptación del punto y los globales del contrato. En este orden:
 
 1. **Checkpoint de cierre.** Tres niveles, todos con evidencia literal (salida, respuesta, captura), no «funciona»:
@@ -24,7 +26,8 @@ Se cierra cuando se cumplen los criterios de aceptación del punto y los globale
    El bump va en el mismo commit de cierre, no en uno aparte.
 9. **Liberar** (`coordinacion.md`): limpia `toma` y los `bloqueado_por` que puso este punto.
 10. **Commit y push** a la rama de trabajo de `config.md`, con el ID del punto en el mensaje.
-11. **Recomendar conversación nueva.** Dilo en una línea: todo quedó escrito en `.flow/`, así que la siguiente conversación retoma con `/flow estado` sin arrastrar esta. Recomiéndalo con firmeza.
+11. **Hito.** Si es el primer punto `done` que tuvo plan y `config.md` no tiene la fecha del hito, ya hecho el commit corre el hito 2 (`hitos.md`).
+12. **Recomendar conversación nueva.** Dilo en una línea: todo quedó escrito en `.flow/`, así que la siguiente conversación retoma con `/flow estado` sin arrastrar esta. Recomiéndalo con firmeza.
 
 ## El cierre es mecánica
 
@@ -36,4 +39,4 @@ Si el punto tocó un área todavía en brecha, avísalo en el resumen del cierre
 
 ## Después
 
-Cuando el cambio es observable, verificarlo contra el entorno de desarrollo forma parte del punto. Promover a producción es una decisión aparte, con los criterios de release del PRD §7; no es parte del ciclo diario.
+Cuando el cambio es observable, verificarlo contra el entorno de desarrollo forma parte del punto. Promover a producción es una decisión aparte, con los criterios de release del PRD §7; no es parte del ciclo diario. Es un bloque opcional y no bloqueante: `produccion.md`.
