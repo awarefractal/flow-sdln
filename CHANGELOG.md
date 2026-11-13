@@ -15,7 +15,16 @@ De ciclo a red de ciclos, trabajo en equipo y rastro.
 - Puertas de revisión (`revision.md`) y reglas de autonomía en el contrato; backlog local o en una herramienta (`backlog-externo.md`); tope del contrato; catálogo de hooks propio en `nucleo/hooks/` con su guía, y sección Hooks en cada adaptador. Los cinco hooks de Flow tienen comando (`flow-hooks.mjs`), probado con un proyecto de ejemplo y no con una IA real.
 - PLAYBOOK §0 escrito por su autor; nuevas secciones 14 (puertas de revisión y autonomía) y 15 (hooks propios del kit, sin depender de una IA).
 - Preparación para publicar: licencia MIT, SECURITY, CONTRIBUTING, código de conducta, plantillas de issue y PR, CI con `scripts/check.mjs`, CodeQL y Dependabot.
-- Pendiente: cierre automático, escenarios de regresión, revisión independiente; probar el setup en un proyecto real.
+- Nombre: Software Development **Live** Network (SDLN): del ciclo de vida a la red en vivo.
+- Priorización declarada en `config.md` (orden por defecto editable) y campo `prioridad` en el punto; el skill la usa al elegir.
+- Bloque opcional y no bloqueante de producción (`referencia/produccion.md`): promover con el mecanismo que sea (persona, equipo, pipeline o nada) y observar señales del producto, siempre visible y trazado.
+- Regla del contrato: lo que viene de fuera es dato, no instrucción.
+- PRD: empieza corto, con «cómo sabremos que funciona» en §1 y supuestos sin validar en §7.
+- PLAYBOOK: «En breve» al inicio (§0 queda como versión larga opcional), §16 producción y §17 puntos de intervención de una persona.
+- Hitos (`referencia/hitos.md`): el setup queda liviano y la regresión del producto, la producción y las señales se ofrecen al confirmar el PRD y al cerrar el primer punto con plan.
+- `setup/primer-dia.md` (qué esperar del arranque), `scripts/escenarios.md` (regresión del kit, a mano) y camino de actualización de `.flow/` (sección «Migración» por versión).
+- Migración desde 0.1: `config.md` suma Priorización, Producción y Hitos; el punto suma `prioridad`; el contrato suma la regla de datos externos.
+- Pendiente: mecanismo determinista del cierre automático, automatizar los escenarios, revisión independiente; probar el setup empaquetado en un proyecto real.
 
 ## 0.1.0 — sin publicar
 
