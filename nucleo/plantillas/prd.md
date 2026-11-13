@@ -1,6 +1,6 @@
 # PRD — {{nombre}}
 
-> Se arma al inicio y se actualiza en cada cierre. Las secciones tienen ID estable (§1…): los puntos del backlog las citan como origen. El módulo de diseño lee §2 a §5.
+> Se arma al inicio y se actualiza en cada cierre. Empieza corto: una o dos líneas por sección bastan, porque el producto cambia y el PRD con él. Las secciones tienen ID estable (§1…): los puntos del backlog las citan como origen. El módulo de diseño lee §2 a §5.
 
 ## Índice
 
@@ -17,7 +17,7 @@
 
 ## §1 Propósito
 
-Qué problema resuelve y para quién, en pocas líneas.
+Qué problema resuelve, para quién y cómo sabremos que funciona (o «sin confirmar»), en pocas líneas.
 
 ## §2 Usuarios y roles
 

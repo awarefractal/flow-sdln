@@ -35,6 +35,7 @@ Del relato y de lo detectado, llena esta tabla marcando cada campo como `dicho`,
 | normativa (país y tema) | relato: datos personales, sector regulado | «no»; preguntar solo si el relato lo insinúa | no |
 | estética | relato (referencias, adjetivos, marca) y estilos o tokens del código | preguntar una vez, solo si hay interfaz | sí, si hay interfaz |
 | fuente del backlog | relato: nombra Jira, Trello u otra herramienta de backlog | `local` | no |
+| promoción a producción | archivos de despliegue o CI (`.github/workflows`, scripts de deploy), relato | `nada`: se declara y queda trazado (`referencia/produccion.md`) | no |
 | módulos | hay interfaz → `diseno`; hay URL desplegada → `qa-navegador` | se proponen en el resumen, no se preguntan | no |
 
 ## 3. Rondas cortas
@@ -93,4 +94,4 @@ Vuelve a correr el setup: solo se regeneran el archivo guía y el skill. `.flow/
 
 ## Actualizar a una versión nueva del kit
 
-Se regeneran el archivo guía y el skill. Los archivos de `.flow/` son del proyecto (`CONTEXT.md` incluye sus reglas aprendidas): nunca se sobrescriben. Si una plantilla del kit cambió, compara y propón el cambio como punto de tipo `proceso`.
+Se regeneran el archivo guía y el skill. Los archivos de `.flow/` son del proyecto (`CONTEXT.md` incluye sus reglas aprendidas): nunca se sobrescriben. Cada versión del `CHANGELOG.md` trae una sección «Migración» con lo que cambia en `.flow/`, y esos cambios son siempre aditivos: un campo o una sección nueva con valor por defecto `asumido`. Con esa lista, propón un solo punto de tipo `proceso` y aplícalo cuando el usuario lo apruebe.

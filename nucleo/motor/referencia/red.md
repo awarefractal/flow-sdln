@@ -8,7 +8,7 @@ Flow no es una línea; es una red de seis ciclos. Cada uno se activa cuando tien
 |---|---|---|
 | Relato y PRD claro | `PRD.md` | la sección que importa no dice «sin confirmar» |
 | Material crudo | `bandeja.md` | ideas, intenciones, incidentes y pins sin procesar |
-| Punto listo | `motor/backlog/puntos/` | criterio, tipo y áreas; sin bloqueo, sin dependencia abierta |
+| Punto listo | `motor/backlog/puntos/` | criterio, tipo, prioridad y áreas; sin bloqueo, sin dependencia abierta |
 | Decisión | `dominio/decisiones/` | el área tocada está `decidida`, no en brecha |
 | Conocimiento | `dominio/` | el tema tocado está al día |
 | Errores vistos | `errores.md` | filas con repeticiones y su regla |

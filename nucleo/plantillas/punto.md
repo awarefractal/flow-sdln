@@ -3,6 +3,7 @@ id: P000
 titulo: Una línea; es lo que aparece en el índice del backlog
 tipo: feature
 tamano: chico
+prioridad: media
 estado: todo
 padre:
 paralelo:
@@ -16,7 +17,7 @@ externo:
 
 # P000 — Título
 
-Tipos y su bump: ver `config.md`. Estados: `todo`, `doing`, `revision` (solo si hay una puerta, ver `referencia/revision.md`), `done`, `descartado` (con motivo). `externo`: enlace o clave del ítem si el backlog vive en una herramienta (`referencia/backlog-externo.md`); vacío si es local. `padre` y `paralelo` (`si` o `no`) solo en slices. `depende_de`, `afecta`, `entornos`, `toma` y `bloqueado_por`: ver `referencia/coordinacion.md`.
+Tipos y su bump: ver `config.md`. `prioridad` (`alta`, `media`, `baja`): la fija la IA con la «Priorización» de `config.md`. Estados: `todo`, `doing`, `revision` (solo si hay una puerta, ver `referencia/revision.md`), `done`, `descartado` (con motivo). `externo`: enlace o clave del ítem si el backlog vive en una herramienta (`referencia/backlog-externo.md`); vacío si es local. `padre` y `paralelo` (`si` o `no`) solo en slices. `depende_de`, `afecta`, `entornos`, `toma` y `bloqueado_por`: ver `referencia/coordinacion.md`.
 
 ## Origen
 

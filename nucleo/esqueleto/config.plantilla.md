@@ -47,6 +47,20 @@ Se edita a mano y se lee antes de cada ciclo. Columna **origen**: `dicho` (lo di
 | agrupar puntos chicos | `preguntar` (`siempre`, `nunca`) | asumido |
 | tamaño máximo de lote | 3 | asumido |
 
+## Priorización
+
+Con qué criterio la IA elige qué sigue y fija la `prioridad` (alta, media o baja) de cada punto. Gana el primer criterio que desempata. Es un orden por defecto: cámbialo a tu gusto.
+
+| Orden | Criterio | Origen |
+|---|---|---|
+| 1 | un incidente o un hueco de seguridad abierto | asumido |
+| 2 | lo que desbloquea a otros puntos | asumido |
+| 3 | lo que cierra una brecha de costo alto de decidir tarde | asumido |
+| 4 | más valor para el usuario (PRD §1 y §6) por esfuerzo | asumido |
+| 5 | el más antiguo | asumido |
+
+La IA propone y dice en una línea por qué. Si el valor no se ve en el PRD, o dos puntos empatan de verdad, pregunta una vez.
+
 ## Versionado
 
 | Campo | Valor | Origen |
@@ -67,6 +81,32 @@ Se edita a mano y se lee antes de cada ciclo. Columna **origen**: `dicho` (lo di
 |---|---|---|---|---|
 
 Sin filas, no hay puertas. Mecanismo: `referencia/revision.md`. Quién puede aprobar sin una persona detrás: «Reglas de autonomía» de `CONTEXT.md`.
+
+## Producción (opcional)
+
+Ninguna fila bloquea construir. Sin declarar, no se promueve y así queda dicho. Mecanismo: `referencia/produccion.md`.
+
+| Campo | Valor | Origen |
+|---|---|---|
+| mecanismo de promoción | `nada` (`persona`, `equipo`, `pipeline` u otro) | asumido |
+| quién o qué | | |
+| disparador | a pedido | asumido |
+| cómo se vuelve atrás | sin definir | asumido |
+| observar (señales) | no | asumido |
+
+| Señal | Familia | Dónde se mira | Umbral | Al cruzarlo |
+|---|---|---|---|---|
+
+Familias: salud, uso, costo. Sin filas, no hay señales.
+
+## Hitos
+
+Momentos que ocurren una vez y en los que la IA ofrece lo que da robustez (`referencia/hitos.md`). Sin fecha, no han ocurrido.
+
+| Hito | Fecha | Origen |
+|---|---|---|
+| PRD confirmado | | pendiente |
+| primer punto terminado | | pendiente |
 
 ## Tipos de punto
 
