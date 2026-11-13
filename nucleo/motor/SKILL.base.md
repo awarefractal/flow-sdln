@@ -53,4 +53,4 @@ Un punto es un archivo en `motor/backlog/puntos/<ID>.md` (plantilla `punto`) y u
 | `referencia/backlog-externo.md` | `config.md` declara `fuente: externa` |
 | `referencia/metricas.md` | `/flow metricas`, poda y tope del contrato |
 | `referencia/produccion.md` | Promover a producción u observar señales del producto (opcional) |
-| `referencia/hitos.md` | Se confirma el PRD o se cierra el primer punto con plan |
+| `referencia/hitos.md` | Se confirma el PRD, se cierra el primer punto con plan, se promueve por primera vez o se cierra el primer incidente |

@@ -6,7 +6,7 @@ Typo, copy, una constante, un enlace roto: un archivo, sin riesgo, criterio evid
 
 ## Urgencia (incidente o hotfix)
 
-Un incidente entra por la bandeja (tipo `incidente`, con evidencia literal) y se convierte en punto `bug` de prioridad máxima. Plan mínimo de dos líneas, la corrección más chica que contenga el daño, checkpoint real y cierre. La causa de fondo no se arregla ahí: queda como punto aparte. Después, el ciclo Aprender: ¿es un error que ya vimos? Se registra en `errores.md`.
+Un incidente entra por la bandeja (tipo `incidente`, con evidencia literal) y se convierte en punto `bug` de prioridad máxima. Plan mínimo de dos líneas, la corrección más chica que contenga el daño, checkpoint real y cierre. La causa de fondo no se arregla ahí: queda como punto aparte. Después, el ciclo Aprender: ¿es un error que ya vimos? Se registra en `errores.md`. Si es el primer incidente del proyecto, corre el hito 4 (`hitos.md`).
 
 ## Bug
 

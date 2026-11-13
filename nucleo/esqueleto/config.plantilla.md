@@ -107,6 +107,8 @@ Momentos que ocurren una vez y en los que la IA ofrece lo que da robustez (`refe
 |---|---|---|
 | PRD confirmado | | pendiente |
 | primer punto terminado | | pendiente |
+| primera promoción a producción | | pendiente |
+| primer incidente | | pendiente |
 
 ## Tipos de punto
 
