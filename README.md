@@ -1,6 +1,6 @@
 **[English]** · [(En español más abajo)](#español)
 
-# Flow — Software Development Life Network
+# Flow — Software Development Live Network
 
 [![CI](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/awarefractal/flow-sdln/actions/workflows/codeql.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/codeql.yml)
@@ -10,7 +10,7 @@
 [![Written by a human](https://img.shields.io/badge/why%20it%20exists-written%20by%20a%20human-0e6a70)](https://app.gutmbrg.com/p/djruNccm)
 
 
-Flow (SDLN, Software Development Life Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
+Flow (SDLN, Software Development Live Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
 
 [![Playbook cover: a pony on an adventure motorbike and a goat hanging from a drone, on a mountain trail](docs/cover.jpg)](https://awarefractal.github.io/flow-sdln/)
 
@@ -20,7 +20,7 @@ Flow (SDLN, Software Development Life Network) is a human + AI work framework. I
 
 *Why Flow exists (section 0 of the playbook), typed by hand and verified on [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
 
-> Status: v0.2.0, pre-release. The setup has only been dry-run, never with an AI on a real project (see [CHANGELOG.md](CHANGELOG.md)). The kit is written in Spanish.
+> Status: v0.2.0, pre-release. The method is proven in several products; this packaged setup has not yet been run from scratch with an AI on a real project (see [CHANGELOG.md](CHANGELOG.md)). The kit is written in Spanish.
 
 ## Why it exists
 
@@ -28,7 +28,7 @@ The happy path is an edge case, a playbook should only be the first snapshot, an
 
 ## How to use it
 
-In your project, with your AI open: "read `setup/SETUP.md` from the Flow kit and run it". The setup asks one open question, infers the rest, and generates `.flow/` plus the guide file and skill for your AI.
+In your project, with your AI open: "read `setup/SETUP.md` from the Flow kit and run it". The setup asks one open question, infers the rest, and generates `.flow/` plus the guide file and skill for your AI. What to expect: [setup/primer-dia.md](setup/primer-dia.md) (in Spanish).
 
 ## Not affiliated
 
@@ -42,10 +42,10 @@ Flow works with Claude Code, Codex and OpenCode through adapters. It is an indep
 
 # Español
 
-# Flow — Software Development Life Network
+# Flow — Software Development Live Network
 
 
-Flow (SDLN, Software Development Life Network) es un framework de trabajo humano + IA. Convierte una idea en un producto con trazabilidad: una red de ciclos (captar, definir, explorar, decidir, entregar, aprender) que se activan según su combustible, un PRD vivo, un backlog que se lee por índices, estado versionado que varias sesiones y personas pueden compartir sin pisarse, y un cierre que deja todo al día. No depende del proyecto ni de la IA que se use.
+Flow (SDLN, Software Development Live Network) es un framework de trabajo humano + IA. Convierte una idea en un producto con trazabilidad: una red de ciclos (captar, definir, explorar, decidir, entregar, aprender) que se activan según su combustible, un PRD vivo, un backlog que se lee por índices, estado versionado que varias sesiones y personas pueden compartir sin pisarse, y un cierre que deja todo al día. No depende del proyecto ni de la IA que se use.
 
 [![Carátula del playbook: un poni en moto de aventura y una cabra colgada de un dron, en un sendero de montaña](docs/cover.jpg)](https://awarefractal.github.io/flow-sdln/)
 
@@ -55,7 +55,7 @@ Flow (SDLN, Software Development Life Network) es un framework de trabajo humano
 
 *Por qué existe Flow (sección 0 del playbook), escrita a mano y verificada en [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
 
-> Estado: v0.2.0, pre-lanzamiento. El setup solo se probó en seco, nunca con una IA en un proyecto real (ver `CHANGELOG.md`). Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
+> Estado: v0.2.0, pre-lanzamiento. El método está probado en varios productos; este setup empaquetado aún no se corrió de cero con una IA en un proyecto real (ver `CHANGELOG.md`). Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
 
 ## Por qué existe
 
@@ -63,7 +63,7 @@ El camino feliz es un caso de borde, un playbook debiera ser solo la primera fot
 
 ## Cómo se usa
 
-En el proyecto, con tu IA abierta: «lee `setup/SETUP.md` del kit Flow y ejecútalo». El setup te hace una pregunta abierta, infiere el resto y genera `.flow/` más el archivo guía y el skill de tu IA.
+En el proyecto, con tu IA abierta: «lee `setup/SETUP.md` del kit Flow y ejecútalo». El setup te hace una pregunta abierta, infiere el resto y genera `.flow/` más el archivo guía y el skill de tu IA. Qué esperar: [setup/primer-dia.md](setup/primer-dia.md).
 
 ## Mapa del kit
 
@@ -72,8 +72,10 @@ flow/
 ├─ README.md · PLAYBOOK.md · docs/ (playbook en HTML, GIF, social preview) · VERSION · CHANGELOG.md · LICENSE · LICENSE.es.md
 ├─ SECURITY.md · CONTRIBUTING.md · CODE_OF_CONDUCT.md · CLAUDE.md
 ├─ scripts/check.mjs               chequeo de enlaces y datos locales (lo corre el CI)
+├─ scripts/escenarios.md           escenarios de regresión del kit (a mano)
 ├─ setup/
 │  ├─ SETUP.md                     protocolo de entrevista, sin cuestionario
+│  ├─ primer-dia.md                qué esperar del arranque
 │  └─ verificar.md                 chequeos de coherencia
 ├─ nucleo/
 │  ├─ contexto/
@@ -82,7 +84,7 @@ flow/
 │  │  └─ ponytail.md               la escalera de mínimo esfuerzo
 │  ├─ motor/
 │  │  ├─ SKILL.base.md             el ciclo; es el índice del mecanismo
-│  │  └─ referencia/               red · bootstrap · coordinacion · revision · backlog-externo · dimensionado · checkpoints · cierre · excepciones · metricas
+│  │  └─ referencia/               red · bootstrap · coordinacion · revision · backlog-externo · dimensionado · checkpoints · cierre · excepciones · metricas · produccion · hitos
 │  ├─ hooks/                       catálogo de hooks · flow-hooks.mjs · _agregar-un-hook.md
 │  ├─ plantillas/                  formato de lo que la IA crea al trabajar
 │  ├─ esqueleto/                   lo que el setup copia a .flow/
