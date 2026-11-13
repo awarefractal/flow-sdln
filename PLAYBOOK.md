@@ -1,10 +1,23 @@
-# Flow — Software Development Life Network: cómo funciona (para humanos)
+# Flow — Software Development Live Network: cómo funciona (para humanos)
 
 Este documento explica el método. Las reglas que la IA sigue viven en el contrato de cada proyecto (`CONTEXT.md`) y en el skill; esto es para que tú lo entiendas y no se te olvide.
 
+## En breve
+
+Flow es una forma de trabajar entre personas e IA para llevar un producto de 0 a 1 y seguir cambiándolo sin perder el hilo.
+
+- **Una red, no una línea.** Seis ciclos (captar, definir, explorar, decidir, entregar, aprender) que se alimentan entre sí. Cada uno corre cuando tiene sus insumos; si no los tiene, corre el que los produce.
+- **En vivo.** El estado vive en `.flow/`, versionado en git junto al código, y se escribe mientras se trabaja. Cualquier persona o IA puede retomar, coordinarse sin pisarse y auditar lo que pasa mientras pasa. De ahí SDLN: del SDLC (*Life Cycle*, ciclo de vida) a la *Live Network*, la red en vivo.
+- **La incertidumbre se declara.** Lo que no se sabe queda como brecha o supuesto, no escondido. Decidir temprano es barato, construir de más es caro y cambiar de rumbo es normal.
+- **Tú decides en puntos concretos** (§17); el resto lo hace la IA. El cierre es automático: ves un resumen mínimo, apruebas y todo queda al día.
+- **Robustez a su tiempo.** El setup es liviano: al confirmar el PRD y al cerrar tu primer punto, la IA celebra y te ofrece regresión, producción y señales del producto (§18). Tú decides.
+- **Lo demás es opcional:** puertas de revisión (§14), promoción a producción y señales del producto (§16).
+
+Para empezar: abre tu IA en el proyecto y di «lee `setup/SETUP.md` del kit y ejecútalo» (qué esperar: [tu primer día](setup/primer-dia.md)). Más abajo está la versión larga de por qué existe Flow (§0), opcional.
+
 ## Índice
 
-0. Por qué existe Flow · 1. Las tres capas · 2. Qué hay en `.flow/` · 3. La red de ciclos · 4. Forma de trabajo · 5. Equipo: estado compartido y bloqueos · 6. Un punto y sus criterios · 7. Bandeja, backlog y PRD · 8. Errores que no se repiten · 9. Auditoría · 10. Setup sin cuestionario · 11. Decisiones y brechas · 12. Navegación por índices · 13. Dónde viven las reglas · 14. Puertas de revisión y autonomía · 15. Hooks
+0. Por qué existe Flow (versión larga, opcional) · 1. Las tres capas · 2. Qué hay en `.flow/` · 3. La red de ciclos · 4. Forma de trabajo · 5. Equipo: estado compartido y bloqueos · 6. Un punto y sus criterios · 7. Bandeja, backlog y PRD · 8. Errores que no se repiten · 9. Auditoría · 10. Setup sin cuestionario · 11. Decisiones y brechas · 12. Navegación por índices · 13. Dónde viven las reglas · 14. Puertas de revisión y autonomía · 15. Hooks · 16. Producción: promover y observar (opcional) · 17. Dónde interviene una persona · 18. Hitos
 
 ## 0. Por qué existe Flow
 
@@ -173,6 +186,8 @@ Hay tres niveles de criterios, de arriba hacia abajo:
 
 El **checkpoint de cierre** verifica los tres con evidencia literal, y compara lo entregado con el plan.
 
+Los pasos del cierre (plan a hechos, bitácora, PRD, errores, versión, liberación) los ejecuta la IA sola: tú ves un resumen mínimo con lo que se cierra, la evidencia y lo que falta, y lo apruebas.
+
 ## 7. Bandeja, backlog y PRD
 
 | | Qué es | Cuándo entra | Cuándo sale |
@@ -182,6 +197,8 @@ El **checkpoint de cierre** verifica los tres con evidencia literal, y compara l
 | **PRD** | qué es el producto hoy y por qué | al inicio y en cada cierre | nunca; se actualiza |
 
 Los pins tienen fecha o disparador de revisión: `/flow estado` avisa cuando vencen. Un incidente es la entrada de una urgencia.
+
+**Cómo se prioriza.** El backlog se lee por prioridad, y la IA la fija con el criterio de `config.md`: incidente o seguridad abierta, lo que desbloquea a otros, lo que cierra una brecha cara, más valor por esfuerzo y, al final, el más antiguo. Es un orden por defecto que cambias a tu gusto. Ante un empate real, la IA pregunta una vez.
 
 ## 8. Errores que no se repiten
 
@@ -249,6 +266,44 @@ Un hook es un comando que se dispara en un evento concreto, sin depender de que 
 Se agregan, se ajustan o se apagan editando su declaración. Un módulo de terceros (Ponytail, un sistema de diseño) puede traer los suyos al mismo catálogo, con su origen y licencia, y se gobiernan igual que los propios.
 
 Estado: el catálogo y su guía para agregar un hook están en el kit (`nucleo/hooks/`); los comandos de los cinco hooks de Flow están escritos (`flow-hooks.mjs`).
+
+## 16. Producción: promover y observar (opcional)
+
+Son dos bloques que se conectan cuando hacen falta. Ninguno bloquea construir, y si no declaras nada el mecanismo es «nada» y así queda dicho. Mecanismo: `nucleo/motor/referencia/produccion.md`.
+
+- **Promover.** Pasar a producción no es parte de Entregar. Lo hace el mecanismo que declares en `config.md`: una persona, un equipo, un pipeline de CI/CD, otro o nadie. Los cambios `done` sin promover aparecen en `/flow estado` como «listos para promover»; antes de promover se verifican los criterios de release del PRD §7 con evidencia, y cada promoción (o su fallo) queda en la bitácora. Flow no construye el pipeline: lo conecta, lo ve y lo anota. Armarlo es un punto más del backlog.
+- **Observar.** Para cuando el producto ya nació. Declaras señales (salud, uso, costo), cada una con dónde se mira y su umbral. Si una cruza el umbral, entra a la bandeja: una de salud como incidente, una de uso como intención. Un incidente grave deja su postmortem (línea de tiempo, causa, qué cambia) y, si se repite, sube a regla. Un objetivo de nivel de servicio (SLO) es una señal con umbral y puede pasar a ser un criterio de release: así se vuelve regla.
+
+## 17. Dónde interviene una persona
+
+Flow no define roles: define **puntos de intervención**, los momentos exactos en que la IA necesita a una persona y qué le muestra para que decida rápido. Quién es esa persona (tú, un equipo, un agente por regla de autonomía) se resuelve por punto.
+
+| Dónde | Qué decide la persona | Qué ve para decidirlo |
+|---|---|---|
+| Setup | cuenta el relato y responde hasta 2 rondas cortas | una pregunta abierta; después, preguntas de una línea con respuesta por defecto |
+| Triaje de la bandeja | el destino de cada fila: punto, explorar, PRD, descarte o pin | la fila, con fecha y autor, y la propuesta de la IA |
+| PRD | resuelve lo «sin confirmar» cuando un punto lo necesita | la sección y por qué importa |
+| Dimensionar | aprueba cómo se parte un punto grande | los slices propuestos, cada uno con su criterio |
+| Decidir | elige entre las opciones de una brecha | tabla de opciones con fuentes y fecha |
+| Frenar | resuelve lo que la IA no puede: algo irreversible, una brecha imprevista, un desvío, una contradicción, dos intentos fallidos | la causa y la salida propuesta |
+| Checkpoint manual | confirma una verificación (solo con `checkpoints: manual`) | qué verificar y cómo |
+| Puertas de revisión | da el veredicto | el punto con su plan, traza y evidencia |
+| Cierre | aprueba el resumen | qué se cierra, evidencia y lo que falta |
+| Promover | autoriza, según el mecanismo declarado | criterios de release con evidencia |
+| Autonomía y poda | decide qué puede aprobar un agente y qué regla del contrato sobra | `/flow estado` y `/flow metricas` |
+
+Cualquiera de estos puntos se puede delegar con una regla de autonomía (§14), salvo lo irreversible, que siempre se pregunta.
+
+**¿Panel, equipo o nada?** Todas las filas tienen la misma forma: ver X, decidir Y. Esa vista ya existe: `/flow estado` junta lo que espera a una persona (bandeja sin triar, veredictos, pins vencidos) con su edad. Con una persona sola alcanza. Con un equipo se asigna quién interviene en cada punto, en las puertas (`config.md`) y en las reglas de autonomía, sin crear roles. Un panel aparte sería una vista de ese mismo estado, y solo vale la pena si el volumen lo pide.
+
+## 18. Hitos: lo que se ofrece a su tiempo
+
+El setup es liviano a propósito. Lo que da robustez no se pregunta de entrada, sino cuando tiene sentido, en dos hitos que ocurren una vez:
+
+- **PRD confirmado.** Al terminar el arranque, la IA pregunta si confirmas el PRD como primera versión. Lo celebra con una línea y te propone el primer punto.
+- **Primer punto terminado.** Después del primer cierre con plan (la vía rápida no cuenta), la IA celebra y te ofrece, de a una cosa y con una opción por defecto: escenarios de regresión de tu producto, un mecanismo para promover a producción, señales y objetivos de servicio, y lo barato que falte (comandos de prueba, puertas de revisión, criterios de release).
+
+Cada oferta admite «ahora», «después» (queda como pin con disparador) o «no» (queda declarado y no se vuelve a preguntar). Tú decides; Flow se asegura de que las opciones estén a mano. Mecanismo: `nucleo/motor/referencia/hitos.md`.
 
 ---
 

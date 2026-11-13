@@ -179,7 +179,7 @@ sup{line-height:0}
 <!-- 01 · Portada -->
 <section class="hoja portada" id="portada">
   <div>
-    <p class="eyebrow">Flow — Software Development Life Network · v0.2.0</p>
+    <p class="eyebrow">Flow — Software Development Live Network · v0.2.0</p>
     <h1>Playbook de Flow</h1>
     <p class="sub">Cómo trabajan una persona o un equipo y una IA cuando el producto cambia todos los días.</p>
   </div>
@@ -196,7 +196,8 @@ sup{line-height:0}
   <p class="eyebrow">Playbook de Flow</p>
   <h2>Índice</h2>
   <ul class="indice una">
-    <li><span><span class="num">01</span> <a href="#por-que">Por qué existe Flow</a></span></li>
+    <li><span><span class="num">00</span> <a href="#en-breve">En breve</a></span></li>
+    <li><span><span class="num">01</span> <a href="#por-que">Por qué existe Flow (versión larga, opcional)</a></span></li>
     <li><span><span class="num">02</span> <a href="#red">De ciclo de vida a red de ciclos</a></span></li>
     <li><span><span class="num">03</span> <a href="#insumos">Insumos y router</a></span></li>
     <li><span><span class="num">04</span> <a href="#reglas">Reglas y dónde viven</a></span></li>
@@ -217,9 +218,28 @@ sup{line-height:0}
     <li><span><span class="num">19</span> <a href="#control">Control y autonomía</a></span></li>
     <li><span><span class="num">20</span> <a href="#hooks">Hooks y cierre automático</a></span></li>
     <li><span><span class="num">21</span> <a href="#medir">Medir y mejorar</a></span></li>
-    <li><span><span class="num">22</span> <a href="#glosario">Glosario</a></span></li>
+    <li><span><span class="num">22</span> <a href="#produccion">Producción: promover y observar (opcional)</a></span></li>
+    <li><span><span class="num">23</span> <a href="#intervencion">Dónde interviene una persona</a></span></li>
+    <li><span><span class="num">24</span> <a href="#hitos">Hitos: lo que se ofrece a su tiempo</a></span></li>
+    <li><span><span class="num">25</span> <a href="#glosario">Glosario</a></span></li>
   </ul>
   <p class="fuente">Los términos con un número en el texto se explican en el <a href="#glosario">Glosario</a>, con su enlace cuando vienen de afuera.</p>
+</section>
+
+<!-- 02c · En breve -->
+<section class="hoja cap" id="en-breve">
+  <p class="eyebrow">Para empezar</p>
+  <h2>En breve</h2>
+  <p>Flow es una forma de trabajar entre personas e IA para llevar un producto de 0 a 1 y seguir cambiándolo sin perder el hilo.</p>
+  <ol class="reglas">
+    <li><span><b>Una red, no una línea.</b> Seis ciclos que se alimentan entre sí. Cada uno corre cuando tiene sus insumos; si no los tiene, corre el que los produce.</span></li>
+    <li><span><b>En vivo.</b> El estado vive en <code>.flow/</code>, versionado junto al código, y se escribe mientras se trabaja. Cualquiera, persona o IA, retoma, se coordina sin pisarse y audita lo que pasa mientras pasa. De ahí SDLN: del SDLC (<i>Life Cycle</i>, ciclo de vida) a la <i>Live Network</i>, la red en vivo.</span></li>
+    <li><span><b>La incertidumbre se declara.</b> Lo que no se sabe queda como brecha o supuesto, no escondido. Decidir temprano es barato, construir de más es caro y cambiar de rumbo es normal.</span></li>
+    <li><span><b>Tú decides en puntos concretos</b> (<a href="#intervencion">ver la hoja 23</a>); el resto lo hace la IA. El cierre es automático: ves un resumen mínimo, apruebas y todo queda al día.</span></li>
+    <li><span><b>Robustez a su tiempo.</b> El setup es liviano: al confirmar el PRD y al cerrar tu primer punto, la IA celebra y te ofrece regresión, producción y señales del producto (<a href="#hitos">hoja 24</a>). Tú decides.</span></li>
+    <li><span><b>Lo demás es opcional:</b> puertas de revisión, promoción a producción y señales del producto (<a href="#produccion">ver la hoja 22</a>).</span></li>
+  </ol>
+  <p style="margin-top:18px">Para empezar: abre tu IA en el proyecto y di «lee <code>setup/SETUP.md</code> del kit y ejecútalo». Las hojas siguientes cuentan por qué existe Flow, en su versión larga y opcional.</p>
 </section>
 
 <!-- 03 · Por qué -->
@@ -596,7 +616,7 @@ sup{line-height:0}
   <p>Es el ciclo<sup><a class="gl" href="#g-ciclo">10</a></sup> central de la red. Antes de empezar, la IA mira <code>capacidades.md</code> para anotar en el plan<sup><a class="gl" href="#g-plan">25</a></sup> qué herramientas aplican, y <code>errores.md</code> por si algún error conocido corresponde.</p>
 
   <div class="pasos">
-    <div class="paso"><b>01</b><strong>Elegir</strong><span>El punto<sup><a class="gl" href="#g-punto">31</a></sup> pedido o el abierto de mayor prioridad que esté libre.</span></div>
+    <div class="paso"><b>01</b><strong>Elegir</strong><span>El punto<sup><a class="gl" href="#g-punto">31</a></sup> pedido o el abierto libre de mayor prioridad, según el criterio de <code>config.md</code>.</span></div>
     <div class="paso"><b>02</b><strong>Tomar</strong><span>Se marca y se sube antes de planificar.</span></div>
     <div class="paso"><b>03</b><strong>Dimensionar</strong><span>Grande se parte en slices<sup><a class="gl" href="#g-slice">40</a></sup>, chico se agrupa en lote<sup><a class="gl" href="#g-lote">22</a></sup>.</span></div>
     <div class="paso"><b>04</b><strong>Plan</strong><span>Un archivo antes de tocar código.</span></div>
@@ -650,7 +670,7 @@ sup{line-height:0}
     <li><span>Commit y push, con el ID del punto en el mensaje.</span></li>
     <li><span>Se recomienda abrir una conversación nueva.</span></li>
   </ol>
-  <p style="margin-top:18px">El cierre es mecánica: si los checkpoints ya pasaron, no se re-corren tests ni se re-revisa el diff. Promover a producción es una decisión aparte.</p>
+  <p style="margin-top:18px">Estos pasos los ejecuta la IA sola: tú ves un resumen mínimo (qué se cierra, la evidencia y lo que falta) y lo apruebas. El cierre es mecánica: si los checkpoints ya pasaron, no se re-corren tests ni se re-revisa el diff. Promover a producción es una decisión aparte, opcional y que no bloquea la construcción (<a href="#produccion">hoja 22</a>).</p>
 </section>
 
 <!-- 14 · Decisiones -->
@@ -892,7 +912,81 @@ sup{line-height:0}
   <p>La incertidumbre nunca llega a cero, porque en cero sería falsa confianza. Cerrar brechas rápido con ADR mediocres baja el número y empeora el producto, así que se contrapesa con los ADR reemplazados y las fechas de revisión vencidas.</p>
 </section>
 
-<!-- 22 · Glosario -->
+<!-- 22 · Producción -->
+<section class="hoja cap" id="produccion">
+  <p class="eyebrow">Opcional</p>
+  <h2>Producción: promover y observar</h2>
+  <p>Son dos bloques que se conectan cuando hacen falta. Ninguno bloquea construir, y si no declaras nada el mecanismo es «nada» y así queda dicho. Todo lo que se decide acá queda trazado.</p>
+
+  <h3 style="margin:26px 0 8px">Promover</h3>
+  <p>Pasar a producción no es parte de Entregar. Lo hace el mecanismo que declares en <code>config.md</code>: una persona, un equipo, un pipeline de CI/CD, otro o nadie. Flow no construye el pipeline: lo conecta, lo hace visible y lo anota.</p>
+  <ol class="reglas">
+    <li><span><b>Visibilizar.</b> Los cambios <code>done</code> sin promover aparecen en <code>/flow estado</code> como «listos para promover», con su edad.</span></li>
+    <li><span><b>Verificar.</b> Se cumplen los criterios de release del PRD, con evidencia.</span></li>
+    <li><span><b>Promover.</b> Lo ejecuta el mecanismo declarado. Si es una persona o un equipo, la IA prepara y espera su autorización cada vez.</span></li>
+    <li><span><b>Anotar.</b> Entrada de bitácora con fecha, versión, mecanismo, evidencia y resultado. Si falló o se revirtió, se anota igual y entra a Aprender.</span></li>
+  </ol>
+
+  <h3 style="margin:26px 0 8px">Observar</h3>
+  <p>Para cuando el producto ya nació. Declaras señales, cada una con dónde se mira y su umbral. Una señal sin lectura queda pendiente, nunca se asume sana.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Familia</th><th>Ejemplos</th><th>Al cruzar el umbral</th></tr></thead>
+      <tbody>
+        <tr><td>Salud</td><td>Errores, caídas, latencia.</td><td>Entra a la bandeja como incidente.</td></tr>
+        <tr><td>Uso</td><td>Activación, retención, lo que el PRD diga que es éxito.</td><td>Entra a la bandeja como intención a triar.</td></tr>
+        <tr><td>Costo</td><td>Tokens, infraestructura, dinero.</td><td>Entra a la bandeja como intención a triar.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Un incidente grave deja su postmortem en la bitácora (línea de tiempo, causa y qué cambia, sin culpables) y, si se repite, sube a regla. Un objetivo de nivel de servicio (SLO), por ejemplo «99,5 % de respuestas correctas al mes», es una señal con umbral. Incumplirlo es un incidente, y mantenerlo puede pasar a ser un criterio de release: así se vuelve regla.</p>
+</section>
+
+<!-- 23 · Intervención -->
+<section class="hoja cap" id="intervencion">
+  <p class="eyebrow">Personas</p>
+  <h2>Dónde interviene una persona</h2>
+  <p>Flow no define roles: define puntos de intervención, los momentos exactos en que la IA necesita a una persona y qué le muestra para que decida rápido. Quién es esa persona (tú, un equipo, un agente por regla de autonomía) se resuelve por punto.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Dónde</th><th>Qué decide la persona</th><th>Qué ve para decidirlo</th></tr></thead>
+      <tbody>
+        <tr><td>Setup</td><td>Cuenta el relato y responde hasta 2 rondas cortas.</td><td>Una pregunta abierta; después, preguntas de una línea con respuesta por defecto.</td></tr>
+        <tr><td>Triaje de la bandeja</td><td>El destino de cada fila: punto, explorar, PRD, descarte o pin.</td><td>La fila, con fecha y autor, y la propuesta de la IA.</td></tr>
+        <tr><td>PRD</td><td>Resuelve lo «sin confirmar» cuando un punto lo necesita.</td><td>La sección y por qué importa.</td></tr>
+        <tr><td>Dimensionar</td><td>Aprueba cómo se parte un punto grande.</td><td>Los slices propuestos, cada uno con su criterio.</td></tr>
+        <tr><td>Decidir</td><td>Elige entre las opciones de una brecha.</td><td>Tabla de opciones con fuentes y fecha.</td></tr>
+        <tr><td>Frenar</td><td>Resuelve lo que la IA no puede: algo irreversible, una brecha imprevista, un desvío, una contradicción, dos intentos fallidos.</td><td>La causa y la salida propuesta.</td></tr>
+        <tr><td>Checkpoint manual</td><td>Confirma una verificación (solo con checkpoints manuales).</td><td>Qué verificar y cómo.</td></tr>
+        <tr><td>Puertas de revisión</td><td>Da el veredicto.</td><td>El punto con su plan, traza y evidencia.</td></tr>
+        <tr><td>Cierre</td><td>Aprueba el resumen.</td><td>Qué se cierra, la evidencia y lo que falta.</td></tr>
+        <tr><td>Promover</td><td>Autoriza, según el mecanismo declarado.</td><td>Criterios de release con evidencia.</td></tr>
+        <tr><td>Autonomía y poda</td><td>Decide qué puede aprobar un agente y qué regla del contrato sobra.</td><td><code>/flow estado</code> y <code>/flow metricas</code>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Cualquiera de estos puntos se puede delegar con una regla de autonomía, salvo lo irreversible, que siempre se pregunta.</p>
+  <p><b>¿Panel, equipo o nada?</b> Todas las filas tienen la misma forma: ver X, decidir Y. Esa vista ya existe: <code>/flow estado</code> junta lo que espera a una persona con su edad. Con una persona sola alcanza. Con un equipo se asigna quién interviene en cada punto, en las puertas y en las reglas de autonomía, sin crear roles. Un panel aparte sería una vista de ese mismo estado, y solo vale la pena si el volumen lo pide.</p>
+</section>
+
+<!-- 24 · Hitos -->
+<section class="hoja cap" id="hitos">
+  <p class="eyebrow">Robustez</p>
+  <h2>Hitos: lo que se ofrece a su tiempo</h2>
+  <p>El setup es liviano a propósito. Lo que da robustez no se pregunta de entrada, sino cuando tiene sentido, en dos hitos que ocurren una vez. La IA celebra con una línea, propone y tú decides.</p>
+  <div class="tabla wrap">
+    <table>
+      <thead><tr><th>Hito</th><th>Cuándo ocurre</th><th>Qué ofrece la IA</th></tr></thead>
+      <tbody>
+        <tr><td>PRD confirmado</td><td>Al terminar el arranque, cuando confirmas el PRD como primera versión.</td><td>Celebra lo definido y te propone el primer punto.</td></tr>
+        <tr><td>Primer punto terminado</td><td>Al cerrar el primer punto que tuvo plan. La vía rápida no cuenta.</td><td>De a una cosa y con una opción por defecto: escenarios de regresión de tu producto, un mecanismo para promover a producción, señales y objetivos de servicio, y lo barato que falte (comandos de prueba, puertas de revisión, criterios de release).</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Cada oferta admite «ahora», «después» (queda como pin con su disparador) o «no» (queda declarado y no se vuelve a preguntar). Flow se asegura de que las opciones estén a mano y tú eliges cuándo usarlas.</p>
+</section>
+
+<!-- 25 · Glosario -->
 <section class="hoja cap" id="glosario">
   <p class="eyebrow">Referencia</p>
   <h2>Glosario</h2>
@@ -936,7 +1030,7 @@ sup{line-height:0}
     <dt id="g-rendimiento"><span class="gn">36</span> Rendimiento (throughput)</dt><dd>Puntos cerrados por período.</dd>
     <dt id="g-router"><span class="gn">37</span> Router</dt><dd>Las preguntas que le dicen a la IA qué ciclo toca según el estado.</dd>
     <dt id="g-sdlc"><span class="gn">38</span> SDLC (Software Development Life Cycle)</dt><dd>Ciclo de vida del desarrollo de software: el modelo lineal que Flow reemplaza por una red.</dd>
-    <dt id="g-sdln"><span class="gn">39</span> SDLN (Software Development Life Network)</dt><dd>Red de desarrollo de software. Nombre informal de esta forma de pensar el desarrollo.</dd>
+    <dt id="g-sdln"><span class="gn">39</span> SDLN (Software Development Live Network)</dt><dd>Red de desarrollo de software en vivo: el estado se escribe mientras se trabaja y todo ciclo se puede ver y auditar mientras corre. Evoluciona la sigla SDLC, del ciclo de vida (<i>Life Cycle</i>) a la red en vivo (<i>Live Network</i>).</dd>
     <dt id="g-slice"><span class="gn">40</span> Slice</dt><dd>Parte de un punto grande, con su propio criterio. Puede ser paralelo o serial.</dd>
     <dt id="g-toma"><span class="gn">41</span> Toma</dt><dd>Marca que dice quién tiene un punto. Se sube al compartido antes de planificar.</dd>
     <dt id="g-traza"><span class="gn">42</span> Traza</dt><dd>Registro que se escribe mientras se trabaja en el plan: qué se hizo, qué comando corrió y qué resultado dio, incluyendo los errores.</dd>
