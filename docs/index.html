@@ -185,8 +185,8 @@ sup{line-height:0}
   </div>
   <img class="cover" src="cover.jpg" alt="Un poni en moto de aventura y una cabra colgada de un dron, en un sendero de montaña">
   <div class="meta">
-    Versión <span>0.5</span><br>
-    11 de noviembre de 2026
+    Versión <span>0.6</span><br>
+    13 de noviembre de 2026
   </div>
 </section>
 
@@ -236,7 +236,7 @@ sup{line-height:0}
     <li><span><b>En vivo.</b> El estado vive en <code>.flow/</code>, versionado junto al código, y se escribe mientras se trabaja. Cualquiera, persona o IA, retoma, se coordina sin pisarse y audita lo que pasa mientras pasa. De ahí SDLN: del SDLC (<i>Life Cycle</i>, ciclo de vida) a la <i>Live Network</i>, la red en vivo.</span></li>
     <li><span><b>La incertidumbre se declara.</b> Lo que no se sabe queda como brecha o supuesto, no escondido. Decidir temprano es barato, construir de más es caro y cambiar de rumbo es normal.</span></li>
     <li><span><b>Tú decides en puntos concretos</b> (<a href="#intervencion">ver la hoja 23</a>); el resto lo hace la IA. El cierre es automático: ves un resumen mínimo, apruebas y todo queda al día.</span></li>
-    <li><span><b>Robustez a su tiempo.</b> El setup es liviano: al confirmar el PRD y al cerrar tu primer punto, la IA celebra y te ofrece regresión, producción y señales del producto (<a href="#hitos">hoja 24</a>). Tú decides.</span></li>
+    <li><span><b>Robustez a su tiempo.</b> El setup es liviano: en cuatro momentos (PRD confirmado, primer punto terminado, primera promoción y primer incidente), la IA celebra y te ofrece lo que da robustez (<a href="#hitos">hoja 24</a>). Tú decides.</span></li>
     <li><span><b>Lo demás es opcional:</b> puertas de revisión, promoción a producción y señales del producto (<a href="#produccion">ver la hoja 22</a>).</span></li>
   </ol>
   <p style="margin-top:18px">Para empezar: abre tu IA en el proyecto y di «lee <code>setup/SETUP.md</code> del kit y ejecútalo». Las hojas siguientes cuentan por qué existe Flow, en su versión larga y opcional.</p>
@@ -870,7 +870,7 @@ sup{line-height:0}
   <p>Un skill externo, como Ponytail<sup><a class="gl" href="#g-ponytail">26</a></sup> o un sistema de diseño, entra como módulo y puede traer sus propios hooks. Se declaran en el mismo catálogo, con su origen y su licencia, y se activan o se apagan junto con el módulo. Lo propio y lo de terceros se gobiernan igual.</p>
 
   <h3 style="margin:26px 0 8px">Cierre automático</h3>
-  <p>Tú ves una sola vista del cierre, con el resumen, la evidencia y lo que falta. Al aprobarla, una herramienta del kit escribe de forma determinista el plan<sup><a class="gl" href="#g-plan">25</a></sup> en <code>hechos/</code>, el punto, el índice, la bitácora, el PRD<sup><a class="gl" href="#g-prd">28</a></sup>, <code>errores.md</code>, la versión y la liberación. Lo mismo vale para tomar un punto y para pasarlo por una puerta.</p>
+  <p>Tú ves una sola vista del cierre, con el resumen, la evidencia y lo que falta. Al aprobarla, la IA escribe, siguiendo el cierre del kit, el plan<sup><a class="gl" href="#g-plan">25</a></sup> en <code>hechos/</code>, el punto, el índice, la bitácora, el PRD<sup><a class="gl" href="#g-prd">28</a></sup>, <code>errores.md</code>, la versión y la liberación. El hook de bloqueo de cierre garantiza que antes del commit haya evidencia, bitácora y veredicto.</p>
 
   <h3 style="margin:26px 0 8px">Instalación</h3>
   <p>El setup instala el catálogo y le pide al adaptador que lo conecte, así que no queda nada que configurar a mano. El adaptador de Claude Code es el primero: su formato de hooks se verificó en la documentación oficial el 9 de noviembre de 2026, y el detalle va en su sección Verificación. Los demás adaptadores<sup><a class="gl" href="#g-adaptador">1</a></sup> declaran qué eventos pueden conectar y qué cae a git o al CI.</p>
@@ -973,13 +973,15 @@ sup{line-height:0}
 <section class="hoja cap" id="hitos">
   <p class="eyebrow">Robustez</p>
   <h2>Hitos: lo que se ofrece a su tiempo</h2>
-  <p>El setup es liviano a propósito. Lo que da robustez no se pregunta de entrada, sino cuando tiene sentido, en dos hitos que ocurren una vez. La IA celebra con una línea, propone y tú decides.</p>
+  <p>El setup es liviano a propósito. Lo que da robustez no se pregunta de entrada, sino cuando tiene sentido, en cuatro hitos que ocurren una vez. La IA celebra con una línea, propone y tú decides.</p>
   <div class="tabla wrap">
     <table>
       <thead><tr><th>Hito</th><th>Cuándo ocurre</th><th>Qué ofrece la IA</th></tr></thead>
       <tbody>
         <tr><td>PRD confirmado</td><td>Al terminar el arranque, cuando confirmas el PRD como primera versión.</td><td>Celebra lo definido y te propone el primer punto.</td></tr>
         <tr><td>Primer punto terminado</td><td>Al cerrar el primer punto que tuvo plan. La vía rápida no cuenta.</td><td>De a una cosa y con una opción por defecto: escenarios de regresión de tu producto, un mecanismo para promover a producción, señales y objetivos de servicio, y lo barato que falte (comandos de prueba, puertas de revisión, criterios de release).</td></tr>
+        <tr><td>Primera promoción a producción</td><td>Al anotar la primera promoción, salga bien o mal.</td><td>De a una cosa: cómo se vuelve atrás, una verificación posterior, señales de salud y el ajuste de los criterios de release.</td></tr>
+        <tr><td>Primer incidente</td><td>Al cerrar el primer incidente del proyecto.</td><td>De a una cosa: el postmortem sin culpables, su reproducción como escenario de regresión, una señal que lo habría detectado y la revisión de la regla que lo dejó pasar.</td></tr>
       </tbody>
     </table>
   </div>

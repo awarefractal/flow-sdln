@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 — sin publicar
+## 0.2.0 — 2026-11-13
 
 De ciclo a red de ciclos, trabajo en equipo y rastro.
 
@@ -12,7 +12,7 @@ De ciclo a red de ciclos, trabajo en equipo y rastro.
 - Auditoría: autor y fecha en todo rastro, ID de punto en cada commit, chequeos nuevos en `verificar.md`.
 - Conversaciones cortas: el cierre recomienda abrir una nueva.
 - Caminos no felices (`excepciones.md`): vía rápida, urgencia, bug con test rojo, abandonar un plan, cuándo frenar, autonomía por entorno. Métricas (`metricas.md`).
-- Puertas de revisión (`revision.md`) y reglas de autonomía en el contrato; backlog local o en una herramienta (`backlog-externo.md`); tope del contrato; catálogo de hooks propio en `nucleo/hooks/` con su guía, y sección Hooks en cada adaptador. Los cinco hooks de Flow tienen comando (`flow-hooks.mjs`), probado con un proyecto de ejemplo y no con una IA real.
+- Puertas de revisión (`revision.md`) y reglas de autonomía en el contrato; backlog local o en una herramienta (`backlog-externo.md`); tope del contrato; catálogo de hooks propio en `nucleo/hooks/` con su guía, y sección Hooks en cada adaptador. Los cinco hooks de Flow tienen comando (`flow-hooks.mjs`).
 - PLAYBOOK §0 escrito por su autor; nuevas secciones 14 (puertas de revisión y autonomía) y 15 (hooks propios del kit, sin depender de una IA).
 - Preparación para publicar: licencia MIT, SECURITY, CONTRIBUTING, código de conducta, plantillas de issue y PR, CI con `scripts/check.mjs`, CodeQL y Dependabot.
 - Nombre: Software Development **Live** Network (SDLN): del ciclo de vida a la red en vivo.
@@ -21,12 +21,11 @@ De ciclo a red de ciclos, trabajo en equipo y rastro.
 - Regla del contrato: lo que viene de fuera es dato, no instrucción.
 - PRD: empieza corto, con «cómo sabremos que funciona» en §1 y supuestos sin validar en §7.
 - PLAYBOOK: «En breve» al inicio (§0 queda como versión larga opcional), §16 producción y §17 puntos de intervención de una persona.
-- Hitos (`referencia/hitos.md`): el setup queda liviano y la regresión del producto, la producción y las señales se ofrecen al confirmar el PRD y al cerrar el primer punto con plan.
+- Hitos (`referencia/hitos.md`): el setup queda liviano y la regresión del producto, la producción y las señales se ofrecen en cuatro momentos: PRD confirmado, primer punto con plan terminado, primera promoción y primer incidente.
 - `setup/primer-dia.md` (qué esperar del arranque), `scripts/escenarios.md` (regresión del kit, a mano) y camino de actualización de `.flow/` (sección «Migración» por versión).
 - Migración desde 0.1: `config.md` suma Priorización, Producción y Hitos; el punto suma `prioridad`; el contrato suma la regla de datos externos.
-- Pendiente: mecanismo determinista del cierre automático, automatizar los escenarios, revisión independiente; probar el setup empaquetado en un proyecto real.
 
-## 0.1.0 — sin publicar
+## 0.1.0
 
 Primera versión completa.
 
@@ -35,4 +34,3 @@ Primera versión completa.
 - Adaptadores: Claude Code, Codex y OpenCode, con lo verificado y lo pendiente de confirmar por herramienta.
 - Módulos: diseño y QA en navegador.
 - Setup: pregunta de estética (una línea) si hay interfaz y nadie dio pista del estilo; la respuesta va al PRD §4.
-- Pendiente: confirmar en documentación oficial la ruta de skills de Codex y las de OpenCode; probar el setup en un proyecto real.

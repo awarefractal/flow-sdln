@@ -20,7 +20,7 @@ Flow (SDLN, Software Development Live Network) is a human + AI work framework. I
 
 *Why Flow exists (section 0 of the playbook), typed by hand and verified on [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
 
-> Status: v0.2.0, pre-release. The method is proven in several products; this packaged setup has not yet been run from scratch with an AI on a real project (see [CHANGELOG.md](CHANGELOG.md)). The kit is written in Spanish.
+> Status: v0.2.0 (see [CHANGELOG.md](CHANGELOG.md)). The kit is written in Spanish.
 
 ## Why it exists
 
@@ -55,7 +55,7 @@ Flow (SDLN, Software Development Live Network) es un framework de trabajo humano
 
 *Por qué existe Flow (sección 0 del playbook), escrita a mano y verificada en [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
 
-> Estado: v0.2.0, pre-lanzamiento. El método está probado en varios productos; este setup empaquetado aún no se corrió de cero con una IA en un proyecto real (ver `CHANGELOG.md`). Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
+> Estado: v0.2.0 (ver `CHANGELOG.md`). Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
 
 ## Por qué existe
 

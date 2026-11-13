@@ -4,7 +4,7 @@ Este repo es el kit de Flow: un framework de trabajo humano + IA, agnóstico de 
 
 ## Estado
 
-v0.2.0 escrita y publicada: repo público `awarefractal/flow-sdln`, playbook en GitHub Pages, licencia MIT, CI y CodeQL. El método está probado en varios productos; el setup empaquetado de este kit aún no se corrió de cero con una IA en un proyecto real.
+v0.2.0 publicada: repo público `awarefractal/flow-sdln`, playbook en GitHub Pages, licencia MIT, CI y CodeQL.
 
 ## Reglas de este repo
 
@@ -26,17 +26,9 @@ v0.2.0 escrita y publicada: repo público `awarefractal/flow-sdln`, playbook en 
 - El PRD se arma al inicio y se actualiza en cada cierre; de él nacen los puntos del backlog. Empieza corto: el producto cambia.
 - La IA prioriza con un criterio declarado en `config.md` (Priorización), editable.
 - Promover a producción y observar el producto son un bloque opcional y no bloqueante (`referencia/produccion.md`): el mecanismo puede ser una persona, un equipo, un pipeline o nada, y siempre queda visible y trazado.
-- El setup es liviano: lo que da robustez (regresión, producción, señales, SLO) se ofrece en dos hitos, al confirmar el PRD y al cerrar el primer punto con plan (`referencia/hitos.md`).
+- El setup es liviano: lo que da robustez (regresión, producción, señales, SLO) se ofrece en cuatro hitos: PRD confirmado, primer punto con plan terminado, primera promoción y primer incidente (`referencia/hitos.md`).
 - No hay roles: hay puntos de intervención humana, mapeados en el playbook. Quién interviene se asigna por punto, con las puertas y las reglas de autonomía.
 - Navegación por índices. Backlog y bitácora separados; cada punto y cada entrada en su archivo, enlazados entre sí.
 - Setup sin cuestionario: una pregunta abierta, inferir, máximo 2 rondas cortas; lo demás se asume y se anota.
 - Catálogo de decisiones: responder es opcional y nada se restringe; lo no decidido queda como brecha. La investigación es a demanda.
 - Lo de terceros entra como módulo (`modulos/_agregar-un-modulo.md`). Codex y OpenCode quedan como puente abierto: el usuario usa Claude Code.
-
-## Pendiente
-
-1. Probar el setup empaquetado con una IA en un proyecto vacío.
-2. Módulo de diseño: confirmar que la skill de diseño acepte leer el contexto desde el PRD.
-3. Cierre automático. Los pasos del cierre ya los ejecuta la IA y la persona ve un resumen mínimo (descrito en el playbook). Falta el mecanismo determinista: una vista única del cierre (resumen, evidencia, faltantes) y, al aprobarla, un subcomando de `nucleo/hooks/flow-hooks.mjs` que escriba plan a `hechos/`, punto, índice, bitácora, PRD, `errores.md`, versión y liberación; el mismo mecanismo serviría para tomar un punto y pasarlo por una puerta.
-4. Escenarios de regresión del kit: ya especificados en `scripts/escenarios.md`, falta automatizarlos. Hooks en el adaptador (verificar formato en documentación oficial); revisión independiente en contexto fresco.
-5. Caso real para el playbook: correr Flow en un producto y mostrar su `.flow/` como ejemplo.
