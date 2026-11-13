@@ -1,6 +1,6 @@
 # Escenarios de regresión del kit
 
-Especificación para comprobar que un cambio al kit no rompe lo que ya funciona. Se corre a mano, con una IA, sobre un proyecto de ejemplo desechable. Aún no hay automatización: cuando exista, vivirá junto a `check.mjs`.
+Especificación para comprobar que un cambio al kit no rompe lo que ya funciona. Se corre a mano, con una IA, sobre un proyecto de ejemplo desechable.
 
 | # | Escenario | Arranque | Resultado esperado |
 |---|---|---|---|
@@ -11,4 +11,6 @@ Especificación para comprobar que un cambio al kit no rompe lo que ya funciona.
 | 5 | Incidente | una fila de tipo incidente en la bandeja | se trata como urgencia: bug de prioridad máxima, plan de dos líneas, causa de fondo como punto aparte |
 | 6 | Entorno exclusivo | dos puntos que declaran el mismo entorno | el segundo no se toma y se dice la causa y la salida |
 | 7 | Hito 2 | un punto de vía rápida y después uno con plan | el hito no corre con el primero; corre al cerrar el segundo, una sola vez |
-| 8 | Promoción sin mecanismo | `mecanismo de promoción: nada` | no se promueve, queda declarado y trazado, y la construcción no se frena |
+| 8 | Hito 3 | la primera promoción de un proyecto, exitosa o fallida | la IA ofrece vuelta atrás, verificación posterior, señales y criterios de release, de a una, y no vuelve a ofrecerlo en la segunda promoción |
+| 9 | Hito 4 | el primer incidente cerrado y después un segundo | solo el primero ofrece postmortem, regresión y señal; el segundo incidente va por la urgencia normal |
+| 10 | Promoción sin mecanismo | `mecanismo de promoción: nada` | no se promueve, queda declarado y trazado, y la construcción no se frena |

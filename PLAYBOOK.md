@@ -10,7 +10,7 @@ Flow es una forma de trabajar entre personas e IA para llevar un producto de 0 a
 - **En vivo.** El estado vive en `.flow/`, versionado en git junto al código, y se escribe mientras se trabaja. Cualquier persona o IA puede retomar, coordinarse sin pisarse y auditar lo que pasa mientras pasa. De ahí SDLN: del SDLC (*Life Cycle*, ciclo de vida) a la *Live Network*, la red en vivo.
 - **La incertidumbre se declara.** Lo que no se sabe queda como brecha o supuesto, no escondido. Decidir temprano es barato, construir de más es caro y cambiar de rumbo es normal.
 - **Tú decides en puntos concretos** (§17); el resto lo hace la IA. El cierre es automático: ves un resumen mínimo, apruebas y todo queda al día.
-- **Robustez a su tiempo.** El setup es liviano: al confirmar el PRD y al cerrar tu primer punto, la IA celebra y te ofrece regresión, producción y señales del producto (§18). Tú decides.
+- **Robustez a su tiempo.** El setup es liviano: en cuatro momentos (PRD confirmado, primer punto terminado, primera promoción y primer incidente), la IA celebra y te ofrece lo que da robustez (§18). Tú decides.
 - **Lo demás es opcional:** puertas de revisión (§14), promoción a producción y señales del producto (§16).
 
 Para empezar: abre tu IA en el proyecto y di «lee `setup/SETUP.md` del kit y ejecútalo» (qué esperar: [tu primer día](setup/primer-dia.md)). Más abajo está la versión larga de por qué existe Flow (§0), opcional.
@@ -298,10 +298,12 @@ Cualquiera de estos puntos se puede delegar con una regla de autonomía (§14), 
 
 ## 18. Hitos: lo que se ofrece a su tiempo
 
-El setup es liviano a propósito. Lo que da robustez no se pregunta de entrada, sino cuando tiene sentido, en dos hitos que ocurren una vez:
+El setup es liviano a propósito. Lo que da robustez no se pregunta de entrada, sino cuando tiene sentido, en cuatro hitos que ocurren una vez:
 
 - **PRD confirmado.** Al terminar el arranque, la IA pregunta si confirmas el PRD como primera versión. Lo celebra con una línea y te propone el primer punto.
 - **Primer punto terminado.** Después del primer cierre con plan (la vía rápida no cuenta), la IA celebra y te ofrece, de a una cosa y con una opción por defecto: escenarios de regresión de tu producto, un mecanismo para promover a producción, señales y objetivos de servicio, y lo barato que falte (comandos de prueba, puertas de revisión, criterios de release).
+- **Primera promoción a producción.** Con la primera promoción anotada, salga bien o mal, te ofrece confirmar cómo se vuelve atrás, una verificación posterior, señales de salud y el ajuste de los criterios de release.
+- **Primer incidente.** Al cerrarlo, te ofrece el postmortem sin culpables, su reproducción como escenario de regresión, una señal que lo habría detectado y la revisión de la regla que lo dejó pasar.
 
 Cada oferta admite «ahora», «después» (queda como pin con disparador) o «no» (queda declarado y no se vuelve a preguntar). Tú decides; Flow se asegura de que las opciones estén a mano. Mecanismo: `nucleo/motor/referencia/hitos.md`.
 

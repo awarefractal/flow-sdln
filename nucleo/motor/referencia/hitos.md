@@ -25,3 +25,23 @@ El primer punto `done` que tuvo plan (la vía rápida no cuenta). Una vez hecho 
 4. **Lo barato que falte.** Comandos de test o lint sin declarar, puertas de revisión, reglas de autonomía, criterios de release del PRD §7. Solo lo que aplica a este proyecto.
 
 Cada respuesta se escribe donde corresponde (`config.md`, `dominio/`, la bandeja) y queda anotada en la bitácora del punto. Con eso se marca la fecha del hito.
+
+## Hito 3 — primera promoción a producción
+
+Una vez anotada la primera promoción, salga bien o mal (`produccion.md`), la IA ofrece, de a una:
+
+1. **Cómo se vuelve atrás.** Confirmar o definir «cómo se vuelve atrás» en `config.md` y, si se puede, probarlo.
+2. **Verificación posterior.** Un chequeo corto que corre después de cada promoción y queda como parte del mecanismo.
+3. **Señales de salud.** Si `observar` está en `no`, activar al menos errores y caídas, con dónde se miran y su umbral.
+4. **Criterios de release.** Ajustar los del PRD §7 con lo que esta promoción mostró.
+
+## Hito 4 — primer incidente
+
+Una vez cerrado el primer incidente del proyecto (el bug de urgencia, ver `excepciones.md`), la IA ofrece, de a una:
+
+1. **Postmortem sin culpables.** Una entrada de bitácora con la línea de tiempo, la causa y qué cambia.
+2. **Su reproducción como escenario de regresión**, en el tema `regresion` de `dominio/`.
+3. **Una señal que lo habría detectado antes**, con su umbral (`observar`).
+4. **La regla que lo dejó pasar.** Si vino de una promoción o de algo aprobado sin una persona, revisar la regla de autonomía o el criterio de release correspondiente.
+
+Si la causa de fondo quedó, es otro punto. Si el error se repite, Aprender lo sube a regla.
