@@ -2,6 +2,18 @@
 
 Lee en `config.md`: umbral de slicing, agrupar puntos chicos y tamaño máximo de lote.
 
+## Tamaño
+
+La IA fija `tamano` en el punto al dimensionar y no antes: un punto nuevo lo trae vacío.
+
+| `tamano` | Cuándo | Qué se hace |
+|---|---|---|
+| `grande` | toca más áreas que el umbral de `config.md` o cruza más de una capa | se parte en slices |
+| `chico` | un archivo y un criterio angosto | se agrupa en un lote, según `config.md` |
+| `normal` | ni uno ni otro | un punto, un plan |
+
+El padre de unos slices queda `grande`.
+
 ## Grande → slices
 
 Un punto es grande si toca más áreas que el umbral o cruza más de una capa (UI, API, datos, integración externa). No se ejecuta entero:

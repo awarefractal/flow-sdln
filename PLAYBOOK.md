@@ -175,6 +175,7 @@ Cada punto del backlog es su propio archivo. Sus campos clave:
 - **Origen:** de qué sección del PRD, fila de la bandeja o incidente nace.
 - **Áreas del catálogo que toca:** enlaza con las brechas (ver 11).
 - **Dependencias, afectados y entornos:** para coordinar (ver 5).
+- **Tamaño:** `chico`, `normal` o `grande`, que fija la IA al dimensionar. Lo grande se parte en slices, lo chico se agrupa en un lote y lo demás es un punto con su plan.
 
 Hay tres niveles de criterios, de arriba hacia abajo:
 
