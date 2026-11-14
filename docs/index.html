@@ -179,14 +179,13 @@ sup{line-height:0}
 <!-- 01 · Portada -->
 <section class="hoja portada" id="portada">
   <div>
-    <p class="eyebrow">Flow — Software Development Live Network · v0.2.0</p>
+    <p class="eyebrow">Flow — Software Development Live Network</p>
     <h1>Playbook de Flow</h1>
     <p class="sub">Cómo trabajan una persona o un equipo y una IA cuando el producto cambia todos los días.</p>
   </div>
   <img class="cover" src="cover.jpg" alt="Un poni en moto de aventura y una cabra colgada de un dron, en un sendero de montaña">
   <div class="meta">
-    Versión <span>0.6</span><br>
-    13 de noviembre de 2026
+    Versión <span>0.2.1</span>
   </div>
 </section>
 
@@ -634,6 +633,7 @@ sup{line-height:0}
   <h2>Dimensionar y caminos cortos</h2>
   <p>Un punto<sup><a class="gl" href="#g-punto">31</a></sup> es grande si toca más áreas que el umbral de <code>config.md</code> o si cruza más de una capa: interfaz, API, datos, integración externa. Se propone cómo partirlo en slices<sup><a class="gl" href="#g-slice">40</a></sup>, cada uno con su propio criterio, y se espera tu OK antes de planificar el primero. Cada slice se marca <b>paralelo</b> (puede tomarse a la vez que otros) o <b>serial</b> (espera a otro slice).</p>
   <p>Ejemplo: «roles de equipo» toca interfaz, API y datos, y sale como P012-A, P012-B y P012-C. Cerrar el último slice no cierra P012. El padre tiene su propio criterio, y así se ve el caso en que cada pieza pasa sus tests y el conjunto igual no funciona.</p>
+  <p>La IA anota el resultado en el punto como su tamaño: <code>grande</code>, <code>chico</code> o <code>normal</code> (ni uno ni otro: un punto, un plan). Se fija al dimensionar, no antes.</p>
   <p>Para lo chico se hace al revés: varios puntos angostos del mismo tipo se agrupan en un lote<sup><a class="gl" href="#g-lote">22</a></sup> con un solo plan<sup><a class="gl" href="#g-plan">25</a></sup>. Un punto que toca dos repos se parte en dos.</p>
 
   <div class="tabla wrap">

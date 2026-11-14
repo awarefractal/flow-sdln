@@ -5,7 +5,7 @@
 [![CI](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/awarefractal/flow-sdln/actions/workflows/codeql.yml/badge.svg)](https://github.com/awarefractal/flow-sdln/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.2.0-informational)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.1-informational)](CHANGELOG.md)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen)](scripts/check.mjs)
 [![Written by a human](https://img.shields.io/badge/why%20it%20exists-written%20by%20a%20human-0e6a70)](https://app.gutmbrg.com/p/djruNccm)
 
@@ -20,7 +20,7 @@ Flow (SDLN, Software Development Live Network) is a human + AI work framework. I
 
 *Why Flow exists (section 0 of the playbook), typed by hand and verified on [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
 
-> Status: v0.2.0 (see [CHANGELOG.md](CHANGELOG.md)). The kit is written in Spanish.
+> Current version and changes: [CHANGELOG.md](CHANGELOG.md). The kit is written in Spanish.
 
 ## Why it exists
 
@@ -55,7 +55,7 @@ Flow (SDLN, Software Development Live Network) es un framework de trabajo humano
 
 *Por qué existe Flow (sección 0 del playbook), escrita a mano y verificada en [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
 
-> Estado: v0.2.0 (ver `CHANGELOG.md`). Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
+> Versión actual y cambios: `CHANGELOG.md`. Cómo funciona, explicado para humanos: `PLAYBOOK.md`.
 
 ## Por qué existe
 
@@ -90,7 +90,7 @@ flow/
 │  ├─ esqueleto/                   lo que el setup copia a .flow/
 │  └─ catalogo/                    áreas de decisión por tipo de proyecto
 ├─ adaptadores/                    claude-code · codex · opencode · _agregar-una-ia.md
-└─ modulos/                        diseno · qa-navegador · _agregar-un-modulo.md
+└─ modulos/                        diseno · qa-navegador · ponytail · _agregar-un-modulo.md
 ```
 
 ## Qué genera en un proyecto

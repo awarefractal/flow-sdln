@@ -4,7 +4,7 @@ Este repo es el kit de Flow: un framework de trabajo humano + IA, agnóstico de 
 
 ## Estado
 
-v0.2.0 publicada: repo público `awarefractal/flow-sdln`, playbook en GitHub Pages, licencia MIT, CI y CodeQL.
+Publicada: repo público `awarefractal/flow-sdln`, playbook en GitHub Pages, licencia MIT, CI y CodeQL. La versión vive solo en `VERSION`.
 
 ## Reglas de este repo
 
@@ -14,6 +14,7 @@ v0.2.0 publicada: repo público `awarefractal/flow-sdln`, playbook en GitHub Pag
 - **Terceros:** rutas, paquetes y formatos de otras herramientas se verifican en documentación oficial. Lo no confirmado se dice en la sección Verificación del adaptador, con fuente y fecha.
 - **Idioma:** español, tuteo. Respuestas cortas y al grano.
 - **Git:** commits en español, un cambio lógico cada uno. Push solo con orden explícita.
+- **Versión:** la fuente es `VERSION`. Subirla toca `VERSION`, el título de la sección nueva del `CHANGELOG`, el badge del README y la portada del playbook; `scripts/check.mjs` exige que coincidan y el CI falla si no. El número no se escribe en ningún otro lugar.
 - **Migración:** los cambios al esqueleto son aditivos (campo o sección nueva con valor por defecto `asumido`) y cada versión del `CHANGELOG.md` trae su sección «Migración».
 - **§0 del playbook:** lo escribió su autor a mano (verificado en gutmbrg). No se edita; lo nuevo va fuera de esa sección.
 

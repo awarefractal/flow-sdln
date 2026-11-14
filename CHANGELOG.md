@@ -1,10 +1,19 @@
 # Changelog
 
+## 0.2.1 — 2026-11-14
+
+Cabos sueltos de 0.2.0.
+
+- Ponytail: la escalera completa se copia al proyecto como `.flow/ponytail.md` y el contrato ya no apunta a un archivo que no existe. Al empezar a construir se ofrece una vez el original como fuente externa (`modulos/ponytail/MODULO.md`, que el skill trae como `referencia/ponytail.md`).
+- Tamaño del punto: `chico`, `normal` o `grande`, lo fija la IA al dimensionar (`dimensionado.md`). La plantilla ya no trae `chico` por defecto. Chequeos nuevos en `verificar.md`.
+- Una sola fuente para la versión: `VERSION`. `scripts/check.mjs` exige que el CHANGELOG, el badge y la portada del playbook coincidan, y el CI falla si no.
+- Migración desde 0.2.0: copiar `nucleo/contexto/ponytail.md` como `.flow/ponytail.md` y su fila en `INDEX.md`; sumar `ponytail | regla | asumido` en «Módulos y normativa» de `config.md`; copiar `modulos/ponytail/MODULO.md` como `referencia/ponytail.md` junto al skill; en los puntos existentes, `tamano` pasa a `chico`, `normal`, `grande` o vacío.
+
 ## 0.2.0 — 2026-11-13
 
 De ciclo a red de ciclos, trabajo en equipo y rastro.
 
-- Red de seis ciclos con combustible y router (`red.md`); PLAYBOOK reescrito, con §0 «Por qué existe Flow» para escribir.
+- Red de seis ciclos con combustible y router (`red.md`); PLAYBOOK reescrito.
 - Reglas consolidadas en el contrato (`CONTEXT.plantilla`), con reglas aprendidas y criterios globales de cierre; el skill ya no las duplica.
 - `.flow/` versionado en git. Coordinación (`coordinacion.md`): toma de puntos, afectados, dependencias, IDs, entornos exclusivos y verificaciones.
 - Bandeja (ideas, intenciones, incidentes, pins) y `errores.md` con promoción al contrato.
