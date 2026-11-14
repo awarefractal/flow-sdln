@@ -28,7 +28,7 @@ Navega siempre por índices: `.flow/INDEX.md` → `INDICE.md` de la carpeta → 
 1. **Elegir.** El punto pedido o el abierto libre de mayor prioridad, según «Priorización» de `config.md`. Di en una línea cuál y por qué.
 2. **Tomar** → `referencia/coordinacion.md`. Se marca y se sube antes de planificar.
 3. **Dimensionar** → `referencia/dimensionado.md`. Grande: propón slices y espera el OK. Chico agrupable: propón un lote.
-4. **Plan.** Archivo nuevo en `motor/planes/activos/<ID>-<slug>.md` con la plantilla `plan`. Sin plan no se toca código. Si el punto es grande o ambiguo, muéstralo antes. Revisa `errores.md` por si algún error conocido aplica.
+4. **Plan.** Archivo nuevo en `motor/planes/activos/<ID>-<slug>.md` con la plantilla `plan`. Sin plan no se toca código. Si el punto es grande o ambiguo, muéstralo antes. Revisa `errores.md` por si algún error conocido aplica. Si el punto escribe código y `ponytail` en `config.md` sigue `asumido`, ofrece una vez el original antes de seguir: `referencia/ponytail.md`.
 5. **Ejecutar con checkpoints** → `referencia/checkpoints.md`. Una línea de traza por paso y por checkpoint.
 6. **Cerrar** → `referencia/cierre.md`. Checkpoint de cierre, plan a hechos, bitácora, PRD, errores, versión, liberar, commit, hito si corresponde, y recomendar conversación nueva.
 
@@ -53,4 +53,5 @@ Un punto es un archivo en `motor/backlog/puntos/<ID>.md` (plantilla `punto`) y u
 | `referencia/backlog-externo.md` | `config.md` declara `fuente: externa` |
 | `referencia/metricas.md` | `/flow metricas`, poda y tope del contrato |
 | `referencia/produccion.md` | Promover a producción u observar señales del producto (opcional) |
+| `referencia/ponytail.md` | Primer plan que escribe código y `config.md` tiene `ponytail` en `asumido` |
 | `referencia/hitos.md` | Se confirma el PRD, se cierra el primer punto con plan, se promueve por primera vez o se cierra el primer incidente |

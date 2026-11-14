@@ -5,7 +5,7 @@
 | Capacidad | Dónde vive | Úsala cuando… |
 |---|---|---|
 | flow | `{{ruta_skills}}/flow/` | Se trabaja el backlog, se arma o ejecuta un plan, se cierra un punto |
-| Ponytail (regla) | `.flow/CONTEXT.md` | Siempre, antes de escribir código |
+| Ponytail (regla) | `.flow/ponytail.md` | Siempre, antes de escribir código |
 
 ## Regla última: detectar el hueco y buscar
 

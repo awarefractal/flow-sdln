@@ -24,6 +24,8 @@ Chequeos que se corren al final del setup y cada vez que el usuario pida «verif
 | Tope del contrato | `CONTEXT.md` | no pasa de unas 120 líneas ni de 25 reglas aprendidas; si pasa, se propone un punto `proceso` |
 | Backlog externo | `config.md` con `fuente: externa` | todo punto tiene `externo` |
 | Hooks | `.flow/hooks/INDICE.md` | todo hook `activo` tiene comando que existe y está conectado en el adaptador |
+| Ponytail | `.flow/ponytail.md`, `INDEX.md` y `config.md` | el archivo existe y está en `INDEX.md`; `config.md` tiene `ponytail` (`regla` o `externo`) |
+| Tamaño | `tamano` de cada punto | vacío (sin dimensionar) o `chico`, `normal` o `grande`; todo punto `doing` o `done` con plan lo tiene |
 | Lectura por índices | `CONTEXT.md` y el archivo guía | contienen la regla de navegación |
 
 Reporte corto: lo que falla, dónde y qué hacer. Si todo pasa, una línea.

@@ -6,6 +6,7 @@
 |---|---|---|
 | Configuración y perillas | `config.md` | Antes de ejecutar comandos o cerrar un punto |
 | Contrato (reglas siempre activas) | `CONTEXT.md` | Al empezar cualquier tarea |
+| Escalera de mínimo esfuerzo | `ponytail.md` | Antes de escribir código |
 | Qué es el producto | `PRD.md` | Antes de proponer un cambio de alcance |
 | Bandeja (ideas, intenciones, incidentes, pins) | `bandeja.md` | Al captar algo nuevo, al triar, y cuando hay pins vencidos |
 | Errores recurrentes | `errores.md` | Al planificar, y al cerrar si hubo correcciones |

@@ -136,4 +136,5 @@ Un punto que cruza dos repos se parte en dos: uno por repo.
 | Campo | Valor | Origen |
 |---|---|---|
 | módulos activos | | |
+| ponytail | `regla` (`externo` si se instaló el original; ver `referencia/ponytail.md`) | asumido |
 | normativa (país y tema) | no | asumido |
