@@ -1,12 +1,4 @@
-**[English]** · [(En español más abajo)](#español)
-
-# MIT License (English text applies)
-
-The legally binding text is in the [LICENSE](LICENSE) file. The Spanish version below is a courtesy translation and has no legal value of its own.
-
----
-
-# Español
+**[Español]** · [(English below)](#english)
 
 # Licencia MIT (traducción de cortesía)
 
@@ -19,3 +11,11 @@ Por la presente se concede permiso, libre de cargos, a cualquier persona que obt
 El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o partes sustanciales del Software.
 
 EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO LOS AUTORES O TITULARES DEL COPYRIGHT SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO MOTIVO, DERIVADAS DE, FUERA DE O EN CONEXIÓN CON EL SOFTWARE O SU USO U OTRO TIPO DE ACCIONES EN EL SOFTWARE.
+
+---
+
+# English
+
+# MIT License (English text applies)
+
+The legally binding text is in the [LICENSE](LICENSE) file. The Spanish version above is a courtesy translation and has no legal value of its own.

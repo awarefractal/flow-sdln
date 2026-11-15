@@ -1,41 +1,4 @@
-**[English]** · [(En español más abajo)](#español)
-
-# Contributing to Flow
-
-Thanks for wanting to help! Issues and pull requests are welcome. Please read the [Code of Conduct](CODE_OF_CONDUCT.md) first. Start with [README.md](README.md) (map) and [PLAYBOOK.md](PLAYBOOK.md) (how it works).
-
-## Before you start
-
-- For anything bigger than a small fix, open an issue first so we can agree on the idea.
-- **Security problems:** do not open a public issue. Use **Security → Report a vulnerability** (see [SECURITY.md](SECURITY.md)).
-- **Conduct problems:** open an issue titled "Conduct report" with no details and ask for a private channel; the maintainer will arrange one.
-
-## Ground rules
-
-- **Agnostic:** no name, term, path or ID from a specific project. Examples are generic.
-- **One source:** content lives once in `nucleo/`; adapters only say where it goes. Never parallel copies.
-- **Minimalism:** no file, field or step that nobody asked for. Every file is cited from another.
-- **Third parties:** paths, packages and formats of other tools are verified in their official docs. Anything unconfirmed goes in the adapter's Verification section, with source and date.
-- **Language:** the kit is written in Spanish. Documentation of the repository itself (README, SECURITY, CONTRIBUTING) is English first with Spanish below.
-
-## Check your changes
-
-```bash
-node scripts/check.mjs
-```
-
-It checks that relative links in the Markdown files exist and that no local paths or personal emails slipped in. The CI runs the same command. There is no build step and no dependency.
-
-## Pull requests
-
-- Branch from `main`, keep the change focused, and describe what and why.
-- Your commits publish the email in your git config. Use your GitHub `noreply` address if you want to keep it private.
-- By contributing you agree that your work is released under the project's [MIT license](LICENSE).
-- The maintainer reviews every pull request; the CI check must pass.
-
----
-
-# Español
+**[Español]** · [(English below)](#english)
 
 # Contribuir a Flow
 
@@ -53,7 +16,7 @@ It checks that relative links in the Markdown files exist and that no local path
 - **Una sola fuente:** el contenido vive una vez en `nucleo/`; los adaptadores solo dicen dónde se coloca. Nunca copias paralelas.
 - **Minimalismo:** ningún archivo, campo o paso que nadie haya pedido. Todo archivo está citado desde otro.
 - **Terceros:** rutas, paquetes y formatos de otras herramientas se verifican en su documentación oficial. Lo no confirmado va en la sección Verificación del adaptador, con fuente y fecha.
-- **Idioma:** el kit está escrito en español. La documentación del repositorio (README, SECURITY, CONTRIBUTING) va primero en inglés y debajo en español.
+- **Idioma:** el kit está escrito en español. La documentación del repositorio (README, SECURITY, CONTRIBUTING) va primero en español y debajo en inglés.
 
 ## Comprueba tus cambios
 
@@ -69,3 +32,40 @@ Comprueba que los enlaces relativos de los Markdown existan y que no se hayan co
 - Tus commits publican el email de tu config de git. Usa tu dirección `noreply` de GitHub si quieres mantenerlo privado.
 - Al contribuir aceptas que tu trabajo se publica bajo la [licencia MIT](LICENSE) del proyecto.
 - El administrador revisa cada pull request; el check del CI debe pasar.
+
+---
+
+# English
+
+# Contributing to Flow
+
+Thanks for wanting to help! Issues and pull requests are welcome. Please read the [Code of Conduct](CODE_OF_CONDUCT.md) first. Start with [README.md](README.md) (map) and [PLAYBOOK.md](PLAYBOOK.md) (how it works).
+
+## Before you start
+
+- For anything bigger than a small fix, open an issue first so we can agree on the idea.
+- **Security problems:** do not open a public issue. Use **Security → Report a vulnerability** (see [SECURITY.md](SECURITY.md)).
+- **Conduct problems:** open an issue titled "Conduct report" with no details and ask for a private channel; the maintainer will arrange one.
+
+## Ground rules
+
+- **Agnostic:** no name, term, path or ID from a specific project. Examples are generic.
+- **One source:** content lives once in `nucleo/`; adapters only say where it goes. Never parallel copies.
+- **Minimalism:** no file, field or step that nobody asked for. Every file is cited from another.
+- **Third parties:** paths, packages and formats of other tools are verified in their official docs. Anything unconfirmed goes in the adapter's Verification section, with source and date.
+- **Language:** the kit is written in Spanish. Documentation of the repository itself (README, SECURITY, CONTRIBUTING) is Spanish first with English below.
+
+## Check your changes
+
+```bash
+node scripts/check.mjs
+```
+
+It checks that relative links in the Markdown files exist and that no local paths or personal emails slipped in. The CI runs the same command. There is no build step and no dependency.
+
+## Pull requests
+
+- Branch from `main`, keep the change focused, and describe what and why.
+- Your commits publish the email in your git config. Use your GitHub `noreply` address if you want to keep it private.
+- By contributing you agree that your work is released under the project's [MIT license](LICENSE).
+- The maintainer reviews every pull request; the CI check must pass.

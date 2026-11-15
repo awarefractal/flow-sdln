@@ -1,4 +1,4 @@
-**[English]** · [(En español más abajo)](#español)
+**[Español]** · [(English below)](#english)
 
 # Flow — Software Development Live Network
 
@@ -8,42 +8,6 @@
 [![Version](https://img.shields.io/badge/version-0.2.1-informational)](CHANGELOG.md)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen)](scripts/check.mjs)
 [![Written by a human](https://img.shields.io/badge/why%20it%20exists-written%20by%20a%20human-0e6a70)](https://app.gutmbrg.com/p/djruNccm)
-
-
-Flow (SDLN, Software Development Live Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
-
-[![Playbook cover: a pony on an adventure motorbike and a goat hanging from a drone, on a mountain trail](docs/cover.jpg)](https://awarefractal.github.io/flow-sdln/)
-
-**Read the playbook online:** [awarefractal.github.io/flow-sdln](https://awarefractal.github.io/flow-sdln/) (formatted, in Spanish) · or as Markdown: [PLAYBOOK.md](PLAYBOOK.md)
-
-[![Replay of the author typing section 0 of the playbook, verified by gutmbrg](docs/why-flow.gif)](https://app.gutmbrg.com/p/djruNccm)
-
-*Why Flow exists (section 0 of the playbook), typed by hand and verified on [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
-
-> Current version and changes: [CHANGELOG.md](CHANGELOG.md). The kit is written in Spanish.
-
-## Why it exists
-
-The happy path is an edge case, a playbook should only be the first snapshot, and uncertainty never goes away. Flow is a small starting setup for working that way: decide early, declare what is unknown, let the product change course, and keep the memory outside any single conversation. The full story is in [PLAYBOOK.md](PLAYBOOK.md), section 0 (in Spanish).
-
-## How to use it
-
-In your project, with your AI open: "read `setup/SETUP.md` from the Flow kit and run it". The setup asks one open question, infers the rest, and generates `.flow/` plus the guide file and skill for your AI. What to expect: [setup/primer-dia.md](setup/primer-dia.md) (in Spanish).
-
-## Not affiliated
-
-Flow works with Claude Code, Codex and OpenCode through adapters. It is an independent project and is not affiliated with, endorsed by or sponsored by Anthropic, OpenAI or the OpenCode project. Names belong to their owners.
-
-## License
-
-[MIT](LICENSE) (a courtesy translation is in [LICENSE.es.md](LICENSE.es.md)). See also [SECURITY.md](SECURITY.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
-
----
-
-# Español
-
-# Flow — Software Development Live Network
-
 
 Flow (SDLN, Software Development Live Network) es un framework de trabajo humano + IA. Convierte una idea en un producto con trazabilidad: una red de ciclos (captar, definir, explorar, decidir, entregar, aprender) que se activan según su combustible, un PRD vivo, un backlog que se lee por índices, estado versionado que varias sesiones y personas pueden compartir sin pisarse, y un cierre que deja todo al día. No depende del proyecto ni de la IA que se use.
 
@@ -123,3 +87,37 @@ Flow funciona con Claude Code, Codex y OpenCode a través de adaptadores. Es un 
 ## Licencia
 
 [MIT](LICENSE) (traducción de cortesía en [LICENSE.es.md](LICENSE.es.md)). Ver también [SECURITY.md](SECURITY.md) y [CONTRIBUTING.md](CONTRIBUTING.md).
+
+---
+
+# English
+
+# Flow — Software Development Live Network
+
+Flow (SDLN, Software Development Live Network) is a human + AI work framework. It turns an idea into a product with traceability: a network of cycles (capture, define, explore, decide, deliver, learn) that run when they have their inputs, a living PRD, a backlog read through indexes, versioned state that several sessions and people can share without stepping on each other, and a close that leaves everything up to date. It does not depend on the project or on the AI you use.
+
+[![Playbook cover: a pony on an adventure motorbike and a goat hanging from a drone, on a mountain trail](docs/cover.jpg)](https://awarefractal.github.io/flow-sdln/)
+
+**Read the playbook online:** [awarefractal.github.io/flow-sdln](https://awarefractal.github.io/flow-sdln/) (formatted, in Spanish) · or as Markdown: [PLAYBOOK.md](PLAYBOOK.md)
+
+[![Replay of the author typing section 0 of the playbook, verified by gutmbrg](docs/why-flow.gif)](https://app.gutmbrg.com/p/djruNccm)
+
+*Why Flow exists (section 0 of the playbook), typed by hand and verified on [gutmbrg](https://app.gutmbrg.com/p/djruNccm).*
+
+> Current version and changes: [CHANGELOG.md](CHANGELOG.md). The kit is written in Spanish.
+
+## Why it exists
+
+The happy path is an edge case, a playbook should only be the first snapshot, and uncertainty never goes away. Flow is a small starting setup for working that way: decide early, declare what is unknown, let the product change course, and keep the memory outside any single conversation. The full story is in [PLAYBOOK.md](PLAYBOOK.md), section 0 (in Spanish).
+
+## How to use it
+
+In your project, with your AI open: "read `setup/SETUP.md` from the Flow kit and run it". The setup asks one open question, infers the rest, and generates `.flow/` plus the guide file and skill for your AI. What to expect: [setup/primer-dia.md](setup/primer-dia.md) (in Spanish).
+
+## Not affiliated
+
+Flow works with Claude Code, Codex and OpenCode through adapters. It is an independent project and is not affiliated with, endorsed by or sponsored by Anthropic, OpenAI or the OpenCode project. Names belong to their owners.
+
+## License
+
+[MIT](LICENSE) (a courtesy translation is in [LICENSE.es.md](LICENSE.es.md)). See also [SECURITY.md](SECURITY.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
